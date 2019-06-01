@@ -26,14 +26,14 @@
 
     <groupId>org.apache.batchee</groupId>
     <artifactId>batchee</artifactId>
-    <version>0.6-incubating-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>BatchEE</name>
 
     <scm>
-        <connection>scm:git:https://git-wip-us.apache.org/repos/asf/incubator-batchee.git</connection>
-        <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/incubator-batchee.git</developerConnection>
-        <url>https://git-wip-us.apache.org/repos/asf?p=incubator-batchee.git;a=summary</url>
+        <connection>scm:git:https://gitbox.apache.org/repos/asf/geronimo-batchee.git</connection>
+        <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/geronimo-batchee.git</developerConnection>
+        <url>https://gitbox.apache.org/repos/asf/geronimo-batchee.git</url>
       <tag>HEAD</tag>
   </scm>
 
@@ -47,7 +47,7 @@
         <tomee.version>7.0.4</tomee.version>
         <deltaspike.version>1.8.0</deltaspike.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <batchee.scmPubUrl>https://svn.apache.org/repos/asf/incubator/batchee/site</batchee.scmPubUrl>
+        <batchee.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/geronimo/content/batchee</batchee.scmPubUrl>
         <batchee.scmPubCheckoutDirectory>${basedir}/.site-content</batchee.scmPubCheckoutDirectory>
     </properties>
 
@@ -71,32 +71,32 @@
     <mailingLists>
         <mailingList>
             <name>Users</name>
-            <post>user@batchee.incubator.apache.org</post>
-            <subscribe>user-subscribe@batchee.incubator.apache.org</subscribe>
-            <unsubscribe>user-unsubscribe@batchee.incubator.apache.org</unsubscribe>
-            <archive>https://lists.apache.org/list.html?user@batchee.apache.org</archive>
+            <post>users@geronimo.apache.org</post>
+            <subscribe>users-subscribe@geronimo.apache.org</subscribe>
+            <unsubscribe>users-unsubscribe@geronimo.apache.org</unsubscribe>
+            <archive>https://lists.apache.org/list.html?users@geronimo.apache.org</archive>
             <otherArchives>
-                <otherArchive>http://batchee-user.markmail.org/</otherArchive>
+                <otherArchive>http://geronimo-users.markmail.org/</otherArchive>
             </otherArchives>
         </mailingList>
         <mailingList>
             <name>Dev</name>
-            <post>dev@batchee.incubator.apache.org</post>
-            <subscribe>dev-subscribe@batchee.incubator.apache.org</subscribe>
-            <unsubscribe>dev-unsubscribe@batchee.incubator.apache.org</unsubscribe>
+            <post>dev@geronimo.apache.org</post>
+            <subscribe>dev-subscribe@geronimo.apache.org</subscribe>
+            <unsubscribe>dev-unsubscribe@geronimo.apache.org</unsubscribe>
             <archive>https://lists.apache.org/list.html?dev@batchee.apache.org</archive>
             <otherArchives>
-                <otherArchive>http://batchee-dev.markmail.org/</otherArchive>
+                <otherArchive>http://geronimo-dev.markmail.org/</otherArchive>
             </otherArchives>
         </mailingList>
         <mailingList>
             <name>Commits</name>
-            <post>commits@batchee.incubator.apache.org</post>
-            <subscribe>commits-subscribe@batchee.incubator.apache.org</subscribe>
-            <unsubscribe>commits-unsubscribe@batchee.incubator.apache.org</unsubscribe>
-            <archive>https://lists.apache.org/list.html?commits@batchee.apache.org</archive>
+            <post>commits@geronimo.apache.org</post>
+            <subscribe>commits-subscribe@geronimo.apache.org</subscribe>
+            <unsubscribe>commits-unsubscribe@geronimo.apache.org</unsubscribe>
+            <archive>https://lists.apache.org/list.html?commits@geronimo.apache.org</archive>
             <otherArchives>
-                <otherArchive>http://batchee-commits.markmail.org/</otherArchive>
+                <otherArchive>http://geronimo-commits.markmail.org/</otherArchive>
             </otherArchives>
         </mailingList>
     </mailingLists>

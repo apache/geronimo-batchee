@@ -19,7 +19,7 @@
   <parent>
     <artifactId>batchee-extensions</artifactId>
     <groupId>org.apache.batchee</groupId>
-    <version>0.6-incubating-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
@@ -103,7 +103,7 @@
               <source>
                 <![CDATA[
                 def generatedFolder = new File(project.parent.parent.basedir, 'src/site/markdown/batchee-site-generated')
-                if (!generatedFolder.isDirectory()) throw new IllegalStateException('no generated doc, extensions pre-ste should have been executed')
+                if (!generatedFolder.isDirectory()) throw new IllegalStateException('no generated doc, extensions pre-site should have been executed, no: ' + generatedFolder)
                 new File(generatedFolder, 'index.md').withWriter { w ->
                   w.println('# Generated Extensions Documentation\n')
 

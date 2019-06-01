@@ -58,7 +58,7 @@ import static java.util.Arrays.asList;
  * &lt;plugin&gt;
  *   &lt;groupId&gt;org.apache.batchee&lt;/groupId&gt;
  *   &lt;artifactId&gt;batchee-maven-plugin&lt;/artifactId&gt;
- *   &lt;version&gt;0.1-incubating-SNAPSHOT&lt;/version&gt;
+ *   &lt;version&gt;0.6-SNAPSHOT&lt;/version&gt;
  *   &lt;extensions&gt;true&lt;/extensions&gt;
  * &lt;/plugin&gt;
  * </code></pre>
