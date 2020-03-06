@@ -24,8 +24,6 @@ import org.apache.batchee.container.services.BatchKernelService;
 import org.apache.batchee.container.services.ServicesManager;
 
 import javax.batch.runtime.BatchStatus;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 /*
  * I took out the 'work type' constant since I don't see that we want to use
@@ -65,10 +63,6 @@ public class BatchWorkUnit implements Runnable {
                 getBatchKernel().jobExecutionDone(getJobExecutionImpl());
             }
         } catch (final Throwable t) {
-            final StringWriter sw = new StringWriter();
-            final PrintWriter pw = new PrintWriter(sw);
-            t.printStackTrace(pw);
-
             if (isNotifyCallbackWhenDone()) {
                 getBatchKernel().jobExecutionDone(getJobExecutionImpl());
             }

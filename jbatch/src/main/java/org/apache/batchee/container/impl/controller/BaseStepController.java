@@ -46,8 +46,6 @@ import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.JobInstance;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -439,9 +437,6 @@ public abstract class BaseStepController implements ExecutionElementController {
 
     private void rethrowWithMsg(final String msgBeginning, final Throwable t) {
         final String errorMsg = msgBeginning + " ; Caught exception/error: " + t.getLocalizedMessage();
-        final StringWriter sw = new StringWriter();
-        final PrintWriter pw = new PrintWriter(sw);
-        t.printStackTrace(pw);
         throw new BatchContainerRuntimeException(errorMsg, t);
     }
 

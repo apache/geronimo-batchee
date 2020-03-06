@@ -36,8 +36,6 @@ import org.apache.batchee.spi.PersistenceManagerService;
 
 import javax.batch.api.listener.JobListener;
 import javax.batch.runtime.BatchStatus;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
@@ -168,9 +166,7 @@ public abstract class JobThreadRootController implements ThreadRootController {
         try {
             jobListenersAfterJob();
         } catch (Throwable t) {
-            final StringWriter sw = new StringWriter();
-            final PrintWriter pw = new PrintWriter(sw);
-            t.printStackTrace(pw);
+            LOGGER.log(Level.SEVERE, t.getMessage(), t);
             batchStatusFailedFromException();
         }
 
