@@ -26,7 +26,6 @@ import org.apache.batchee.container.proxy.InjectionReferences;
 import org.apache.batchee.container.proxy.ProxyFactory;
 import org.apache.batchee.container.services.ServicesManager;
 import org.apache.batchee.container.util.PartitionDataWrapper;
-import org.apache.batchee.container.util.TCCLObjectInputStream;
 import org.apache.batchee.jaxb.Chunk;
 import org.apache.batchee.jaxb.Property;
 import org.apache.batchee.jaxb.Step;
@@ -215,7 +214,6 @@ public class ChunkStepController extends SingleThreadedStepController {
         List<Object> chunkToWrite = new ArrayList<Object>();
         Object itemRead;
         Object itemProcessed;
-        int readProcessedCount = 0;
 
         while (true) {
             currentItemStatus = new SingleItemStatus();
@@ -641,14 +639,14 @@ public class ChunkStepController extends SingleThreadedStepController {
 
     private void updateNormalMetrics(int writeCount) {
         int readCount = currentChunkStatus.getItemsTouchedInCurrentChunk();
-        if (currentChunkStatus.isFinished()) {
+        if (currentChunkStatus.isFinished() && !BatchStatus.STOPPING.equals(stepContext.getBatchStatus())) {
             readCount--;
         }
         int filterCount = readCount - writeCount;
 
         if (readCount < 0 || filterCount < 0 || writeCount < 0) {
-            throw new IllegalStateException("Somehow one of the metrics was zero.  Read count: " + readCount +
-                    ", Filter count: " + filterCount + ", Write count: " + writeCount);
+            throw new IllegalStateException("Somehow one of the metrics was less than zero.  " +
+                    "Read count: " + readCount + ", Filter count: " + filterCount + ", Write count: " + writeCount);
         }
         stepContext.getMetric(MetricImpl.MetricType.COMMIT_COUNT).incValue();
         stepContext.getMetric(MetricImpl.MetricType.READ_COUNT).incValueBy(readCount);
@@ -1020,7 +1018,6 @@ public class ChunkStepController extends SingleThreadedStepController {
             // check for data in backing store
             if (writerData != null) {
                 byte[] writertoken = writerData.getRestartToken();
-                TCCLObjectInputStream writerOIS;
                 try {
                     writerProxy.open((Serializable) dataRepresentationService.toJavaRepresentation(writertoken));
                 } catch (Exception ex) {

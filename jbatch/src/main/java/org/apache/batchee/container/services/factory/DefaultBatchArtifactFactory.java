@@ -28,6 +28,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -57,14 +58,18 @@ public class DefaultBatchArtifactFactory implements BatchArtifactFactory, XMLStr
             try {
                 final Class<?> artifactClass = tccl.loadClass(batchId);
                 if (artifactClass != null) {
-                    loadedArtifact = artifactClass.newInstance();
+                    loadedArtifact = artifactClass.getConstructor().newInstance();
                 }
             } catch (final ClassNotFoundException e) {
+                throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + batchId, e);
+            } catch (final NoSuchMethodException e) {
                 throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + batchId, e);
             } catch (final InstantiationException e) {
                 throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + batchId, e);
             } catch (final IllegalAccessException e) {
                 throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + batchId, e);
+            } catch (final InvocationTargetException e) {
+                throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + batchId, e.getCause());
             }
         }
 

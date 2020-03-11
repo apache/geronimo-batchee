@@ -251,6 +251,8 @@
           and it avoids to spread it over all our executions
           -->
           <systemProperties>
+            <openejb.additional.exclude>com.ibm</openejb.additional.exclude>
+
             <batchee.service-manager.log>true</batchee.service-manager.log>
 
             <!-- replace properties file -->

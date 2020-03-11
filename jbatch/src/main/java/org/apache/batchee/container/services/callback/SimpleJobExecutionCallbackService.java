@@ -30,6 +30,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 public class SimpleJobExecutionCallbackService implements JobExecutionCallbackService {
     private final ConcurrentMap<Long, Collection<CountDownLatch>> waiters = new ConcurrentHashMap<Long, Collection<CountDownLatch>>();
@@ -54,18 +55,18 @@ public class SimpleJobExecutionCallbackService implements JobExecutionCallbackSe
                 toRelease = existing;
             }
         }
-
-        // check before blocking
-        final InternalJobExecution finalCheckExec = ServicesManager.find().service(BatchKernelService.class).getJobExecution(id);
-        if (finalCheckExec != null && Batches.isDone(finalCheckExec.getBatchStatus())) {
-            waiters.remove(id);
+        if (checkIsDone(id)) {
             return;
         }
 
         final CountDownLatch latch = new CountDownLatch(1);
         toRelease.add(latch);
         try {
-            latch.await();
+            while (!latch.await(1, TimeUnit.SECONDS)) {
+                if (checkIsDone(id)) {
+                    return;
+                }
+            }
             waiters.remove(id);
         } catch (final InterruptedException e) {
             throw new BatchContainerRuntimeException(e);
@@ -75,5 +76,15 @@ public class SimpleJobExecutionCallbackService implements JobExecutionCallbackSe
     @Override
     public void init(final Properties batchConfig) {
         // no-op
+    }
+
+    private boolean checkIsDone(final long id) {
+        // check before blocking
+        final InternalJobExecution finalCheckExec = ServicesManager.find().service(BatchKernelService.class).getJobExecution(id);
+        if (finalCheckExec != null && Batches.isDone(finalCheckExec.getBatchStatus())) {
+            waiters.remove(id);
+            return true;
+        }
+        return false;
     }
 }
