@@ -39,7 +39,9 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 public class JMXTest {
-    private static long id;
+    private static long executionId;
+    private static long instanceId;
+    private static long stepExecutionId;
     private static MBeanServer server;
     private static ObjectName on;
 
@@ -51,8 +53,10 @@ public class JMXTest {
         final JobOperator jobOperator = BatchRuntime.getJobOperator();
         clearPersistence(jobOperator);
 
-        id = jobOperator.start("jmx", new Properties() {{ setProperty("foo", "bar"); }});
-        Batches.waitForEnd(jobOperator, id);
+        executionId = jobOperator.start("jmx", new Properties() {{ setProperty("foo", "bar"); }});
+        instanceId = jobOperator.getJobInstance(executionId).getInstanceId();
+        Batches.waitForEnd(jobOperator, executionId);
+        stepExecutionId = jobOperator.getStepExecutions(executionId).get(0).getStepExecutionId();
     }
 
     private static void clearPersistence(final JobOperator jobOperator) {
@@ -66,7 +70,7 @@ public class JMXTest {
 
     @AfterClass
     public static void deleteJob() throws Exception {
-        ServicesManager.find().service(PersistenceManagerService.class).cleanUp(id);
+        ServicesManager.find().service(PersistenceManagerService.class).cleanUp(instanceId);
     }
 
     private static Object attr(final String name) throws Exception {
@@ -104,14 +108,14 @@ public class JMXTest {
         final TabularData instance = TabularData.class.cast(result("getJobInstances", "jmx", 0, 1));
         assertEquals(1, instance.size());
 
-        final CompositeData cd = instance.get(new Object[]{"jmx", id});
-        assertEquals(id, cd.get("instanceId"));
+        final CompositeData cd = instance.get(new Object[]{"jmx", instanceId});
+        assertEquals(instanceId, cd.get("instanceId"));
         assertEquals("jmx", cd.get("jobName"));
     }
 
     @Test
     public void parameters() throws Exception {
-        final TabularData instance = TabularData.class.cast(result("getParameters", id));
+        final TabularData instance = TabularData.class.cast(result("getParameters", executionId));
         assertEquals(1, instance.size());
 
         final CompositeData cd = instance.get(List.class.cast(instance.keySet().iterator().next()).toArray());
@@ -121,21 +125,21 @@ public class JMXTest {
 
     @Test
     public void jobInstance() throws Exception {
-        final TabularData instance = TabularData.class.cast(result("getJobInstance", id));
+        final TabularData instance = TabularData.class.cast(result("getJobInstance", executionId));
         assertEquals(1, instance.size());
 
-        final CompositeData cd = instance.get(new Object[]{"jmx", id});
-        assertEquals(id, cd.get("instanceId"));
+        final CompositeData cd = instance.get(new Object[]{"jmx", instanceId});
+        assertEquals(instanceId, cd.get("instanceId"));
         assertEquals("jmx", cd.get("jobName"));
     }
 
     @Test
     public void jobExecutions() throws Exception {
-        final TabularData instance = TabularData.class.cast(result("getJobExecutions", id, "jmx"));
+        final TabularData instance = TabularData.class.cast(result("getJobExecutions", instanceId, "jmx"));
         assertEquals(1, instance.size());
 
         final CompositeData cd = instance.get(List.class.cast(instance.keySet().iterator().next()).toArray());
-        assertEquals(id, cd.get("executionId"));
+        assertEquals(executionId, cd.get("executionId"));
         assertEquals("jmx", cd.get("jobName"));
         assertEquals("COMPLETED", cd.get("Exit status"));
         assertEquals("COMPLETED", cd.get("Batch status"));
@@ -143,11 +147,11 @@ public class JMXTest {
 
     @Test
     public void jobExecution() throws Exception {
-        final TabularData instance = TabularData.class.cast(result("getJobExecution", id));
+        final TabularData instance = TabularData.class.cast(result("getJobExecution", executionId));
         assertEquals(1, instance.size());
 
         final CompositeData cd = instance.get(List.class.cast(instance.keySet().iterator().next()).toArray());
-        assertEquals(id, cd.get("executionId"));
+        assertEquals(executionId, cd.get("executionId"));
         assertEquals("jmx", cd.get("jobName"));
         assertEquals("COMPLETED", cd.get("Exit status"));
         assertEquals("COMPLETED", cd.get("Batch status"));
@@ -155,11 +159,11 @@ public class JMXTest {
 
     @Test
     public void stepExecutions() throws Exception {
-        final TabularData instance = TabularData.class.cast(result("getStepExecutions", id));
+        final TabularData instance = TabularData.class.cast(result("getStepExecutions", executionId));
         assertEquals(1, instance.size());
 
         final CompositeData cd = instance.get(List.class.cast(instance.keySet().iterator().next()).toArray());
-        assertEquals(id, cd.get("stepExecutionId"));
+        assertEquals(stepExecutionId, cd.get("stepExecutionId"));
         assertEquals("jmx-step", cd.get("stepName"));
         assertEquals("mock", cd.get("Exit status"));
         assertEquals("COMPLETED", cd.get("Batch status"));

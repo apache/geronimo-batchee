@@ -34,7 +34,7 @@ public class JobOperatorImplTest {
     public void runningExecutionMemory_BATCHEE112() {
         final JobOperator operator = new JobOperatorImpl(new ServicesManager() {{
             init(new Properties() {{
-                setProperty(PersistenceManagerService.class.getSimpleName(), MemoryPersistenceManagerService.class.getName());
+                setProperty(PersistenceManagerService.class.getName(), MemoryPersistenceManagerService.class.getName());
             }});
         }});
         for (int i = 0; i < 10; i++) {
