@@ -171,6 +171,8 @@ public class JPAPersistenceManagerService implements PersistenceManagerService {
             final JobStatus status = new JobStatus(entity.getJobInstanceId());
             setJobStatusData(status, entity);
             return status;
+        } catch (NoResultException e) {
+			throw new NoSuchJobExecutionException("Execution #" + executionId, e);
         } finally {
             emProvider.release(em);
         }
@@ -418,6 +420,10 @@ public class JPAPersistenceManagerService implements PersistenceManagerService {
         final EntityManager em = emProvider.newEntityManager();
         try {
             final JobExecutionEntity instance = em.find(JobExecutionEntity.class, jobExecutionId);
+            
+            if(instance == null) {
+    			throw new NoSuchJobExecutionException("Execution #" + jobExecutionId);
+            }
 
             final JobExecutionImpl jobEx = new JobExecutionImpl(jobExecutionId, instance.getInstance().getJobInstanceId(), this);
             jobEx.setCreateTime(instance.getCreateTime());
