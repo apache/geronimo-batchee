@@ -81,7 +81,7 @@ public class PersistenceManagerServiceTest {
 
                 // sanity checks we persisted data before deleting them
                 assertNotNull(service.getJobStatus(instance.getInstanceId()));
-                assertNotNull(service.getJobInstanceIdByExecutionId(exec.getExecutionId()));
+                service.getJobInstanceIdByExecutionId(exec.getExecutionId());
                 assertNotNull(service.jobOperatorGetJobExecution(exec.getExecutionId()));
                 assertNotNull(service.getStepExecutionByStepExecutionId(step.getStepExecutionId()));
                 assertNotNull(service.getCheckpointData(new CheckpointDataKey(instance.getInstanceId(), "step", CheckpointType.READER)));
@@ -90,7 +90,7 @@ public class PersistenceManagerServiceTest {
                     try { // add some delay
                         Thread.sleep(1000);
                     } catch (final InterruptedException e) {
-                        Thread.interrupted();
+                        Thread.currentThread().interrupt();
                         fail();
                     }
                 }

@@ -117,7 +117,7 @@ public class MainTest {
         try {
             sleep(100); // ensure it is started
         } catch (final InterruptedException e) {
-            Thread.interrupted();
+            Thread.currentThread().interrupt();
         }
         main(new String[]{"running"});
         assertThat(stdout.getLog(), containsString("long-sample -> ["));

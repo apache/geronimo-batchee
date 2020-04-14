@@ -105,7 +105,7 @@ public abstract class StartableCommand extends SocketConfigurableCommand {
                     }
                     adminThread.join();
                 } catch (final InterruptedException e) {
-                    Thread.interrupted();
+                    Thread.currentThread().interrupt();
                 }
             } // else let it live
         }
