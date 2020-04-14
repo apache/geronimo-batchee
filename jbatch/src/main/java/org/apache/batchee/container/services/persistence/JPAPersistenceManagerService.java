@@ -172,7 +172,7 @@ public class JPAPersistenceManagerService implements PersistenceManagerService {
             setJobStatusData(status, entity);
             return status;
         } catch (NoResultException e) {
-			throw new NoSuchJobExecutionException("Execution #" + executionId, e);
+            throw new NoSuchJobExecutionException("Execution #" + executionId, e);
         } finally {
             emProvider.release(em);
         }
@@ -422,7 +422,7 @@ public class JPAPersistenceManagerService implements PersistenceManagerService {
             final JobExecutionEntity instance = em.find(JobExecutionEntity.class, jobExecutionId);
             
             if(instance == null) {
-    			throw new NoSuchJobExecutionException("Execution #" + jobExecutionId);
+                throw new NoSuchJobExecutionException("Execution #" + jobExecutionId);
             }
 
             final JobExecutionImpl jobEx = new JobExecutionImpl(jobExecutionId, instance.getInstance().getJobInstanceId(), this);
