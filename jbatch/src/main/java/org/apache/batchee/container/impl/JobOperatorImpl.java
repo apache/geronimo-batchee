@@ -297,6 +297,6 @@ public class JobOperatorImpl implements JobOperator {
     }
 
     public void waitFor(final long id) {
-        callbackService.waitFor(id);
+        callbackService.waitFor(this,id);
     }
 }

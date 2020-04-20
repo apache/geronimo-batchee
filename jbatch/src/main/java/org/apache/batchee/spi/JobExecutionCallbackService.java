@@ -16,9 +16,11 @@
  */
 package org.apache.batchee.spi;
 
+import javax.batch.operations.JobOperator;
+
 import org.apache.batchee.container.impl.jobinstance.RuntimeJobExecution;
 
 public interface JobExecutionCallbackService extends BatchService {
     void onJobExecutionDone(RuntimeJobExecution jobExecution);
-    void waitFor(long id);
+    void waitFor(JobOperator jobOperator, long id);
 }
