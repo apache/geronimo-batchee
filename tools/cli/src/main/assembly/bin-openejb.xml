@@ -101,11 +101,7 @@
         <include>org.apache.geronimo.components:geronimo-transaction</include>
         <include>org.objectweb.howl:howl</include>
         <include>org.apache.geronimo.javamail:geronimo-javamail_1.4_mail</include>
-        <include>org.apache.xbean:xbean-asm5-shaded</include>
-        <include>org.apache.xbean:xbean-finder-shaded</include>
-        <!--<include>org.apache.xbean:xbean-reflect</include>--> <!-- already used by batchee -->
-        <include>org.apache.xbean:xbean-naming</include>
-        <include>org.apache.xbean:xbean-bundleutils</include>
+        <include>org.apache.xbean:*</include>
         <include>org.hsqldb:hsqldb</include>
         <include>org.apache.commons:commons-pool2</include>
         <include>org.apache.commons:commons-dbcp2</include>
@@ -129,6 +125,10 @@
         <include>commons-cli:commons-cli</include>
         <include>net.sourceforge.serp:serp</include>
       </includes>
+      <excludes>
+        <!-- already used by batchee -->
+        <exclude>org.apache.xbean:xbean-reflect</exclude>
+      </excludes>
     </dependencySet>
   </dependencySets>
 </assembly>

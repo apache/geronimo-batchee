@@ -217,10 +217,12 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
             lifecycle = "org.apache.batchee.cli.lifecycle.impl.CdiCtrlLifecycle";
         } else if ("spring".equalsIgnoreCase(lifecycle)) {
             lifecycle = "org.apache.batchee.cli.lifecycle.impl.SpringLifecycle";
+        } else if ("cdise".equalsIgnoreCase(lifecycle)) {
+            lifecycle = "org.apache.batchee.cli.lifecycle.impl.CdiSeLifecycle";
         }
 
         try {
-            return (Lifecycle<Object>) loader.loadClass(lifecycle).newInstance();
+            return (Lifecycle<Object>) loader.loadClass(lifecycle).getConstructor().newInstance();
         } catch (final Exception e) {
             throw new BatchContainerRuntimeException(e);
         }

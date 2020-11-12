@@ -42,7 +42,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-reflect</artifactId>
-      <version>4.4</version>
+      <version>4.18</version>
       <optional>true</optional>
     </dependency>
   </dependencies>

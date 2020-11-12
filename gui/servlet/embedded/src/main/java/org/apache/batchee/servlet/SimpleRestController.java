@@ -87,7 +87,9 @@ public class SimpleRestController {
 
     private void startBatch(String batchName, HttpServletRequest req, HttpServletResponse resp) {
         Properties jobProperties = extractJobProperties(req, resp);
-        if (jobProperties == null) { return; }
+        if (jobProperties == null) {
+            return;
+        }
 
         try {
             long jobId = jobOperator.start(batchName, jobProperties);
@@ -100,8 +102,7 @@ public class SimpleRestController {
         }
     }
 
-    private void batchStatus(String batchId, HttpServletRequest req, HttpServletResponse resp)
-    {
+    private void batchStatus(String batchId, HttpServletRequest req, HttpServletResponse resp) {
         Long executionId = extractExecutionId(batchId, resp);
         if (executionId == null) {
             return;

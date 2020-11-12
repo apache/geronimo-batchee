@@ -43,7 +43,7 @@ public abstract class AbstractPropertyResolver<B> implements PropertyResolver<B>
     }
 
 
-    private enum PROPERTY_TYPE {
+    private enum PropertyType {
         JOB_PARAMETERS, SYSTEM_PROPERTIES, JOB_PROPERTIES, PARTITION_PROPERTIES
     }
 
@@ -160,7 +160,7 @@ public abstract class AbstractPropertyResolver<B> implements PropertyResolver<B>
      * @param name
      * @return
      */
-    private String resolvePropertyValue(final String name, PROPERTY_TYPE propType,
+    private String resolvePropertyValue(final String name, PropertyType propType,
                                         final Properties submittedProperties, final Properties xmlProperties) {
 
 
@@ -301,15 +301,15 @@ public abstract class AbstractPropertyResolver<B> implements PropertyResolver<B>
 
 
         //FIXME We may want to throw a more helpful exception here to say there was probably a typo.
-        PROPERTY_TYPE type = null;
+        PropertyType type = null;
         if (str.startsWith("#{jobParameters['", startPropIndex)) {
-            type = PROPERTY_TYPE.JOB_PARAMETERS;
+            type = PropertyType.JOB_PARAMETERS;
         } else if (str.startsWith("#{systemProperties['", startPropIndex)) {
-            type = PROPERTY_TYPE.SYSTEM_PROPERTIES;
+            type = PropertyType.SYSTEM_PROPERTIES;
         } else if (str.startsWith("#{jobProperties['", startPropIndex)) {
-            type = PROPERTY_TYPE.JOB_PROPERTIES;
+            type = PropertyType.JOB_PROPERTIES;
         } else if (isPartitionedStep && str.startsWith("#{partitionPlan['", startPropIndex)) {
-            type = PROPERTY_TYPE.PARTITION_PROPERTIES;
+            type = PropertyType.PARTITION_PROPERTIES;
         }
 
         if (type == null) {
@@ -338,19 +338,19 @@ public abstract class AbstractPropertyResolver<B> implements PropertyResolver<B>
                 defaultPropExpression = str.substring(endPropIndex + "]}?:".length() + 1, tempEndPropIndex);
             }
 
-            if (type.equals(PROPERTY_TYPE.JOB_PARAMETERS)) {
+            if (type.equals(PropertyType.JOB_PARAMETERS)) {
                 propName = str.substring(startPropIndex + "#{jobParameters['".length(), endPropIndex);
             }
 
-            if (type.equals(PROPERTY_TYPE.JOB_PROPERTIES)) {
+            if (type.equals(PropertyType.JOB_PROPERTIES)) {
                 propName = str.substring(startPropIndex + "#{jobProperties['".length(), endPropIndex);
             }
 
-            if (type.equals(PROPERTY_TYPE.SYSTEM_PROPERTIES)) {
+            if (type.equals(PropertyType.SYSTEM_PROPERTIES)) {
                 propName = str.substring(startPropIndex + "#{systemProperties['".length(), endPropIndex);
             }
 
-            if (type.equals(PROPERTY_TYPE.PARTITION_PROPERTIES)) {
+            if (type.equals(PropertyType.PARTITION_PROPERTIES)) {
                 propName = str.substring(startPropIndex + "#{partitionPlan['".length(), endPropIndex);
             }
 
@@ -365,13 +365,13 @@ public abstract class AbstractPropertyResolver<B> implements PropertyResolver<B>
     class NextProperty {
 
         final String propName;
-        final PROPERTY_TYPE propType;
+        final PropertyType propType;
         final int startIndex;
         final int endIndex;
         final String defaultValueExpression;
 
 
-        NextProperty(String propName, PROPERTY_TYPE propType, int startIndex, int endIndex, String defaultValueExpression) {
+        NextProperty(String propName, PropertyType propType, int startIndex, int endIndex, String defaultValueExpression) {
             this.propName = propName;
             this.propType = propType;
             this.startIndex = startIndex;

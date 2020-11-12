@@ -28,7 +28,7 @@
   <name>BatchEE :: JBatch</name>
 
   <properties>
-    <openjpa.version>2.3.0</openjpa.version>
+    <openjpa.version>3.1.2</openjpa.version>
 
     <tck.suite>${project.build.directory}/test-classes/testng/jsr352-tck-impl-EE-suite.xml</tck.suite>
   </properties>
@@ -72,7 +72,7 @@
     <dependency>
       <groupId>org.apache.xbean</groupId>
       <artifactId>xbean-reflect</artifactId>
-      <version>4.5</version>
+      <version>4.18</version>
     </dependency>
 
     <dependency>
@@ -414,7 +414,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.3.0</version>
         <configuration>
           <tarLongFileMode>gnu</tarLongFileMode>
           <descriptors>
@@ -430,7 +430,93 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.4</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <shadedClassifierName>jakarta</shadedClassifierName>
+              <createDependencyReducedPom>false</createDependencyReducedPom>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+              </transformers>
+              <artifactSet> <!-- don't include transitive deps -->
+                <includes>
+                  <include>${project.groupId}:${project.artifactId}</include>
+                </includes>
+              </artifactSet>
+              <relocations>
+                <relocation>
+                  <pattern>javax.batch</pattern>
+                  <shadedPattern>jakarta.batch</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.annotation</pattern>
+                  <shadedPattern>jakarta.annotation</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.el</pattern>
+                  <shadedPattern>jakarta.el</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.enterprise</pattern>
+                  <shadedPattern>jakarta.enterprise</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.decorator</pattern>
+                  <shadedPattern>jakarta.decorator</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.inject</pattern>
+                  <shadedPattern>jakarta.inject</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.interceptor</pattern>
+                  <shadedPattern>jakarta.interceptor</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.servlet</pattern>
+                  <shadedPattern>jakarta.servlet</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.transaction</pattern>
+                  <shadedPattern>jakarta.transaction</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.validation</pattern>
+                  <shadedPattern>jakarta.validation</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.persistence</pattern>
+                  <shadedPattern>jakarta.persistence</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.faces</pattern>
+                  <shadedPattern>jakarta.faces</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.ejb</pattern>
+                  <shadedPattern>jakarta.ejb</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>javax.jms</pattern>
+                  <shadedPattern>jakarta.jms</shadedPattern>
+                </relocation>
+                <!--
+                todo: javax.transaction, it is in the JVM so can have issue repackaging
+                -->
+              </relocations>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
