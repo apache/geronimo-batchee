@@ -25,10 +25,10 @@
     <alt>Apache BatchEE logo</alt>
     <href>/index.html</href>
   </bannerLeft>
-  <bannerRight>
+  <!--bannerRight>
     <src>http://incubator.apache.org/images/egg-logo.png</src>
     <href>http://incubator.apache.org/</href>
-  </bannerRight>
+  </bannerRight-->
 
   <custom>
     <fluidoSkin>
@@ -68,7 +68,7 @@
       <item name="Configuration" href="/configuration.html"/>
       <item name="Extensions" href="/extensions.html"/>
       <item name="GUI" href="/gui.html"/>
-      <item name="Download" href="https://www.apache.org/dyn/closer.cgi/incubator/batchee"/>
+      <item name="Download" href="https://downloads.apache.org/geronimo/batchee/"/>
     </menu>
 
     <menu ref="reports" inherit="bottom"/>
