@@ -36,6 +36,7 @@
 
       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
       <property name="openjpa.Log" value="org.apache.openejb.openjpa.JULOpenJPALogFactory"/>
+      <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/>
     </properties>
   </persistence-unit>
 </persistence>

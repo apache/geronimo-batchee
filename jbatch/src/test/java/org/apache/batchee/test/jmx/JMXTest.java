@@ -19,10 +19,12 @@ package org.apache.batchee.test.jmx;
 import org.apache.batchee.container.services.ServicesManager;
 import org.apache.batchee.jmx.BatchEEMBean;
 import org.apache.batchee.spi.PersistenceManagerService;
+import org.apache.batchee.test.tck.lifecycle.ContainerLifecycle;
 import org.apache.batchee.util.Batches;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
@@ -38,6 +40,7 @@ import java.util.Properties;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
+@Listeners(ContainerLifecycle.class)
 public class JMXTest {
     private static long executionId;
     private static long instanceId;
