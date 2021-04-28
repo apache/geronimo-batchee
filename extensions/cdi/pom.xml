@@ -28,6 +28,10 @@
     <name>BatchEE :: Extensions :: CDI</name>
     <description>This module implements some CDI scopes batch oriented.</description>
 
+    <properties>
+        <owb.version>2.0.22</owb.version>
+    </properties>
+
     <dependencies>
         <!-- optional since we are protable and can be used with other jbatch implementations as well -->
         <dependency>
@@ -57,60 +61,20 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jcdi_2.0_spec</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-interceptor_1.2_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-annotation_1.3_spec</artifactId>
+        </dependency>
+
     </dependencies>
 
-
-    <profiles>
-        <profile>
-            <id>cdi-1.0</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
-            <properties>
-                <owb.version>1.2.8</owb.version>
-            </properties>
-
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-jcdi_2.0_spec</artifactId>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-interceptor_1.2_spec</artifactId>
-                    <version>1.0</version>
-                    <scope>test</scope>
-                </dependency>
-
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>cdi-1.1</id>
-
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-jcdi_2.0_spec</artifactId>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-interceptor_1.2_spec</artifactId>
-                    <version>1.0</version>
-                    <scope>test</scope>
-                </dependency>
-
-                <dependency>
-                    <groupId>org.apache.geronimo.specs</groupId>
-                    <artifactId>geronimo-annotation_1.2_spec</artifactId>
-                    <version>1.0</version>
-                    <scope>test</scope>
-                </dependency>
-
-            </dependencies>
-        </profile>
-    </profiles>
 </project>
