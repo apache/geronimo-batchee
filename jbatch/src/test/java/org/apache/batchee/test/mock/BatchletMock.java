@@ -21,6 +21,7 @@ import javax.batch.api.AbstractBatchlet;
 public class BatchletMock extends AbstractBatchlet {
     @Override
     public String process() throws Exception {
+        System.out.println("           BatchletMock started");
         return "mock";
     }
 }
