@@ -93,7 +93,8 @@ public class Dictionary {
         String STEP_EXECUTION_BY_INSTANCE_AND_STEP = SELECT +
                 "B.%s, B.%s, B.%s, B.%s, B.%s, B.%s, B.%s, B.%s" + FROM + "%s A inner join %s B ON A.%s = B.%s " + WHERE + "A.%s = ? and B.%s = ?";
 
-        String DELETE_STEP_EXECUTION = DELETE + "%s A inner join %s B ON A.%s = B.%s " + WHERE + "A.%s = ?";
+        // "delete from BATCH_STEPEXECUTION B where B.EXECUTION_EXECUTIONID IN (select A.executionId from BATCH_JOBEXECUTION A where A.INSTANCE_JOBINSTANCEID = ?)"
+        String DELETE_STEP_EXECUTION = DELETE + "%s B where B.%s IN (select A.%s from %s A where A.%s = ?)";
         String DELETE_STEP_EXECUTION_UNTIL = DELETE + "%s" + WHERE + "%s in (" + SELECT + "distinct t0.%s" + FROM + "%s t0 inner join %s t1 ON t0.%s=t1.%s" + WHERE + "t1.%s < ?)";
     }
 
@@ -289,8 +290,8 @@ public class Dictionary {
                     stepExecutionColumns[13], stepExecutionColumns[1],
                 stepExecutionColumns[4], stepExecutionColumns[8], stepExecutionColumns[6], stepExecutionColumns[7], stepExecutionColumns[18], jobExecutionTable, stepExecutionTable,
                 jobExecutionColumns[0], stepExecutionColumns[18], jobExecutionColumns[8], stepExecutionColumns[15]);
-            this.deleteStepExecution = String.format(SQL.DELETE_STEP_EXECUTION, jobExecutionTable, stepExecutionTable, jobExecutionColumns[0],
-                    stepExecutionColumns[18], jobExecutionColumns[8]);
+            this.deleteStepExecution = String.format(SQL.DELETE_STEP_EXECUTION, stepExecutionTable, stepExecutionColumns[18],
+                    jobExecutionColumns[0], jobExecutionTable, jobExecutionColumns[8]);
             this.deleteStepExecutionUntil = String.format(SQL.DELETE_STEP_EXECUTION_UNTIL, stepExecutionTable, stepExecutionColumns[0], stepExecutionColumns[0],
                 stepExecutionTable, jobExecutionTable, stepExecutionColumns[18], jobExecutionColumns[0], jobExecutionColumns[3]);
         }
