@@ -27,6 +27,7 @@ import javax.enterprise.inject.spi.BeforeShutdown;
 import javax.enterprise.inject.spi.Extension;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -110,6 +111,16 @@ public class BatchCDIInjectionExtension implements Extension {
             try {
                 return (BeanManager) CDI_GET_BEAN_MANAGER_METHOD.invoke(CDI_CURRENT_METHOD.invoke(null));
             } catch (Exception e) {
+                if (e instanceof IllegalStateException) {
+                    // all fine, that just means that no CDI container is available right now.
+                    // Maybe we only have the spec jar in the classpath, but no container is started?
+                    return null;
+                }
+                if (e instanceof InvocationTargetException && e.getCause() instanceof IllegalStateException) {
+                    // same as above
+                    return null;
+                }
+
                 throw new BatchRuntimeException("unable to resolve BeanManager");
             }
         }
