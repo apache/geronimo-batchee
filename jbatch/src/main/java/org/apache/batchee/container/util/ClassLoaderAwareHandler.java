@@ -17,6 +17,7 @@
 package org.apache.batchee.container.util;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
@@ -37,6 +38,9 @@ public class ClassLoaderAwareHandler implements InvocationHandler {
         Thread.currentThread().setContextClassLoader(loader);
         try {
             return method.invoke(delegate, args);
+        } catch (InvocationTargetException ite) {
+            // unwrap to prevent UndeclaredThrowableException
+            throw ite.getTargetException();
         } finally {
             Thread.currentThread().setContextClassLoader(current);
         }
