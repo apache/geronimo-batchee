@@ -31,14 +31,18 @@ import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.util.Collection;
 import java.util.LinkedList;
 
 import static java.lang.Thread.currentThread;
+import static java.lang.Thread.sleep;
 
 /**
  * base class handling:
@@ -255,13 +259,10 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
                 final File timestamp = new File(exploded, "timestamp.txt");
 
                 long ts = Long.MIN_VALUE;
+
                 if (exploded.exists()) {
                     if (timestamp.exists()) {
-                        try {
-                            ts = Long.parseLong(FileUtils.readFileToString(timestamp).trim());
-                        } catch (final IOException e) {
-                            ts = Long.MIN_VALUE;
-                        }
+                        ts = getTimestampFromFile(timestamp);
                     }
                 }
 
@@ -298,6 +299,16 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
             classLoader.setApplicationFolder(exploded);
         }
         return classLoader;
+    }
+
+    private static long getTimestampFromFile(File timestamp) {
+        long ts;
+        try {
+            ts = Long.parseLong(FileUtils.readFileToString(timestamp).trim());
+        } catch (final IOException e) {
+            ts = Long.MIN_VALUE;
+        }
+        return ts;
     }
 
     private static void addFolderIfExist(final File file, final Collection<URL> urls) throws MalformedURLException {
@@ -364,12 +375,39 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
     }
 
     private static void explode(final File source, final File target, final File timestampFile, final long time) {
-        try {
-            FileUtils.deleteDirectory(target);
-            Zips.unzip(source, target);
-            FileUtils.write(timestampFile, Long.toString(time));
+        FileLock lock = null;
+        final File lockFile = new File(target.getName() + ".batchee.lock");
+        try (FileOutputStream fileOutputStream = new FileOutputStream(lockFile)) {
+            FileChannel channel = fileOutputStream.getChannel();
+
+            lock = channel.tryLock();
+            for (int i=0; i < 60 && lock == null; i++) { // 3 seconds
+                try {
+                    sleep(50L);
+                } catch (InterruptedException e) {
+                    // all fine
+                }
+                lock = channel.tryLock();
+            }
+            if (lock == null) {
+                // no lock could be aquired, lets give up.
+                throw new RuntimeException("could not aquire lock for unpacking library " + source.getName());
+            }
+
+            // check timestamp again
+            long ts = getTimestampFromFile(timestampFile);
+            if (ts == Long.MIN_VALUE || ts < source.lastModified()) {
+                FileUtils.deleteDirectory(target);
+                Zips.unzip(source, target);
+                FileUtils.write(timestampFile, Long.toString(time));
+            }
+            lock.release();
         } catch (final IOException e) {
             // no-op
+        } finally {
+            if (lockFile.exists()) {
+                lockFile.delete();
+            }
         }
     }
 
