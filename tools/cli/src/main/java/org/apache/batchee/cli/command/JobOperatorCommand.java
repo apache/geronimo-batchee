@@ -39,10 +39,10 @@ import java.net.URL;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
-import static java.lang.Thread.currentThread;
-import static java.lang.Thread.sleep;
 
 /**
  * base class handling:
@@ -162,7 +162,7 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
     public final void run() {
         System.setProperty("org.apache.batchee.init.verbose.sysout", "true");
 
-        final ClassLoader oldLoader = currentThread().getContextClassLoader();
+        final ClassLoader oldLoader = Thread.currentThread().getContextClassLoader();
         final ClassLoader loader;
         try {
             loader = createLoader(oldLoader);
@@ -171,7 +171,7 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
         }
 
         if (loader != oldLoader) {
-            currentThread().setContextClassLoader(loader);
+            Thread.currentThread().setContextClassLoader(loader);
         }
 
         try {
@@ -196,7 +196,7 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
                 }
             }
         } finally {
-            currentThread().setContextClassLoader(oldLoader);
+            Thread.currentThread().setContextClassLoader(oldLoader);
         }
     }
 
@@ -256,18 +256,13 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
                     throw new IllegalArgumentException("unsupported archive type for: '" + archive + "'");
                 }
 
-                final File timestamp = new File(exploded, "timestamp.txt");
-
-                long ts = Long.MIN_VALUE;
-
-                if (exploded.exists()) {
-                    if (timestamp.exists()) {
-                        ts = getTimestampFromFile(timestamp);
+                // try for 3 seconds to explode the archive
+                for (int i=0; i<60 && !explode(bar, exploded); i++) {
+                    try {
+                        Thread.sleep(50L);
+                    }catch (InterruptedException e) {
+                        // ok
                     }
-                }
-
-                if (ts == Long.MIN_VALUE || ts < bar.lastModified()) {
-                    explode(bar, exploded, timestamp, bar.lastModified());
                 }
 
                 if (archive.endsWith(".bar") || new File(exploded, "BATCH-INF").exists()) {
@@ -374,41 +369,61 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
         }
     }
 
-    private static void explode(final File source, final File target, final File timestampFile, final long time) {
-        FileLock lock = null;
-        final File lockFile = new File(target.getName() + ".batchee.lock");
-        try (FileOutputStream fileOutputStream = new FileOutputStream(lockFile)) {
-            FileChannel channel = fileOutputStream.getChannel();
+    /**
+     *
+     * @return {@code true} if the exploded archive is ready, {@code false otherwise}
+     */
+    private boolean explode(final File source, final File target) {
+        final File parentDir = target.getAbsoluteFile().getParentFile();
+        final File timestamp = new File(parentDir, target.getName() + ".timestamp.txt");
 
-            lock = channel.tryLock();
-            for (int i=0; i < 60 && lock == null; i++) { // 3 seconds
-                try {
-                    sleep(50L);
-                } catch (InterruptedException e) {
-                    // all fine
-                }
-                lock = channel.tryLock();
-            }
-            if (lock == null) {
-                // no lock could be aquired, lets give up.
-                throw new RuntimeException("could not aquire lock for unpacking library " + source.getName());
-            }
+        long ts = Long.MIN_VALUE;
 
-            // check timestamp again
-            long ts = getTimestampFromFile(timestampFile);
-            if (ts == Long.MIN_VALUE || ts < source.lastModified()) {
-                FileUtils.deleteDirectory(target);
-                Zips.unzip(source, target);
-                FileUtils.write(timestampFile, Long.toString(time));
-            }
-            lock.release();
-        } catch (final IOException e) {
-            // no-op
-        } finally {
-            if (lockFile.exists()) {
-                lockFile.delete();
+        if (target.exists()) {
+            if (timestamp.exists()) {
+                ts = getTimestampFromFile(timestamp);
             }
         }
+
+        final long sourceLastModifiedTst = source.lastModified();
+        if (ts == Long.MIN_VALUE || ts < sourceLastModifiedTst) {
+            FileLock lock = null;
+            if (!parentDir.exists()) {
+                parentDir.mkdirs();
+            }
+            final File lockFile = new File(parentDir, target.getName() + ".batchee.lock");
+            if (lockFile.exists() && lockFile.lastModified() > (new Date().getTime() - TimeUnit.SECONDS.toMillis(5) )) {
+                return false;
+            }
+
+            try (FileOutputStream fileOutputStream = new FileOutputStream(lockFile)) {
+                FileChannel channel = fileOutputStream.getChannel();
+                lock = channel.tryLock();
+                if (lock == null) {
+                    return false;
+                }
+
+                if (timestamp.exists()) {
+                    ts = getTimestampFromFile(timestamp);
+                }
+
+                // check timestamp again
+                if (ts == Long.MIN_VALUE || ts < sourceLastModifiedTst) {
+                    FileUtils.deleteDirectory(target);
+                    Zips.unzip(source, target);
+                    FileUtils.write(timestamp, Long.toString(sourceLastModifiedTst));
+                }
+                lock.release();
+            } catch (final IOException e) {
+                return false;
+            } finally {
+                if (lockFile.exists()) {
+                    lockFile.delete();
+                }
+            }
+        }
+
+        return true;
     }
 
     private static class JarFilter implements FilenameFilter {
