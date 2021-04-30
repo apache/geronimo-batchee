@@ -111,13 +111,10 @@ public class BatchCDIInjectionExtension implements Extension {
             try {
                 return (BeanManager) CDI_GET_BEAN_MANAGER_METHOD.invoke(CDI_CURRENT_METHOD.invoke(null));
             } catch (Exception e) {
-                if (e instanceof IllegalStateException) {
+                if (e instanceof InvocationTargetException && e.getCause() instanceof IllegalStateException) {
                     // all fine, that just means that no CDI container is available right now.
                     // Maybe we only have the spec jar in the classpath, but no container is started?
-                    return null;
-                }
-                if (e instanceof InvocationTargetException && e.getCause() instanceof IllegalStateException) {
-                    // same as above
+                    // we always get it wrapped in a InvocationTargetException as we use reflection.
                     return null;
                 }
 
