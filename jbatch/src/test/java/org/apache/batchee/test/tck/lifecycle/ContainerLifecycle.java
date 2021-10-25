@@ -64,7 +64,7 @@ public class ContainerLifecycle implements ITestListener {
 
         container = EJBContainer.createEJBContainer(new PropertiesBuilder()
             .p("openejb.jul.forceReload", Boolean.TRUE.toString())
-            .p("openejb.log.color", Boolean.toString(!System.getProperty("os.name").toLowerCase().contains("win")))
+            .p("openejb.log.color", colors())
             .p(loggerName + ".level", "INFO")
             .p("openejb.jdbc.log", Boolean.FALSE.toString()) // with jdbc set it to TRUE to get sql queries
 
@@ -84,6 +84,15 @@ public class ContainerLifecycle implements ITestListener {
             .build());
 
         logger = Logger.getLogger(loggerName);
+    }
+
+    private String colors() {
+        try {
+            Thread.currentThread().getContextClassLoader().loadClass("org.fusesource.jansi.AnsiConsole");
+            return Boolean.toString(!System.getProperty("os.name").toLowerCase().contains("win"));
+        } catch (final ClassNotFoundException | NoClassDefFoundError e) {
+            return "false";
+        }
     }
 
     @Override

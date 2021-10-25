@@ -64,7 +64,7 @@ public class BatchEEJobOperator extends DelegatingJobOperator {
                 // don't use default spring JobOperator impl, it is not accurate and loads a global context - we don't want it
                 @Override
                 public Enumeration<URL> getResources(final String name) throws IOException {
-                    if ("META-INF/services/javax.batch.operations.JobOperator".equals(name)) {
+                    if (("META-INF/services/" + JobOperator.class.getName()).equals(name)) {
                         return enumeration(singleton(new URL("embed://", null, -1, "", new URLStreamHandler() {
                             @Override
                             protected URLConnection openConnection(final URL u) {

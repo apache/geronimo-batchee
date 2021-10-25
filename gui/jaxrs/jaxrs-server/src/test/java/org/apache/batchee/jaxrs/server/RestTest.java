@@ -171,6 +171,6 @@ public class RestTest {
     }
 
     private WebClient newClient() {
-        return WebClient.create(base.toExternalForm() + "api/batchee", singletonList(new JohnzonBatcheeProvider())).accept(MediaType.APPLICATION_JSON_TYPE);
+        return WebClient.create(base.toExternalForm() + "api/batchee", singletonList(new JohnzonBatcheeProvider<>())).accept(MediaType.APPLICATION_JSON_TYPE);
     }
 }

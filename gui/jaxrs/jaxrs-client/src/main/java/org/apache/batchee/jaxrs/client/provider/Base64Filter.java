@@ -21,8 +21,9 @@ import org.apache.batchee.jaxrs.client.http.Base64s;
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
 import javax.ws.rs.core.MultivaluedMap;
-import javax.xml.bind.DatatypeConverter;
-import java.io.IOException;
+import java.util.Base64;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class Base64Filter implements ClientRequestFilter, Base64s {
     private final String user;
@@ -34,9 +35,9 @@ public class Base64Filter implements ClientRequestFilter, Base64s {
     }
 
     @Override
-    public void filter(final ClientRequestContext requestContext) throws IOException {
+    public void filter(final ClientRequestContext requestContext) {
         final MultivaluedMap<String, Object> headers = requestContext.getHeaders();
         headers.add(AUTHORIZATION_HEADER,
-            BASIC_PREFIX + DatatypeConverter.printBase64Binary((user + ":" + pwd).getBytes("UTF-8")));
+                BASIC_PREFIX + Base64.getEncoder().encodeToString((user + ":" + pwd).getBytes(UTF_8)));
     }
 }

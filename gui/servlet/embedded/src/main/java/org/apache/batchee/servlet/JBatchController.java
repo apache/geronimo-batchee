@@ -206,7 +206,7 @@ public class JBatchController extends HttpServlet {
             throw new BatchRuntimeException(new FileNotFoundException("Cannot find an XML for " + name));
         }
 
-        req.setAttribute("content", new String(baos.toByteArray())
+        req.setAttribute("content", baos.toString()
                                     .replace("&","&amp;")
                                     .replace("<", "&lt;")
                                     .replace(">", "&gt;")

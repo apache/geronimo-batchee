@@ -21,7 +21,7 @@
     <parent>
         <artifactId>batchee</artifactId>
         <groupId>org.apache.batchee</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>batchee-tools</artifactId>
@@ -33,5 +33,6 @@
         <module>cli</module>
         <module>ee6</module>
         <module>doc-api</module>
+        <module>spring-boot-batchee-ui</module>
     </modules>
 </project>

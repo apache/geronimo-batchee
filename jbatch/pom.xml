@@ -15,20 +15,21 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <artifactId>batchee</artifactId>
     <groupId>org.apache.batchee</groupId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>batchee-jbatch</artifactId>
   <name>BatchEE :: JBatch</name>
 
   <properties>
-    <openjpa.version>3.1.2</openjpa.version>
+    <openjpa.version>3.2.0</openjpa.version>
 
     <tck.suite>${project.build.directory}/test-classes/testng/jsr352-tck-impl-EE-suite.xml</tck.suite>
   </properties>
@@ -168,7 +169,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19</version>
         <executions>
           <execution>
             <id>batchee-tests</id>
@@ -187,7 +187,9 @@
             <configuration>
               <skip>${maven.test.skip}</skip>
               <systemProperties>
-                <PersistenceManagerService>org.apache.batchee.container.services.persistence.MemoryPersistenceManagerService</PersistenceManagerService>
+                <PersistenceManagerService>
+                  org.apache.batchee.container.services.persistence.MemoryPersistenceManagerService
+                </PersistenceManagerService>
               </systemProperties>
               <suiteXmlFiles>
                 <suiteXmlFile>${tck.suite}</suiteXmlFile>
@@ -208,7 +210,9 @@
             <configuration>
               <skip>${maven.test.skip}</skip>
               <systemProperties>
-                <PersistenceManagerService>org.apache.batchee.container.services.persistence.JDBCPersistenceManagerService</PersistenceManagerService>
+                <PersistenceManagerService>
+                  org.apache.batchee.container.services.persistence.JDBCPersistenceManagerService
+                </PersistenceManagerService>
               </systemProperties>
               <suiteXmlFiles>
                 <suiteXmlFile>${tck.suite}</suiteXmlFile>
@@ -229,7 +233,9 @@
             <configuration>
               <skip>${maven.test.skip}</skip>
               <systemProperties>
-                <PersistenceManagerService>org.apache.batchee.container.services.persistence.JPAPersistenceManagerService</PersistenceManagerService>
+                <PersistenceManagerService>
+                  org.apache.batchee.container.services.persistence.JPAPersistenceManagerService
+                </PersistenceManagerService>
               </systemProperties>
               <suiteXmlFiles>
                 <suiteXmlFile>${tck.suite}</suiteXmlFile>
@@ -262,32 +268,46 @@
             <tck.execution.waiter.timeout>900000</tck.execution.waiter.timeout>
             <ExecutionTests.testInvokeJobWithUserStop.sleep>1000</ExecutionTests.testInvokeJobWithUserStop.sleep>
             <JobOperatorTests.testInvokeJobWithUserStop.sleep>1000</JobOperatorTests.testInvokeJobWithUserStop.sleep>
-            <JobOperatorTests.testJobOperatorGetRunningJobExecutions.sleep>1000</JobOperatorTests.testJobOperatorGetRunningJobExecutions.sleep>
-            <JobOperatorTests.testJobOperatorGetRunningJobExecutions.app.timeinterval>10000</JobOperatorTests.testJobOperatorGetRunningJobExecutions.app.timeinterval>
+            <JobOperatorTests.testJobOperatorGetRunningJobExecutions.sleep>1000
+            </JobOperatorTests.testJobOperatorGetRunningJobExecutions.sleep>
+            <JobOperatorTests.testJobOperatorGetRunningJobExecutions.app.timeinterval>10000
+            </JobOperatorTests.testJobOperatorGetRunningJobExecutions.app.timeinterval>
             <JobOperatorTests.testJobOperatorGetRunningJobInstancesException.app.timeinterval>10000
             </JobOperatorTests.testJobOperatorGetRunningJobInstancesException.app.timeinterval>
-            <ParallelExecutionTests.testStopRunningPartitionedStep.sleep>1900</ParallelExecutionTests.testStopRunningPartitionedStep.sleep>
-            <ParallelExecutionTests.testStopRestartRunningPartitionedStep.sleep>1900</ParallelExecutionTests.testStopRestartRunningPartitionedStep.sleep>
-            <ParallelExecutionTests.testInvokeJobWithOnePartitionedStepExitStatus.sleep>2000</ParallelExecutionTests.testInvokeJobWithOnePartitionedStepExitStatus.sleep>
-            <StopOrFailOnExitStatusWithRestartTests.testInvokeJobWithUserStop.sleep>500</StopOrFailOnExitStatusWithRestartTests.testInvokeJobWithUserStop.sleep>
+            <ParallelExecutionTests.testStopRunningPartitionedStep.sleep>1900
+            </ParallelExecutionTests.testStopRunningPartitionedStep.sleep>
+            <ParallelExecutionTests.testStopRestartRunningPartitionedStep.sleep>1900
+            </ParallelExecutionTests.testStopRestartRunningPartitionedStep.sleep>
+            <ParallelExecutionTests.testInvokeJobWithOnePartitionedStepExitStatus.sleep>2000
+            </ParallelExecutionTests.testInvokeJobWithOnePartitionedStepExitStatus.sleep>
+            <StopOrFailOnExitStatusWithRestartTests.testInvokeJobWithUserStop.sleep>500
+            </StopOrFailOnExitStatusWithRestartTests.testInvokeJobWithUserStop.sleep>
             <TransactionTests.testGlobalTranNoExceptions.sleep>0</TransactionTests.testGlobalTranNoExceptions.sleep>
-            <TransactionTests.testGlobalTranForcedExceptionWithRollback.sleep>0</TransactionTests.testGlobalTranForcedExceptionWithRollback.sleep>
-            <TransactionTests.testGlobalTranForcedExceptionCheckpointRestart.sleep>0</TransactionTests.testGlobalTranForcedExceptionCheckpointRestart.sleep>
-            <TransactionTests.testGlobalTranNoDelayLongTimeout.sleep>0</TransactionTests.testGlobalTranNoDelayLongTimeout.sleep>
+            <TransactionTests.testGlobalTranForcedExceptionWithRollback.sleep>0
+            </TransactionTests.testGlobalTranForcedExceptionWithRollback.sleep>
+            <TransactionTests.testGlobalTranForcedExceptionCheckpointRestart.sleep>0
+            </TransactionTests.testGlobalTranForcedExceptionCheckpointRestart.sleep>
+            <TransactionTests.testGlobalTranNoDelayLongTimeout.sleep>0
+            </TransactionTests.testGlobalTranNoDelayLongTimeout.sleep>
             <TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.1>10000
             </TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.1>
             <TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.2>0
             </TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.2>
             <TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutSteps.sleep>10000
             </TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutSteps.sleep>
-            <TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutStepsCustomCheckpointAlgorithm.sleep>10000
+            <TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutStepsCustomCheckpointAlgorithm.sleep>
+              10000
             </TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutStepsCustomCheckpointAlgorithm.sleep>
-            <TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.1>10000</TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.1>
-            <TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.2>0</TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.2>
+            <TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.1>10000
+            </TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.1>
+            <TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.2>0
+            </TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.2>
             <ChunkTests.testChunkTimeBased10Seconds.sleep>500</ChunkTests.testChunkTimeBased10Seconds.sleep>
-            <ChunkTests.testChunkRestartTimeBasedCheckpoint.sleep>500</ChunkTests.testChunkRestartTimeBasedCheckpoint.sleep>
+            <ChunkTests.testChunkRestartTimeBasedCheckpoint.sleep>500
+            </ChunkTests.testChunkRestartTimeBasedCheckpoint.sleep>
             <ChunkTests.testChunkTimeBasedTimeLimit0.sleep>500</ChunkTests.testChunkTimeBasedTimeLimit0.sleep>
-            <ChunkTests.testChunkRestartTimeBasedDefaultCheckpoint.sleep>500</ChunkTests.testChunkRestartTimeBasedDefaultCheckpoint.sleep>
+            <ChunkTests.testChunkRestartTimeBasedDefaultCheckpoint.sleep>500
+            </ChunkTests.testChunkRestartTimeBasedDefaultCheckpoint.sleep>
           </systemProperties>
         </configuration>
       </plugin>
@@ -320,9 +340,11 @@
           <includes>org/apache/batchee/container/services/persistence/jpa/domain/*.class</includes>
           <addDefaultConstructor>true</addDefaultConstructor>
           <enforcePropertyRestrictions>true</enforcePropertyRestrictions>
-          <persistenceXmlFile>${project.basedir}/src/test/resources/META-INF/persistence-createdb.xml</persistenceXmlFile>
+          <persistenceXmlFile>${project.basedir}/src/test/resources/META-INF/persistence-createdb.xml
+          </persistenceXmlFile>
           <sqlAction>build</sqlAction>
           <toolProperties>
+            <Log>slf4j</Log>
             <MappingDefaults>ForeignKeyDeleteAction=restrict,JoinForeignKeyDeleteAction=restrict</MappingDefaults>
           </toolProperties>
         </configuration>
@@ -448,7 +470,7 @@
               <shadedClassifierName>jakarta</shadedClassifierName>
               <createDependencyReducedPom>false</createDependencyReducedPom>
               <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
               </transformers>
               <artifactSet> <!-- don't include transitive deps -->
                 <includes>
@@ -523,4 +545,19 @@
     </plugins>
   </build>
 
+  <profiles>
+    <profile>
+      <id>jdk11</id>
+      <activation>
+        <jdk>[11,)</jdk>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-impl</artifactId>
+          <version>${jaxb.version}</version>
+        </dependency>
+      </dependencies>
+    </profile>
+  </profiles>
 </project>

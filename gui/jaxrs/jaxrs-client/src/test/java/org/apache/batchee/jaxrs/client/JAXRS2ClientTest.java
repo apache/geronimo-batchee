@@ -16,48 +16,10 @@
  */
 package org.apache.batchee.jaxrs.client;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-
 import javax.batch.operations.JobOperator;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLClassLoader;
 
 public class JAXRS2ClientTest extends ClientTestBase {
-    private static ClassLoader oldLoader;
-
-    @BeforeClass
-    public static void setEnvironment() { // forcing to use jersey, can't be done through system properties cause of FactoryFinder order
-        oldLoader = Thread.currentThread().getContextClassLoader();
-        Thread.currentThread().setContextClassLoader(new URLClassLoader(new URL[0], oldLoader) {
-            @Override
-            public InputStream getResourceAsStream(String name) {
-                if ("META-INF/services/javax.ws.rs.ext.RuntimeDelegate".equals(name)) {
-                    return new ByteArrayInputStream("org.glassfish.jersey.internal.RuntimeDelegateImpl".getBytes());
-                }
-                if ("META-INF/services/javax.ws.rs.client.ClientBuilder".equals(name)) {
-                    return new ByteArrayInputStream("org.glassfish.jersey.client.JerseyClientBuilder".getBytes());
-                }
-                return super.getResourceAsStream(name);
-            }
-
-            @Override
-            protected Class<?> loadClass(final String name, final boolean resolve) throws ClassNotFoundException {
-                if (name.startsWith("org.apache.cxf")) {
-                    throw new ClassNotFoundException();
-                }
-                return super.loadClass(name, resolve);
-            }
-        });
-    }
-    @AfterClass
-    public static void resetEnvironment() {
-        Thread.currentThread().setContextClassLoader(oldLoader);
-    }
-
-    @Override // this client hacks the class loader to be able to use jaxrs 2 api even if we use jaxrs 1 by default
+    @Override
     protected JobOperator newJobOperator(final int port) {
         final ClientConfiguration configuration = new ClientConfiguration();
         configuration.setBaseUrl("http://localhost:" + port + "/");

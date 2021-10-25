@@ -21,7 +21,7 @@
     <parent>
         <artifactId>batchee-extensions</artifactId>
         <groupId>org.apache.batchee</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>batchee-cdi</artifactId>
@@ -29,7 +29,7 @@
     <description>This module implements some CDI scopes batch oriented.</description>
 
     <properties>
-        <owb.version>2.0.22</owb.version>
+        <owb.version>2.0.23</owb.version>
     </properties>
 
     <dependencies>

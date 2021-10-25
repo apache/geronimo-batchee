@@ -103,3 +103,18 @@ The configuration through init parameters is:
 * org.apache.batchee.servlet.active: boolean to deactivate it
 * org.apache.batchee.servlet.mapping: mapping for the gui, default /jbatch/*
 * org.apache.batchee.servlet.filter.private: boolean saying if internal jsp should be protected, it adds a filter to check URLs on each request
+
+## Spring Boot integration
+
+For Spring Batch/Spring Boot applications compatible with JSR352, you can use BatchEE UI on top of Spring-Batch.
+
+To do that you must import `org.apache.batchee:spring-boot-batchee-ui` module.
+
+If you have a custom `JobOperator` implementation you can define a custom `@Bean` for it otherwise a default can be provided by `org.apache.batchee.spring.ui.BatchEEUI`.
+
+You can customize the deployment with these properties:
+
+* `batchee.ui.mapping` the servlet mapping to deploy the UI to (default to `/batchee/*`),
+* `batchee.ui.defaultBatchNames` names of some batches you want to register even if they never ran in the UI (otherwise it is discovered after the first run).
+
+Note: this module also exists with the classifier `jakarta` if you only use `jakarta` namespace - but you need to flatten the dependencies, including BatchEE servlet dependency.

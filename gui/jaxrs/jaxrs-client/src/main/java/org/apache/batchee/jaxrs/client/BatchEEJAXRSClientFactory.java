@@ -22,36 +22,19 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
 public final class BatchEEJAXRSClientFactory {
-    private static final Class<?>[] PROXY_API = new Class<?>[]{ JobOperator.class, Closeable.class };
+    private static final Class<?>[] PROXY_API = new Class<?>[]{JobOperator.class, Closeable.class};
 
-    public static enum API {
-        CXF, JAXRS2, AUTO
+    @Deprecated // we only use jaxrs 2 now
+    public enum API {
+        CXF,
+        JAXRS2,
+        AUTO
     }
 
     public static JobOperator newClient(final ClientConfiguration configuration, final API api) {
-        InvocationHandler handler;
-        switch (api) {
-            case AUTO:
-                try { // try JAXRS 2 first
-                    handler = new BatchEEJAXRS2Client(configuration);
-                } catch (final Throwable th) {
-                    handler = new BatchEEJAXRS1CxfClient(configuration);
-                }
-                break;
-
-            case CXF:
-                handler = new BatchEEJAXRS1CxfClient(configuration);
-                break;
-
-            case JAXRS2:
-                handler = new BatchEEJAXRS2Client(configuration);
-                break;
-
-            default:
-                throw new IllegalArgumentException("enum value not yet handled, you surely forgot to implement it");
-        }
+        final InvocationHandler handler = new BatchEEJAXRS2Client(configuration);
         return JobOperator.class.cast(
-            Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), PROXY_API, handler));
+                Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), PROXY_API, handler));
     }
 
     public static JobOperator newClient(final ClientConfiguration configuration) {
