@@ -35,7 +35,7 @@
         <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/geronimo-batchee.git</developerConnection>
         <url>https://gitbox.apache.org/repos/asf/geronimo-batchee.git</url>
       <tag>HEAD</tag>
-  </scm>
+    </scm>
 
 
     <properties>
