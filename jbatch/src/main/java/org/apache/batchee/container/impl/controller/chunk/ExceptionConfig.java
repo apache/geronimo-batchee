@@ -88,9 +88,9 @@ public class ExceptionConfig {
                     }
                 }
             } catch (final ClassNotFoundException cnfe) {
-                // no-op
+                throw new BatchContainerRuntimeException("Cannot load class defined in the batch jobs XML: " + exClassName, cnfe);
             } catch (final NoClassDefFoundError ncdfe) {
-                // no-op
+                throw new BatchContainerRuntimeException("Cannot load parts of the class defined in the batch jobs XML: " + exClassName, ncdfe);
             }
         }
 
