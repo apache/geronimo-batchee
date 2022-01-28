@@ -126,6 +126,14 @@
       <version>1.6.0</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <!-- just for debugging the plugin -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.2.0</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -140,7 +148,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
+        <version>3.2.0</version>
         <executions>
           <execution>
             <id>boostrap-jar</id>
@@ -170,7 +178,7 @@
             </configuration>
           </execution>
           <execution>
-            <id>normal-jar</id>
+            <id>default-jar</id>
             <goals>
               <goal>jar</goal>
             </goals>
@@ -180,7 +188,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>2.2</version>
+        <version>3.2.4</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -216,18 +224,19 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.3.0</version>
         <executions>
           <execution>
             <id>assembly-bin-distributions</id>
             <phase>package</phase>
             <goals>
-              <goal>attached</goal>
+              <goal>single</goal>
             </goals>
             <configuration>
               <descriptors>
                 <descriptor>src/main/assembly/bin.xml</descriptor>
               </descriptors>
+
               <finalName>apache-batchee-${project.version}</finalName>
             </configuration>
           </execution>
@@ -235,7 +244,7 @@
             <id>assembly-bin-openejb-distributions</id>
             <phase>package</phase>
             <goals>
-              <goal>attached</goal>
+              <goal>single</goal>
             </goals>
             <configuration>
               <descriptors>
