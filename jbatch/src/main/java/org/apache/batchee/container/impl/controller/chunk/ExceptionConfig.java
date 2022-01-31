@@ -20,10 +20,14 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.batchee.container.exception.BatchContainerRuntimeException;
 
 public class ExceptionConfig {
+    private final static Logger logger = Logger.getLogger(ExceptionConfig.class.getName());
+
     protected final Set<String> includes = new HashSet<String>();
     protected final Set<String> excludes = new HashSet<String>();
     private final ConcurrentMap<Class<? extends Exception>, Boolean> cache  = new ConcurrentHashMap<Class<? extends Exception>, Boolean>();
@@ -88,7 +92,7 @@ public class ExceptionConfig {
                     }
                 }
             } catch (final ClassNotFoundException cnfe) {
-                throw new BatchContainerRuntimeException("Cannot load class defined in the batch jobs XML: " + exClassName, cnfe);
+                logger.log(Level.WARNING, "Class {0} not found! Maybe there is a typo in yout skippable-exception-classes or repeatable-exception-classes?");
             } catch (final NoClassDefFoundError ncdfe) {
                 throw new BatchContainerRuntimeException("Cannot load parts of the class defined in the batch jobs XML: " + exClassName, ncdfe);
             }
