@@ -482,28 +482,23 @@
                   <shadedPattern>jakarta.batch</shadedPattern>
                 </relocation>
                 <relocation>
-                  <pattern>javax.annotation</pattern>
-                  <shadedPattern>jakarta.annotation</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.el</pattern>
-                  <shadedPattern>jakarta.el</shadedPattern>
+                  <pattern>javax.ejb</pattern>
+                  <shadedPattern>jakarta.ejb</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>javax.enterprise</pattern>
                   <shadedPattern>jakarta.enterprise</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.decorator</pattern>
-                  <shadedPattern>jakarta.decorator</shadedPattern>
+                  <excludes>
+                      <exclude>javax.enterprise.deploy.**</exclude>
+                  </excludes>
                 </relocation>
                 <relocation>
                   <pattern>javax.inject</pattern>
                   <shadedPattern>jakarta.inject</shadedPattern>
                 </relocation>
                 <relocation>
-                  <pattern>javax.interceptor</pattern>
-                  <shadedPattern>jakarta.interceptor</shadedPattern>
+                  <pattern>javax.persistence</pattern>
+                  <shadedPattern>jakarta.persistence</shadedPattern>
                 </relocation>
                 <relocation>
                   <pattern>javax.servlet</pattern>
@@ -512,30 +507,14 @@
                 <relocation>
                   <pattern>javax.transaction</pattern>
                   <shadedPattern>jakarta.transaction</shadedPattern>
+                  <excludes>
+                      <exclude>javax.transaction.xa.**</exclude>
+                  </excludes>
                 </relocation>
                 <relocation>
-                  <pattern>javax.validation</pattern>
-                  <shadedPattern>jakarta.validation</shadedPattern>
+                  <pattern>javax.xml.bind</pattern>
+                  <shadedPattern>jakarta.xml.bind</shadedPattern>
                 </relocation>
-                <relocation>
-                  <pattern>javax.persistence</pattern>
-                  <shadedPattern>jakarta.persistence</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.faces</pattern>
-                  <shadedPattern>jakarta.faces</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.ejb</pattern>
-                  <shadedPattern>jakarta.ejb</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.jms</pattern>
-                  <shadedPattern>jakarta.jms</shadedPattern>
-                </relocation>
-                <!--
-                todo: javax.transaction, it is in the JVM so can have issue repackaging
-                -->
               </relocations>
             </configuration>
           </execution>
