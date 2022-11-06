@@ -28,6 +28,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class ZipsTest {
     @Rule
@@ -45,7 +46,11 @@ public class ZipsTest {
         }
 
         final File exploded = temp.newFolder("some/nested/folder");
-        Zips.unzip(zip, exploded);
-        assertTrue(new File(exploded.getParent(), slipFile).exists());
+        try {
+            Zips.unzip(zip, exploded);
+            fail("Bad zip entry exception not raised!");
+        } catch (IOException exception) {
+            assertTrue("Unable to unzip", exception.getMessage().contains("Unable to unzip"));
+        }
     }
 }
