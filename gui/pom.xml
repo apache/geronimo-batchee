@@ -36,7 +36,7 @@
     <properties>
         <arquillian.version>1.0.3.Final</arquillian.version>
         <cxf.version>3.4.5</cxf.version>
-        <tomcat.version>7.0.50</tomcat.version>
+        <tomcat.version>7.0.107</tomcat.version>
         <tomee.version>7.0.3</tomee.version>
     </properties>
 
