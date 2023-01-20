@@ -16,7 +16,7 @@
 --%>
 <%@ page session="false" %>
 <%@ page import="org.apache.batchee.servlet.MetricsHelper" %>
-<%@ page import="javax.batch.runtime.StepExecution" %>
+<%@ page import="jakarta.batch.runtime.StepExecution" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.apache.batchee.servlet.StatusHelper" %>
 

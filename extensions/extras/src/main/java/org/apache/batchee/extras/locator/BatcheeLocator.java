@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.locator;
 
-import javax.batch.operations.BatchRuntimeException;
+import jakarta.batch.operations.BatchRuntimeException;
 import java.io.Closeable;
 import java.lang.reflect.Method;
 

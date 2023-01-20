@@ -19,8 +19,8 @@ package org.apache.batchee.tools.maven;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobExecution;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobExecution;
 import java.util.Locale;
 import java.util.Properties;
 

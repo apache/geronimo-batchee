@@ -32,11 +32,11 @@ import org.apache.batchee.jaxb.Flow;
 import org.apache.batchee.jaxb.JSLJob;
 import org.apache.batchee.jaxb.Split;
 
-import javax.batch.operations.JobExecutionAlreadyCompleteException;
-import javax.batch.operations.JobExecutionNotMostRecentException;
-import javax.batch.operations.JobRestartException;
-import javax.batch.operations.JobStartException;
-import javax.batch.operations.NoSuchJobExecutionException;
+import jakarta.batch.operations.JobExecutionAlreadyCompleteException;
+import jakarta.batch.operations.JobExecutionNotMostRecentException;
+import jakarta.batch.operations.JobRestartException;
+import jakarta.batch.operations.JobStartException;
+import jakarta.batch.operations.NoSuchJobExecutionException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

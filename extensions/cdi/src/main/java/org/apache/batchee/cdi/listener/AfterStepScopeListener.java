@@ -18,10 +18,10 @@ package org.apache.batchee.cdi.listener;
 
 import org.apache.batchee.cdi.impl.BatchEEScopeExtension;
 
-import javax.batch.api.listener.StepListener;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.batch.api.listener.StepListener;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 /**
  * This Listener is important for cleanup the {@link org.apache.batchee.cdi.impl.StepContextImpl}.

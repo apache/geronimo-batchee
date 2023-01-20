@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.jpa;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public interface EntityManagerProvider {
     EntityManager newEntityManager();

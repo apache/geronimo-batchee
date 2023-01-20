@@ -16,10 +16,10 @@
  */
 package org.apache.batchee.test;
 
-import javax.batch.operations.NoSuchJobException;
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.JobInstance;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.operations.NoSuchJobException;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobInstance;
+import jakarta.batch.runtime.StepExecution;
 import java.util.List;
 import java.util.Properties;
 

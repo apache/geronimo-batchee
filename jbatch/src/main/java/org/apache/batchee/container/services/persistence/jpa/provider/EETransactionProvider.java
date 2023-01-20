@@ -19,8 +19,8 @@ package org.apache.batchee.container.services.persistence.jpa.provider;
 import org.apache.batchee.container.services.persistence.jpa.TransactionProvider;
 import org.apache.batchee.container.services.transaction.JTAUserTransactionAdapter;
 
-import javax.persistence.EntityManager;
-import javax.transaction.Transaction;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transaction;
 import java.util.Properties;
 
 public class EETransactionProvider implements TransactionProvider {

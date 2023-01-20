@@ -19,12 +19,12 @@ package org.apache.batchee.extras;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.api.chunk.AbstractItemReader;
-import javax.batch.api.chunk.AbstractItemWriter;
-import javax.batch.api.chunk.ItemProcessor;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.api.chunk.AbstractItemReader;
+import jakarta.batch.api.chunk.AbstractItemWriter;
+import jakarta.batch.api.chunk.ItemProcessor;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 import java.util.List;
 import java.util.concurrent.Future;
 

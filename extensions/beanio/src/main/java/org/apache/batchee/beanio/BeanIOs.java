@@ -18,7 +18,7 @@ package org.apache.batchee.beanio;
 
 import org.beanio.StreamFactory;
 
-import javax.batch.operations.BatchRuntimeException;
+import jakarta.batch.operations.BatchRuntimeException;
 import java.io.InputStream;
 
 public abstract class BeanIOs {

@@ -20,8 +20,8 @@ import net.sf.jsefa.Deserializer;
 import net.sf.jsefa.flr.FlrIOFactory;
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 @Documentation("Reads a FLR file using JSefa.")
 public class JSefaFlrReader extends JSefaReader {

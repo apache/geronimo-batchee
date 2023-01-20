@@ -17,14 +17,14 @@
 
 package org.apache.batchee.container.cdi;
 
-import javax.batch.operations.BatchRuntimeException;
-import javax.enterprise.event.Observes;
-import javax.enterprise.inject.spi.AfterBeanDiscovery;
-import javax.enterprise.inject.spi.AfterDeploymentValidation;
-import javax.enterprise.inject.spi.BeanManager;
-import javax.enterprise.inject.spi.BeforeBeanDiscovery;
-import javax.enterprise.inject.spi.BeforeShutdown;
-import javax.enterprise.inject.spi.Extension;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.inject.spi.AfterBeanDiscovery;
+import jakarta.enterprise.inject.spi.AfterDeploymentValidation;
+import jakarta.enterprise.inject.spi.BeanManager;
+import jakarta.enterprise.inject.spi.BeforeBeanDiscovery;
+import jakarta.enterprise.inject.spi.BeforeShutdown;
+import jakarta.enterprise.inject.spi.Extension;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.lang.reflect.InvocationTargetException;
@@ -51,7 +51,7 @@ public class BatchCDIInjectionExtension implements Extension {
         Method getBmMethod;
 
         try {
-            Class<?> cdi = Class.forName("javax.enterprise.inject.spi.CDI", false, loader());
+            Class<?> cdi = Class.forName("jakarta.enterprise.inject.spi.CDI", false, loader());
             currentMethod = cdi.getDeclaredMethod("current");
             getBmMethod = cdi.getDeclaredMethod("getBeanManager");
             cdi11Available = true;
@@ -67,7 +67,7 @@ public class BatchCDIInjectionExtension implements Extension {
     }
 
     void beforeBeanDiscovery(final @Observes BeforeBeanDiscovery bbd, BeanManager bm) {
-        bbd.addAnnotatedType(bm.createAnnotatedType(BatchProducerBean.class));
+        bbd.addAnnotatedType(bm.createAnnotatedType(BatchProducerBean.class), BatchProducerBean.class.getSimpleName());
     }
 
     public void setBeanManager(final @Observes AfterBeanDiscovery afterBeanDiscovery, final BeanManager beanManager) {

@@ -22,8 +22,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import javax.batch.operations.BatchRuntimeException;
-import javax.ejb.embeddable.EJBContainer;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.ejb.embeddable.EJBContainer;
 import java.util.logging.Logger;
 
 // forces the execution in embedded container

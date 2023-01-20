@@ -19,7 +19,7 @@ package org.apache.batchee.cli.command;
 import org.apache.batchee.cli.command.api.Command;
 import org.apache.batchee.cli.command.api.Option;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 
 @Command(name = "restart", description = "restart a batch")
 public class Restart extends StartableCommand {

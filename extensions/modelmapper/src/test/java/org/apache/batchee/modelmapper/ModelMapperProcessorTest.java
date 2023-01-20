@@ -19,10 +19,10 @@ package org.apache.batchee.modelmapper;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.api.chunk.ItemWriter;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.io.Serializable;
 import java.util.List;
 

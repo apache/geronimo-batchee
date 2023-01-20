@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.cdi.component;
 
-import javax.batch.api.AbstractBatchlet;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.batch.api.AbstractBatchlet;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 public class CdiBatchlet extends AbstractBatchlet {

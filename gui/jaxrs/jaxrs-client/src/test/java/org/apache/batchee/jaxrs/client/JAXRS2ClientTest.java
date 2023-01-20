@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.jaxrs.client;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 
 public class JAXRS2ClientTest extends ClientTestBase {
     @Override

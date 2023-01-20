@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.container.util;
 
-import javax.batch.api.partition.PartitionPlan;
+import jakarta.batch.api.partition.PartitionPlan;
 import java.util.Properties;
 
 public class BatchPartitionPlan implements PartitionPlan {

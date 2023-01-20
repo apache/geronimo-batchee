@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.jaxrs.common;
 
-import javax.batch.runtime.Metric;
+import jakarta.batch.runtime.Metric;
 
 public class RestMetric {
     private Metric.MetricType type;

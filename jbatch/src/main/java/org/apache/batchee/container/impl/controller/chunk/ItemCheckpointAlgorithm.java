@@ -16,7 +16,7 @@
 */
 package org.apache.batchee.container.impl.controller.chunk;
 
-import javax.batch.api.chunk.CheckpointAlgorithm;
+import jakarta.batch.api.chunk.CheckpointAlgorithm;
 
 public final class ItemCheckpointAlgorithm implements CheckpointAlgorithm {
     private long checkpointBeginTime = 0;

@@ -23,7 +23,7 @@ import org.apache.batchee.container.impl.jobinstance.RuntimeJobExecution;
 import org.apache.batchee.container.services.BatchKernelService;
 import org.apache.batchee.container.services.ServicesManager;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 
 /*
  * I took out the 'work type' constant since I don't see that we want to use

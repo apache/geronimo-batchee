@@ -18,9 +18,9 @@ package org.apache.batchee.camel;
 
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.inject.Inject;
 import java.io.Serializable;
 import java.util.List;
 

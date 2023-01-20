@@ -18,9 +18,9 @@ package org.apache.batchee.hazelcast;
 
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.Batchlet;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.Batchlet;
+import jakarta.inject.Inject;
 import java.util.concurrent.TimeUnit;
 
 @Documentation("Obtain a hazelcast lock")

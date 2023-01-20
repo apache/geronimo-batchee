@@ -20,7 +20,7 @@ package org.apache.batchee.container.services.transaction;
 
 import java.util.Properties;
 
-import javax.batch.runtime.context.StepContext;
+import jakarta.batch.runtime.context.StepContext;
 
 import org.apache.batchee.container.exception.BatchContainerServiceException;
 import org.apache.batchee.container.exception.TransactionManagementException;

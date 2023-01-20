@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.typed;
 
-import javax.batch.api.chunk.ItemProcessor;
+import jakarta.batch.api.chunk.ItemProcessor;
 
 /**
  * Typesafe ItemProcessor

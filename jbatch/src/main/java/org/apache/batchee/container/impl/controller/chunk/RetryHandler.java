@@ -22,9 +22,9 @@ import org.apache.batchee.jaxb.ExceptionClassFilter;
 
 import java.util.List;
 
-import javax.batch.api.chunk.listener.RetryProcessListener;
-import javax.batch.api.chunk.listener.RetryReadListener;
-import javax.batch.api.chunk.listener.RetryWriteListener;
+import jakarta.batch.api.chunk.listener.RetryProcessListener;
+import jakarta.batch.api.chunk.listener.RetryReadListener;
+import jakarta.batch.api.chunk.listener.RetryWriteListener;
 
 public class RetryHandler {
     private List<RetryProcessListener> _retryProcessListeners = null;

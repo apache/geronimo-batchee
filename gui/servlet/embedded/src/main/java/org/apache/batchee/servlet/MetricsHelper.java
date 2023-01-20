@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.servlet;
 
-import javax.batch.runtime.Metric;
+import jakarta.batch.runtime.Metric;
 
 public final class MetricsHelper {
 

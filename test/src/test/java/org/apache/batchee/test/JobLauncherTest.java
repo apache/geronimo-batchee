@@ -18,9 +18,9 @@ package org.apache.batchee.test;
 
 import org.testng.annotations.Test;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.StepExecution;
 import java.util.List;
 import java.util.Properties;
 

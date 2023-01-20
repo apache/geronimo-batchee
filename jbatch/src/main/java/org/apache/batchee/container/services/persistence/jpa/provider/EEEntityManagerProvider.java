@@ -19,7 +19,7 @@ package org.apache.batchee.container.services.persistence.jpa.provider;
 import org.apache.batchee.container.services.factory.CDIBatchArtifactFactory;
 import org.apache.batchee.container.services.persistence.jpa.EntityManagerProvider;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.util.Properties;
 
 /**

@@ -22,7 +22,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.plugins.annotations.ResolutionScope;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;

@@ -18,9 +18,9 @@ package org.apache.batchee.jaxrs.client.provider;
 
 import org.apache.batchee.jaxrs.client.http.Base64s;
 
-import javax.ws.rs.client.ClientRequestContext;
-import javax.ws.rs.client.ClientRequestFilter;
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.client.ClientRequestContext;
+import jakarta.ws.rs.client.ClientRequestFilter;
+import jakarta.ws.rs.core.MultivaluedMap;
 import java.util.Base64;
 
 import static java.nio.charset.StandardCharsets.UTF_8;

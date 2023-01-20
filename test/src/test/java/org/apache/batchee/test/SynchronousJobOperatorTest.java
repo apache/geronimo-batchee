@@ -18,8 +18,8 @@ package org.apache.batchee.test;
 
 import org.testng.annotations.Test;
 
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 
 import java.util.Properties;
 

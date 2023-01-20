@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.jaxrs.client;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 import java.io.Closeable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;

@@ -18,10 +18,10 @@ package org.apache.batchee.container.jsl;
 
 import org.apache.batchee.jaxb.JSLJob;
 
-import javax.batch.operations.BatchRuntimeException;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 import java.io.StringReader;
 import java.security.AccessController;

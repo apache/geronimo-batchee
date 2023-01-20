@@ -43,9 +43,9 @@ import static org.objectweb.asm.Opcodes.ASM5;
 // NO MAVEN IMPORTS THERE
 public abstract class ComponentDocumentationGenerator {
     private static final String OBJECT_NAME = "java/lang/Object";
-    private static final String PROPERTY_MARKER = "Ljavax/batch/api/BatchProperty;";
-    private static final String NAMED_MARKER = "Ljavax/inject/Named;";
-    private static final String INJECT_MARKER = "Ljavax/inject/Inject;";
+    private static final String PROPERTY_MARKER = "Ljakarta/batch/api/BatchProperty;";
+    private static final String NAMED_MARKER = "Ljakarta/inject/Named;";
+    private static final String INJECT_MARKER = "Ljakarta/inject/Inject;";
     private static final String CONFIGURATION_MARKER = "Lorg/apache/batchee/doc/api/Documentation;";
 
     protected final File classes;

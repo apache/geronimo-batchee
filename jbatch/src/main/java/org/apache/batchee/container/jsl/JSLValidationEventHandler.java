@@ -16,8 +16,8 @@
 */
 package org.apache.batchee.container.jsl;
 
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
+import jakarta.xml.bind.ValidationEvent;
+import jakarta.xml.bind.ValidationEventHandler;
 import java.util.logging.Logger;
 
 public class JSLValidationEventHandler implements ValidationEventHandler {

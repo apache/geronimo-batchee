@@ -18,9 +18,9 @@ package org.apache.batchee.camel;
 
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemProcessor;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemProcessor;
+import jakarta.inject.Inject;
 
 @Documentation("Uses camel producer template to process the incoming item.")
 public class CamelItemProcessor implements ItemProcessor {

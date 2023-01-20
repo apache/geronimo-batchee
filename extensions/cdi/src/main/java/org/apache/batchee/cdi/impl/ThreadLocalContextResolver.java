@@ -19,8 +19,8 @@ package org.apache.batchee.cdi.impl;
 import org.apache.batchee.container.proxy.InjectionReferences;
 import org.apache.batchee.container.proxy.ProxyFactory;
 
-import javax.batch.runtime.context.JobContext;
-import javax.batch.runtime.context.StepContext;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.batch.runtime.context.StepContext;
 
 /**
  * Implementation of {@link ContextResolver} which is used to enable BatchEE CDI-Scopes for BatchEE.

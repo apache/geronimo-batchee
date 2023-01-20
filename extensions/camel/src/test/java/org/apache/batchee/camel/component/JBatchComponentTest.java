@@ -27,10 +27,10 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
-import javax.batch.api.Batchlet;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
+import jakarta.batch.api.Batchlet;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.inject.Inject;
 
 public class JBatchComponentTest extends CamelTestSupport {
     @EndpointInject(uri = "mock:result")

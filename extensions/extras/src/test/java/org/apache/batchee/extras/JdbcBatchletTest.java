@@ -19,8 +19,8 @@ package org.apache.batchee.extras;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

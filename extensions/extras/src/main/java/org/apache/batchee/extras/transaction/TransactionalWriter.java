@@ -19,7 +19,7 @@ package org.apache.batchee.extras.transaction;
 import org.apache.batchee.extras.transaction.integration.SynchronizationService;
 import org.apache.batchee.extras.transaction.integration.Synchronizations;
 
-import javax.batch.operations.BatchRuntimeException;
+import jakarta.batch.operations.BatchRuntimeException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

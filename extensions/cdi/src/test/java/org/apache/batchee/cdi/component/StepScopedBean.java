@@ -18,7 +18,7 @@ package org.apache.batchee.cdi.component;
 
 import org.apache.batchee.cdi.scope.StepScoped;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 @StepScoped
 public class StepScopedBean {

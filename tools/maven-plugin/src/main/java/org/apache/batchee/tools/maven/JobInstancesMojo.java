@@ -21,7 +21,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.JobInstance;
 import java.util.List;
 
 /**

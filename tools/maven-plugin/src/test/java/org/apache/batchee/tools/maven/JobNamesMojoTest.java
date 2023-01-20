@@ -18,7 +18,7 @@ package org.apache.batchee.tools.maven;
 
 import org.testng.annotations.Test;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 import java.util.Locale;
 
 import static org.apache.batchee.tools.maven.BatchEEMojoTestFactory.execute;

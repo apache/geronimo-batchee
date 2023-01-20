@@ -19,13 +19,13 @@ package org.apache.batchee.extras;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.inject.Inject;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Properties;
 

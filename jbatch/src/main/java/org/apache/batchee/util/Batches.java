@@ -18,9 +18,9 @@ package org.apache.batchee.util;
 
 import org.apache.batchee.container.impl.JobOperatorImpl;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.BatchStatus;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -40,10 +40,10 @@ public class Batches {
     }
 
     /**
-     * Waits until the end of the {@link javax.batch.runtime.JobExecution} with the given {@code id}
+     * Waits until the end of the {@link jakarta.batch.runtime.JobExecution} with the given {@code id}
      * and returns the final {@link BatchStatus}.
      *
-     * @param id of the {@link javax.batch.runtime.JobExecution} to wait for
+     * @param id of the {@link jakarta.batch.runtime.JobExecution} to wait for
      *
      * @return the final {@link BatchStatus} or in case of an {@link InterruptedException} the current {@link BatchStatus}
      *         will be returned.
@@ -53,11 +53,11 @@ public class Batches {
     }
 
     /**
-     * Waits until the end of the {@link javax.batch.runtime.JobExecution} with the given {@code id}
+     * Waits until the end of the {@link jakarta.batch.runtime.JobExecution} with the given {@code id}
      * and returns the final {@link BatchStatus}.
      *
      * @param jobOperator the {@link JobOperator to use}
-     * @param id of the {@link javax.batch.runtime.JobExecution} to wait for
+     * @param id of the {@link jakarta.batch.runtime.JobExecution} to wait for
      *
      * @return the final {@link BatchStatus} or in case of an {@link InterruptedException} the current {@link BatchStatus}
      *         will be returned.

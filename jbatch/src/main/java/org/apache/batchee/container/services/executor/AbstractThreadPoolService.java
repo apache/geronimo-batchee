@@ -20,8 +20,8 @@ import org.apache.batchee.container.exception.BatchContainerServiceException;
 import org.apache.batchee.container.util.BatchWorkUnit;
 import org.apache.batchee.spi.BatchThreadPoolService;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Properties;

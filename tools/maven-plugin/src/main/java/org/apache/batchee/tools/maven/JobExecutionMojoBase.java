@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.tools.maven;
 
-import javax.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobExecution;
 
 public abstract class JobExecutionMojoBase extends BatchEEMojoBase {
     protected static String toStr(final JobExecution exec) {

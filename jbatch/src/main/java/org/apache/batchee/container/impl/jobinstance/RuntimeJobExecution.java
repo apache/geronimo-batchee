@@ -24,8 +24,8 @@ import org.apache.batchee.container.services.InternalJobExecution;
 import org.apache.batchee.jaxb.JSLJob;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobInstance;
 import java.io.Closeable;
 import java.sql.Timestamp;
 import java.util.ArrayList;

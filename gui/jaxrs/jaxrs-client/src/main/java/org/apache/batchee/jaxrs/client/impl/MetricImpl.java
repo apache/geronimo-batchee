@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.jaxrs.client.impl;
 
-import javax.batch.runtime.Metric;
+import jakarta.batch.runtime.Metric;
 
 public class MetricImpl implements Metric {
     private final MetricType type;

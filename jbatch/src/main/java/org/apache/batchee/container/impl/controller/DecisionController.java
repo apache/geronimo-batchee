@@ -31,8 +31,8 @@ import org.apache.batchee.jaxb.Property;
 import org.apache.batchee.spi.BatchArtifactFactory;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.api.Decider;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.api.Decider;
+import jakarta.batch.runtime.StepExecution;
 import java.util.List;
 
 public class DecisionController implements ExecutionElementController {

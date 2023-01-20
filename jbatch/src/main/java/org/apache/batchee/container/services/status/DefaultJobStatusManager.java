@@ -23,7 +23,7 @@ import org.apache.batchee.container.status.JobStatus;
 import org.apache.batchee.container.status.StepStatus;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 import java.util.Properties;
 
 public class DefaultJobStatusManager implements JobStatusManagerService {

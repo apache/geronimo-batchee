@@ -18,7 +18,7 @@ package org.apache.batchee.container.proxy;
 
 import org.apache.batchee.container.exception.BatchContainerRuntimeException;
 
-import javax.batch.api.chunk.CheckpointAlgorithm;
+import jakarta.batch.api.chunk.CheckpointAlgorithm;
 
 public class CheckpointAlgorithmProxy extends AbstractProxy<CheckpointAlgorithm> implements CheckpointAlgorithm {
     /*

@@ -22,8 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.batchee.doc.api.Documentation;
 import org.apache.batchee.extras.transaction.CountedReader;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 import java.io.File;
 import java.io.Serializable;
 

@@ -34,8 +34,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-import javax.batch.api.listener.StepListener;
-import javax.batch.api.partition.PartitionCollector;
+import jakarta.batch.api.listener.StepListener;
+import jakarta.batch.api.partition.PartitionCollector;
 
 /**
  * When a partitioned step is run, this controller will only be used for the partition threads,

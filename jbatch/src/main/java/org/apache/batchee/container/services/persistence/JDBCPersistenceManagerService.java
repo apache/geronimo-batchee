@@ -42,11 +42,11 @@ import org.apache.batchee.container.status.StepStatus;
 import org.apache.batchee.container.util.TCCLObjectInputStream;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.operations.NoSuchJobExecutionException;
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobInstance;
-import javax.batch.runtime.Metric;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.operations.NoSuchJobExecutionException;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobInstance;
+import jakarta.batch.runtime.Metric;
+import jakarta.batch.runtime.StepExecution;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

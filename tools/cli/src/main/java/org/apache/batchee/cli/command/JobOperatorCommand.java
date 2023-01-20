@@ -27,8 +27,8 @@ import org.apache.batchee.jaxrs.client.ClientSecurity;
 import org.apache.batchee.jaxrs.client.ClientSslConfiguration;
 import org.apache.commons.io.FileUtils;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;

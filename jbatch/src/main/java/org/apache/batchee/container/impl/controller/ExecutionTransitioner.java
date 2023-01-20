@@ -41,7 +41,7 @@ import org.apache.batchee.jaxb.Split;
 import org.apache.batchee.jaxb.Step;
 import org.apache.batchee.jaxb.Stop;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 

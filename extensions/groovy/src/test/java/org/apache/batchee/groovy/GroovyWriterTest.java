@@ -20,9 +20,9 @@ import org.apache.batchee.groovy.util.IOs;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class GroovyWriterTest {
         // put items in ITEMS
         IOs.write("target/work/writer.groovy", "package org.apache.batchee.groovy\n" +
             "\n" +
-            "import javax.batch.api.chunk.ItemWriter\n" +
+            "import jakarta.batch.api.chunk.ItemWriter\n" +
             "\n" +
             "class GWriter implements ItemWriter {\n" +
             "    @Override\n" +
@@ -70,7 +70,7 @@ public class GroovyWriterTest {
         // clear ITEMS
         IOs.write("target/work/writer.groovy", "package org.apache.batchee.groovy\n" +
             "\n" +
-            "import javax.batch.api.chunk.ItemWriter\n" +
+            "import jakarta.batch.api.chunk.ItemWriter\n" +
             "\n" +
             "class GWriter implements ItemWriter {\n" +
             "    @Override\n" +

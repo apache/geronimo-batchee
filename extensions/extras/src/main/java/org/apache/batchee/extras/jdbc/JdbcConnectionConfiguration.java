@@ -18,9 +18,9 @@ package org.apache.batchee.extras.jdbc;
 
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.operations.BatchRuntimeException;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.inject.Inject;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.Connection;

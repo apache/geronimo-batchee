@@ -30,11 +30,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.JobInstance;
-import javax.batch.runtime.StepExecution;
-import javax.ws.rs.ext.RuntimeDelegate;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobInstance;
+import jakarta.batch.runtime.StepExecution;
+import jakarta.ws.rs.ext.RuntimeDelegate;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;

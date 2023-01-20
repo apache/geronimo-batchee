@@ -18,9 +18,9 @@ package org.apache.batchee.groovy;
 
 import groovy.lang.GroovyClassLoader;
 
-import javax.batch.operations.BatchRuntimeException;
-import javax.batch.runtime.context.JobContext;
-import javax.batch.runtime.context.StepContext;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.batch.runtime.context.StepContext;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;

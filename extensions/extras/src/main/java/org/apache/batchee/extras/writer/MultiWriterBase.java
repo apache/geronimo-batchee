@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.writer;
 
-import javax.batch.api.chunk.ItemWriter;
+import jakarta.batch.api.chunk.ItemWriter;
 import java.io.Serializable;
 
 public abstract class MultiWriterBase implements ItemWriter {

@@ -28,7 +28,7 @@ public final class Synchronizations {
         boolean active = true;
         SynchronizationService service;
         try {
-            Synchronizations.class.getClassLoader().loadClass("javax.transaction.UserTransaction");
+            Synchronizations.class.getClassLoader().loadClass("jakarta.transaction.UserTransaction");
             service = new JTASynchronizationService("java:comp/TransactionSynchronizationRegistry");
         } catch (final Throwable e) { // NoClassDefFoundError or ClassNotFoundException
             // this is an expected case for most of components using this abstraction

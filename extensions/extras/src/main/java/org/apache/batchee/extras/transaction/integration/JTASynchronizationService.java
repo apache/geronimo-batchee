@@ -16,11 +16,11 @@
  */
 package org.apache.batchee.extras.transaction.integration;
 
-import javax.batch.operations.BatchRuntimeException;
+import jakarta.batch.operations.BatchRuntimeException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.transaction.Status;
-import javax.transaction.TransactionSynchronizationRegistry;
+import jakarta.transaction.Status;
+import jakarta.transaction.TransactionSynchronizationRegistry;
 
 public class JTASynchronizationService implements SynchronizationService {
     private final TransactionSynchronizationRegistry delegate;
@@ -53,7 +53,7 @@ public class JTASynchronizationService implements SynchronizationService {
         return delegate.getResource(key);
     }
 
-    private static class SynchronizationAdapter implements javax.transaction.Synchronization {
+    private static class SynchronizationAdapter implements jakarta.transaction.Synchronization {
         private final Synchronization delegate;
 
         public SynchronizationAdapter(final Synchronization s) {

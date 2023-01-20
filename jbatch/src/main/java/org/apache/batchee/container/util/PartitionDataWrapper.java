@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.container.util;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 import java.io.Serializable;
 
 public class PartitionDataWrapper {

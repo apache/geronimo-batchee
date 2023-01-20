@@ -19,8 +19,8 @@ package org.apache.batchee.cli.command;
 import org.apache.batchee.cli.command.api.Command;
 import org.apache.batchee.cli.command.api.Option;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.JobInstance;
 import java.util.List;
 
 @Command(name = "instances", description = "list instances")

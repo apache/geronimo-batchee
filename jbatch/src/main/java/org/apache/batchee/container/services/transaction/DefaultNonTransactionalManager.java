@@ -20,21 +20,21 @@ import org.apache.batchee.container.exception.TransactionManagementException;
 import org.apache.batchee.spi.TransactionManagerAdapter;
 
 public class DefaultNonTransactionalManager implements TransactionManagerAdapter {
-    private int txStatus = 6; // javax.transaction.Status.STATUS_NO_TRANSACTION
+    private int txStatus = 6; // jakarta.transaction.Status.STATUS_NO_TRANSACTION
 
     @Override
     public void begin() throws TransactionManagementException {
-        txStatus = 0; // javax.transaction.Status.STATUS_ACTIVE
+        txStatus = 0; // jakarta.transaction.Status.STATUS_ACTIVE
     }
 
     @Override
     public void commit() throws TransactionManagementException {
-        txStatus = 3; // javax.transaction.Status.STATUS_COMMITTED
+        txStatus = 3; // jakarta.transaction.Status.STATUS_COMMITTED
     }
 
     @Override
     public void rollback() throws TransactionManagementException {
-        txStatus = 4; // javax.transaction.Status.STATUS_ROLLEDBACK
+        txStatus = 4; // jakarta.transaction.Status.STATUS_ROLLEDBACK
     }
 
     @Override
@@ -44,7 +44,7 @@ public class DefaultNonTransactionalManager implements TransactionManagerAdapter
 
     @Override
     public void setRollbackOnly() throws TransactionManagementException {
-        txStatus = 9;  // javax.transaction.Status.STATUS_ROLLING_BACK
+        txStatus = 9;  // jakarta.transaction.Status.STATUS_ROLLING_BACK
     }
 
     @Override

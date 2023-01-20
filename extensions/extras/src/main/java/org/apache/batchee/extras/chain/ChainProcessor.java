@@ -18,7 +18,7 @@ package org.apache.batchee.extras.chain;
 
 import org.apache.batchee.extras.locator.BeanLocator;
 
-import javax.batch.api.chunk.ItemProcessor;
+import jakarta.batch.api.chunk.ItemProcessor;
 
 public class ChainProcessor extends Chain<ItemProcessor> implements ItemProcessor {
     @Override

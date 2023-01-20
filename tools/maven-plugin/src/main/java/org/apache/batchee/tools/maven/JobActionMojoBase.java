@@ -18,8 +18,8 @@ package org.apache.batchee.tools.maven;
 
 import org.apache.maven.plugins.annotations.Parameter;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchStatus;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;

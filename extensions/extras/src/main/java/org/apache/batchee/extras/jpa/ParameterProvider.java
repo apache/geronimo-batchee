@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.jpa;
 
-import javax.persistence.Query;
+import jakarta.persistence.Query;
 
 public interface ParameterProvider {
     void setParameters(Query query);

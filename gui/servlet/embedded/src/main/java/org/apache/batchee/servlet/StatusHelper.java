@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.servlet;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 
 public final class StatusHelper {
     private StatusHelper() {

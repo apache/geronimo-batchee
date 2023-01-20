@@ -34,7 +34,7 @@ To use it with other JBatch implementation use the full qualified name.
 
 ### `org.apache.batchee.extras.chain.ChainProcessor`
 
-Allow to set multiple `javax.batch.api.chunk.ItemProcessor` through a single processor. The n+1 processor processes the
+Allow to set multiple `jakarta.batch.api.chunk.ItemProcessor` through a single processor. The n+1 processor processes the
 returned value of the n processor.
 
 Sample:
@@ -51,7 +51,7 @@ Sample:
     <writer ref="..." />
   </chunk></step>]]></pre>
 
-Note: `org.apache.batchee.extras.chain.ChainBatchlet` does the same for `javax.batch.api.Batchlet`.
+Note: `org.apache.batchee.extras.chain.ChainBatchlet` does the same for `jakarta.batch.api.Batchlet`.
 
 Shortname: `chainProcessor`
 
@@ -1097,7 +1097,7 @@ To activate these scopes you need to define 3 listeners:
 
 If your implementation supports ordering on listeners use them to ensure `Before*` are executed first and
 `After*` are executed last. This will let you use these scopes in your own listeners. `*JobScopeListener` are
-`javax.batch.api.listener.JobListener` and the `AfterStepScopeListener` is a `javax.batch.api.listener.StepListener`.
+`jakarta.batch.api.listener.JobListener` and the `AfterStepScopeListener` is a `jakarta.batch.api.listener.StepListener`.
 
 NB: these listeners are `@Named` so you can use their CDI name to reference them (not mandatory)
 

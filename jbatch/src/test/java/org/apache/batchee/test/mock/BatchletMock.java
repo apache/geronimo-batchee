@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.test.mock;
 
-import javax.batch.api.AbstractBatchlet;
+import jakarta.batch.api.AbstractBatchlet;
 
 public class BatchletMock extends AbstractBatchlet {
     @Override

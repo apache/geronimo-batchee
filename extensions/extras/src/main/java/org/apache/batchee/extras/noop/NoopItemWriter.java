@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.noop;
 
-import javax.batch.api.chunk.ItemWriter;
+import jakarta.batch.api.chunk.ItemWriter;
 import java.io.Serializable;
 import java.util.List;
 

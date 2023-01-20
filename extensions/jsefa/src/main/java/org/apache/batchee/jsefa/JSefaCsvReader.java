@@ -22,8 +22,8 @@ import net.sf.jsefa.csv.CsvIOFactory;
 import net.sf.jsefa.csv.config.CsvConfiguration;
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 @Documentation("Reads a CSV file using JSefa.")
 public class JSefaCsvReader extends JSefaReader {

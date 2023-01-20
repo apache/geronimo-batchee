@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.jaxrs.client.impl;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.Metric;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.Metric;
+import jakarta.batch.runtime.StepExecution;
 import java.io.Serializable;
 import java.util.Date;
 

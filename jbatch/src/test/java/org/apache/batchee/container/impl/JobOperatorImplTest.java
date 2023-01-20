@@ -21,7 +21,7 @@ import org.apache.batchee.container.services.persistence.MemoryPersistenceManage
 import org.apache.batchee.spi.PersistenceManagerService;
 import org.junit.Test;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 import java.util.List;
 import java.util.Properties;
 

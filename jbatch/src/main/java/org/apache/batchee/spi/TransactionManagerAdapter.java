@@ -18,7 +18,7 @@ package org.apache.batchee.spi;
 
 /**
  * We have this interface so that we do not try to load the
- * Java EE UserTransaction in an SE environment
+ * Jakarta EE UserTransaction in an SE environment
  */
 public interface TransactionManagerAdapter {
     /**

@@ -15,13 +15,13 @@
     limitations under the License.
 --%>
 <%@ page session="false" %>
-<%@ page import="javax.batch.runtime.JobExecution" %>
-<%@ page import="javax.batch.runtime.JobInstance" %>
+<%@ page import="jakarta.batch.runtime.JobExecution" %>
+<%@ page import="jakarta.batch.runtime.JobInstance" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="org.apache.batchee.servlet.StatusHelper" %>
 <%@ page import="java.net.URLEncoder" %>
-<%@ page import="javax.batch.runtime.BatchStatus" %>
+<%@ page import="jakarta.batch.runtime.BatchStatus" %>
 
 <% final String name = (String) request.getAttribute("name"); %>
 <h4><%= name %></h4>

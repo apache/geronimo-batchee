@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.extras.transaction;
 
-import javax.batch.api.chunk.ItemReader;
+import jakarta.batch.api.chunk.ItemReader;
 import java.io.Serializable;
 
 public abstract class CountedReader implements ItemReader {

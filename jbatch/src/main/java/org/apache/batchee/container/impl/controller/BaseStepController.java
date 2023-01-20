@@ -38,12 +38,12 @@ import org.apache.batchee.spi.PersistenceManagerService;
 import org.apache.batchee.spi.TransactionManagementService;
 import org.apache.batchee.spi.TransactionManagerAdapter;
 
-import javax.batch.operations.JobExecutionAlreadyCompleteException;
-import javax.batch.operations.JobExecutionNotMostRecentException;
-import javax.batch.operations.JobRestartException;
-import javax.batch.operations.JobStartException;
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.operations.JobExecutionAlreadyCompleteException;
+import jakarta.batch.operations.JobExecutionNotMostRecentException;
+import jakarta.batch.operations.JobRestartException;
+import jakarta.batch.operations.JobStartException;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobInstance;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.sql.Timestamp;

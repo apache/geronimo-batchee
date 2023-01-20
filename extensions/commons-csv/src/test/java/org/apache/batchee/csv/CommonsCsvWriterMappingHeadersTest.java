@@ -21,9 +21,9 @@ import org.apache.batchee.csv.util.IOs;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.io.Serializable;
 import java.util.Properties;
 

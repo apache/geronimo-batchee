@@ -26,7 +26,7 @@ import org.apache.batchee.jaxb.Step;
 import org.apache.batchee.spi.BatchArtifactFactory;
 
 
-import javax.batch.api.listener.JobListener;
+import jakarta.batch.api.listener.JobListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

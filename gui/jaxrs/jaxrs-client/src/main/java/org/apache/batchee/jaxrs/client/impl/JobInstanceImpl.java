@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.jaxrs.client.impl;
 
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.JobInstance;
 
 public class JobInstanceImpl implements JobInstance {
     private final String name;

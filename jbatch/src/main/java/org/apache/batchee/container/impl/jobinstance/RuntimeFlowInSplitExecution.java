@@ -19,7 +19,7 @@ package org.apache.batchee.container.impl.jobinstance;
 import org.apache.batchee.container.status.ExecutionStatus;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.JobInstance;
 
 public class RuntimeFlowInSplitExecution extends RuntimeJobExecution {
     public RuntimeFlowInSplitExecution(final JobInstance jobInstance, final long executionId, final PersistenceManagerService manager) {

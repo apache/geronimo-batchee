@@ -24,9 +24,9 @@ import org.apache.batchee.container.exception.BatchContainerServiceException;
 import org.apache.batchee.spi.DataRepresentationService;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.api.chunk.CheckpointAlgorithm;
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.api.chunk.ItemWriter;
+import jakarta.batch.api.chunk.CheckpointAlgorithm;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.api.chunk.ItemWriter;
 
 
 public class CheckpointManager {

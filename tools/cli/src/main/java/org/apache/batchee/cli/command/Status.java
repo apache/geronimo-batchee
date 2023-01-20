@@ -19,10 +19,10 @@ package org.apache.batchee.cli.command;
 import org.apache.batchee.cli.command.api.Command;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.operations.NoSuchJobException;
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.operations.NoSuchJobException;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobInstance;
 import java.util.LinkedList;
 import java.util.Set;
 

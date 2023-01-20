@@ -21,8 +21,8 @@ import org.apache.batchee.cli.command.api.Option;
 import org.apache.batchee.container.impl.JobInstanceImpl;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.JobExecution;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.JobExecution;
 import java.util.List;
 
 @Command(name = "executions", description = "list executions")

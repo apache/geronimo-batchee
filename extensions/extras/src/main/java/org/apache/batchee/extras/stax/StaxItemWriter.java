@@ -21,11 +21,11 @@ import org.apache.batchee.extras.stax.util.JAXBContextFactory;
 import org.apache.batchee.extras.stax.util.SAXStAXHandler;
 import org.apache.batchee.extras.transaction.TransactionalWriter;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.batch.operations.BatchRuntimeException;
-import javax.inject.Inject;
-import javax.xml.bind.Marshaller;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.inject.Inject;
+import jakarta.xml.bind.Marshaller;
 import javax.xml.stream.XMLEventFactory;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLOutputFactory;

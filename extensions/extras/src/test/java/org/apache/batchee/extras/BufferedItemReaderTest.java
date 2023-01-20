@@ -22,9 +22,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
-import javax.batch.api.chunk.AbstractItemWriter;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.api.chunk.AbstractItemWriter;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 
 import org.apache.batchee.extras.buffered.BufferedItemReader;
 import org.apache.batchee.util.Batches;

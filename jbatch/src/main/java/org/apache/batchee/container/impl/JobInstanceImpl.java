@@ -16,7 +16,7 @@
 */
 package org.apache.batchee.container.impl;
 
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.JobInstance;
 import java.io.Serializable;
 
 public class JobInstanceImpl implements JobInstance, Serializable {

@@ -22,9 +22,9 @@ import org.apache.batchee.jaxb.ExceptionClassFilter;
 
 import java.util.List;
 
-import javax.batch.api.chunk.listener.SkipProcessListener;
-import javax.batch.api.chunk.listener.SkipReadListener;
-import javax.batch.api.chunk.listener.SkipWriteListener;
+import jakarta.batch.api.chunk.listener.SkipProcessListener;
+import jakarta.batch.api.chunk.listener.SkipReadListener;
+import jakarta.batch.api.chunk.listener.SkipWriteListener;
 
 public class SkipHandler {
 

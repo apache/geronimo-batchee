@@ -20,25 +20,25 @@ import org.apache.batchee.container.exception.TransactionManagementException;
 import org.apache.batchee.spi.TransactionManagerAdapter;
 
 import javax.naming.InitialContext;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.InvalidTransactionException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.Transaction;
-import javax.transaction.TransactionManager;
+import jakarta.transaction.HeuristicMixedException;
+import jakarta.transaction.HeuristicRollbackException;
+import jakarta.transaction.InvalidTransactionException;
+import jakarta.transaction.NotSupportedException;
+import jakarta.transaction.RollbackException;
+import jakarta.transaction.SystemException;
+import jakarta.transaction.Transaction;
+import jakarta.transaction.TransactionManager;
 
 public class JTAUserTransactionAdapter implements TransactionManagerAdapter {
     private static final String[] JNDI_LOCS = new String[] { // taken from OpenJPA ManagedRuntime
         "java:comp/TransactionManager", // generic, TomEE
-        "javax.transaction.TransactionManager", // weblogic
+        "jakarta.transaction.TransactionManager", // weblogic
         "java:/TransactionManager", // jboss, jrun, Geronimo
         "java:/DefaultDomain/TransactionManager", // jrun too
         "java:comp/pm/TransactionManager", // orion & oracle
         "java:appserver/TransactionManager", // GlassFish
         "java:pm/TransactionManager", // borland
-        "aries:services/javax.transaction.TransactionManager", // Apache Aries
+        "aries:services/jakarta.transaction.TransactionManager", // Apache Aries
     };
     private static final String[] METHODS = new String[] {  // taken from OpenJPA ManagedRuntime
         "org.openejb.OpenEJB.getTransactionManager",

@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.cdi.scope;
 
-import javax.enterprise.context.NormalScope;
+import jakarta.enterprise.context.NormalScope;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 

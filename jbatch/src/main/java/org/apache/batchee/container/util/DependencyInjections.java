@@ -22,10 +22,10 @@ import org.apache.batchee.container.proxy.InjectionReferences;
 import org.apache.batchee.jaxb.Property;
 import org.apache.xbean.propertyeditor.PropertyEditors;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.runtime.context.JobContext;
-import javax.batch.runtime.context.StepContext;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.batch.runtime.context.StepContext;
+import jakarta.inject.Inject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.security.AccessController;

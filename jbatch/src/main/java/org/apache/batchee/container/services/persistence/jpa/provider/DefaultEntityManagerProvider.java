@@ -18,9 +18,9 @@ package org.apache.batchee.container.services.persistence.jpa.provider;
 
 import org.apache.batchee.container.services.persistence.jpa.EntityManagerProvider;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.util.Properties;
 
 public class DefaultEntityManagerProvider implements EntityManagerProvider {

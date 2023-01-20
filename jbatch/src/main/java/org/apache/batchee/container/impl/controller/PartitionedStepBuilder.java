@@ -25,7 +25,7 @@ import org.apache.batchee.jaxb.PartitionPlan;
 import org.apache.batchee.jaxb.Split;
 import org.apache.batchee.jaxb.Step;
 
-import javax.batch.runtime.context.JobContext;
+import jakarta.batch.runtime.context.JobContext;
 
 public class PartitionedStepBuilder {
     public static final String JOB_ID_SEPARATOR = ":";  // Use something permissible in NCName to allow us to key off of.

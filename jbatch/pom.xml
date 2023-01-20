@@ -21,50 +21,52 @@
   <parent>
     <artifactId>batchee</artifactId>
     <groupId>org.apache.batchee</groupId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>2.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>batchee-jbatch</artifactId>
   <name>BatchEE :: JBatch</name>
 
   <properties>
-    <openjpa.version>3.2.0</openjpa.version>
-
     <tck.suite>${project.build.directory}/test-classes/testng/jsr352-tck-impl-EE-suite.xml</tck.suite>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jbatch_1.0_spec</artifactId>
+      <groupId>jakarta.batch</groupId>
+      <artifactId>jakarta.batch-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-atinject_1.0_spec</artifactId>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jcdi_2.0_spec</artifactId>
+      <groupId>jakarta.inject</groupId>
+      <artifactId>jakarta.inject-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-ejb_3.1_spec</artifactId>
+      <groupId>jakarta.enterprise</groupId>
+      <artifactId>jakarta.enterprise.cdi-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-interceptor_1.2_spec</artifactId>
+      <groupId>jakarta.ejb</groupId>
+      <artifactId>jakarta.ejb-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jta_1.1_spec</artifactId>
+      <groupId>jakarta.interceptor</groupId>
+      <artifactId>jakarta.interceptor-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-servlet_3.0_spec</artifactId>
+      <groupId>jakarta.transaction</groupId>
+      <artifactId>jakarta.transaction-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-jpa_2.2_spec</artifactId>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
     </dependency>
 
     <dependency>
@@ -72,6 +74,11 @@
       <artifactId>xbean-reflect</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+    </dependency>
     <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
@@ -97,6 +104,7 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- To replace with the jakarta version of TCK
     <dependency>
       <groupId>com.ibm.jbatch.tck</groupId>
       <artifactId>com.ibm.jbatch.tck</artifactId>
@@ -104,12 +112,12 @@
       <scope>test</scope>
       <exclusions>
         <exclusion>
-          <groupId>javax.batch</groupId>
-          <artifactId>javax.batch-api</artifactId>
+          <groupId>jakarta.batch</groupId>
+          <artifactId>jakarta.batch-api</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>javax.inject</groupId>
-          <artifactId>javax.inject</artifactId>
+          <groupId>jakarta.inject</groupId>
+          <artifactId>jakarta.inject</artifactId>
         </exclusion>
         <exclusion>
           <groupId>com.ibm.jbatch</groupId>
@@ -124,11 +132,12 @@
       <scope>test</scope>
       <exclusions>
         <exclusion>
-          <groupId>javax.batch</groupId>
-          <artifactId>javax.batch-api</artifactId>
+          <groupId>jakarta.batch</groupId>
+          <artifactId>jakarta.batch-api</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
+    -->
   </dependencies>
 
   <build>
@@ -142,6 +151,7 @@
       </resource>
     </resources>
     <plugins>
+      <!-- to replace with Jakarta version of the TCK
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -165,6 +175,7 @@
           </artifactItems>
         </configuration>
       </plugin>
+      -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -178,6 +189,7 @@
               <skip>${maven.test.skip}</skip>
             </configuration>
           </execution>
+          <!-- to replace with the jakarta version of the TCK
           <execution>
             <id>tck-in-memory</id>
             <goals>
@@ -247,6 +259,7 @@
               </properties>
             </configuration>
           </execution>
+          -->
         </executions>
         <configuration>
           <skip>true</skip>
@@ -434,6 +447,46 @@
             </configuration>
           </execution>
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>${dependency.version.jakarta.persistence-api}</version>
+          </dependency>
+          <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${dependency.version.jakarta.transaction-api}</version>
+          </dependency>
+          <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${dependency.version.jakarta.validation-api}</version>
+          </dependency>
+          <dependency>
+            <groupId>net.sourceforge.serp</groupId>
+            <artifactId>serp</artifactId>
+            <version>1.15.1</version>
+            <exclusions>
+              <exclusion>
+                <groupId>*</groupId>
+                <artifactId>*</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>${openjpa.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+              <exclusion>
+                <groupId>*</groupId>
+                <artifactId>*</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -451,72 +504,6 @@
             <goals>
               <goal>single</goal>
             </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <shadedArtifactAttached>true</shadedArtifactAttached>
-              <shadedClassifierName>jakarta</shadedClassifierName>
-              <createDependencyReducedPom>false</createDependencyReducedPom>
-              <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-              </transformers>
-              <artifactSet> <!-- don't include transitive deps -->
-                <includes>
-                  <include>${project.groupId}:${project.artifactId}</include>
-                </includes>
-              </artifactSet>
-              <relocations>
-                <relocation>
-                  <pattern>javax.batch</pattern>
-                  <shadedPattern>jakarta.batch</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.ejb</pattern>
-                  <shadedPattern>jakarta.ejb</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.enterprise</pattern>
-                  <shadedPattern>jakarta.enterprise</shadedPattern>
-                  <excludes>
-                      <exclude>javax.enterprise.deploy.**</exclude>
-                  </excludes>
-                </relocation>
-                <relocation>
-                  <pattern>javax.inject</pattern>
-                  <shadedPattern>jakarta.inject</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.persistence</pattern>
-                  <shadedPattern>jakarta.persistence</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.servlet</pattern>
-                  <shadedPattern>jakarta.servlet</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>javax.transaction</pattern>
-                  <shadedPattern>jakarta.transaction</shadedPattern>
-                  <excludes>
-                      <exclude>javax.transaction.xa.**</exclude>
-                  </excludes>
-                </relocation>
-                <relocation>
-                  <pattern>javax.xml.bind</pattern>
-                  <shadedPattern>jakarta.xml.bind</shadedPattern>
-                </relocation>
-              </relocations>
-            </configuration>
           </execution>
         </executions>
       </plugin>

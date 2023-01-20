@@ -22,8 +22,8 @@ import net.sf.jsefa.csv.CsvSerializer;
 import net.sf.jsefa.csv.lowlevel.config.CsvLowLevelConfiguration;
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 import java.io.Serializable;
 
 @Documentation("Writes a CSV file using JSefa.")

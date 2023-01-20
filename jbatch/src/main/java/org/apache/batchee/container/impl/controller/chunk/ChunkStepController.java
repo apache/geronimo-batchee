@@ -33,23 +33,23 @@ import org.apache.batchee.spi.BatchArtifactFactory;
 import org.apache.batchee.spi.DataRepresentationService;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.api.chunk.CheckpointAlgorithm;
-import javax.batch.api.chunk.ItemProcessor;
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.api.chunk.ItemWriter;
-import javax.batch.api.chunk.listener.ChunkListener;
-import javax.batch.api.chunk.listener.ItemProcessListener;
-import javax.batch.api.chunk.listener.ItemReadListener;
-import javax.batch.api.chunk.listener.ItemWriteListener;
-import javax.batch.api.chunk.listener.RetryProcessListener;
-import javax.batch.api.chunk.listener.RetryReadListener;
-import javax.batch.api.chunk.listener.RetryWriteListener;
-import javax.batch.api.chunk.listener.SkipProcessListener;
-import javax.batch.api.chunk.listener.SkipReadListener;
-import javax.batch.api.chunk.listener.SkipWriteListener;
-import javax.batch.operations.BatchRuntimeException;
-import javax.batch.runtime.BatchStatus;
-import javax.transaction.Status;
+import jakarta.batch.api.chunk.CheckpointAlgorithm;
+import jakarta.batch.api.chunk.ItemProcessor;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.batch.api.chunk.listener.ChunkListener;
+import jakarta.batch.api.chunk.listener.ItemProcessListener;
+import jakarta.batch.api.chunk.listener.ItemReadListener;
+import jakarta.batch.api.chunk.listener.ItemWriteListener;
+import jakarta.batch.api.chunk.listener.RetryProcessListener;
+import jakarta.batch.api.chunk.listener.RetryReadListener;
+import jakarta.batch.api.chunk.listener.RetryWriteListener;
+import jakarta.batch.api.chunk.listener.SkipProcessListener;
+import jakarta.batch.api.chunk.listener.SkipReadListener;
+import jakarta.batch.api.chunk.listener.SkipWriteListener;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.transaction.Status;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -851,9 +851,9 @@ public class ChunkStepController extends SingleThreadedStepController {
         int timeout = DEFAULT_TRAN_TIMEOUT_SECONDS; // default as per spec.
         if (p != null && !p.isEmpty()) {
 
-            String propertyTimeOut = p.getProperty("javax.transaction.global.timeout");
+            String propertyTimeOut = p.getProperty("jakarta.transaction.global.timeout");
             if (logger.isLoggable(Level.FINE)) {
-                logger.log(Level.FINE, "javax.transaction.global.timeout = {0}", propertyTimeOut==null ? "<null>" : propertyTimeOut);
+                logger.log(Level.FINE, "jakarta.transaction.global.timeout = {0}", propertyTimeOut==null ? "<null>" : propertyTimeOut);
             }
             if (propertyTimeOut != null && !propertyTimeOut.isEmpty()) {
                 timeout = Integer.parseInt(propertyTimeOut, 10);

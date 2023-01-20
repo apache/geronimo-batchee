@@ -18,11 +18,11 @@ package org.apache.batchee.cdi.partitioned;
 
 import org.apache.batchee.cdi.component.JobScopedBean;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.AbstractItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.AbstractItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

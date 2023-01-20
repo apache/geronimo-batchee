@@ -20,9 +20,9 @@ import org.apache.batchee.cdi.scope.StepScoped;
 
 import java.lang.annotation.Annotation;
 
-import javax.batch.runtime.context.StepContext;
-import javax.enterprise.inject.Typed;
-import javax.enterprise.inject.spi.BeanManager;
+import jakarta.batch.runtime.context.StepContext;
+import jakarta.enterprise.inject.Typed;
+import jakarta.enterprise.inject.spi.BeanManager;
 
 @Typed
 public class StepContextImpl extends BaseContext {

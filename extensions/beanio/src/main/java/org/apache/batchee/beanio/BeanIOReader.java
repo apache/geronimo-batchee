@@ -21,9 +21,9 @@ import org.apache.batchee.extras.transaction.CountedReader;
 import org.beanio.BeanReader;
 import org.beanio.BeanReaderErrorHandler;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemReader;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.inject.Inject;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.Serializable;

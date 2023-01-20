@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.spi;
 
-import javax.batch.operations.JobOperator;
+import jakarta.batch.operations.JobOperator;
 
 import org.apache.batchee.container.impl.jobinstance.RuntimeJobExecution;
 

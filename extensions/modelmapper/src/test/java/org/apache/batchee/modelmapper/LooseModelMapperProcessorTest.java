@@ -21,10 +21,10 @@ import org.testng.annotations.Test;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.batch.api.chunk.ItemReader;
-import javax.batch.api.chunk.ItemWriter;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.api.chunk.ItemReader;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;

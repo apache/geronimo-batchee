@@ -16,9 +16,9 @@
 */
 package org.apache.batchee.its.transaction;
 
-import javax.batch.runtime.context.StepContext;
-import javax.transaction.RollbackException;
-import javax.transaction.Status;
+import jakarta.batch.runtime.context.StepContext;
+import jakarta.transaction.RollbackException;
+import jakarta.transaction.Status;
 
 import java.util.Properties;
 

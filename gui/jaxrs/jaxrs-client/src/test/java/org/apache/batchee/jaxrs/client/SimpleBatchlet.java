@@ -17,10 +17,10 @@
 package org.apache.batchee.jaxrs.client;
 
 import java.util.Properties;
-import javax.batch.api.AbstractBatchlet;
-import javax.batch.runtime.BatchRuntime;
-import javax.batch.runtime.context.JobContext;
-import javax.inject.Inject;
+import jakarta.batch.api.AbstractBatchlet;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.inject.Inject;
 
 public class SimpleBatchlet extends AbstractBatchlet {
     public static Properties jobParameters;

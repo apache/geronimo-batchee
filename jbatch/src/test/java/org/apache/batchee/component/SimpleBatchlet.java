@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.component;
 
-import javax.batch.api.AbstractBatchlet;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.AbstractBatchlet;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 import static java.lang.Thread.sleep;
 

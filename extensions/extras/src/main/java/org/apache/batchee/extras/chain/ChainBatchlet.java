@@ -18,7 +18,7 @@ package org.apache.batchee.extras.chain;
 
 import org.apache.batchee.extras.locator.BeanLocator;
 
-import javax.batch.api.Batchlet;
+import jakarta.batch.api.Batchlet;
 
 // not sure this is quite useful since a batchlet is a step and you can chain steps but it is another sample of Chain<?>
 public class ChainBatchlet extends Chain<Batchlet> implements Batchlet {

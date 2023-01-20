@@ -20,9 +20,9 @@ import org.apache.batchee.cli.command.api.Command;
 import org.apache.batchee.cli.command.api.Option;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.Metric;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.Metric;
+import jakarta.batch.runtime.StepExecution;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

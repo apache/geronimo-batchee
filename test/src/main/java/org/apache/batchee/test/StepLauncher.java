@@ -30,10 +30,10 @@ import org.apache.batchee.jaxb.JSLProperties;
 import org.apache.batchee.jaxb.Step;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.JobInstance;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobInstance;
+import jakarta.batch.runtime.StepExecution;
 import java.util.Properties;
 
 public class StepLauncher {

@@ -21,7 +21,7 @@ import org.apache.batchee.container.exception.TransactionManagementException;
 import org.apache.batchee.spi.TransactionManagementService;
 import org.apache.batchee.spi.TransactionManagerAdapter;
 
-import javax.batch.runtime.context.StepContext;
+import jakarta.batch.runtime.context.StepContext;
 import java.util.Properties;
 
 public class DefaultBatchTransactionService implements TransactionManagementService {
@@ -34,7 +34,7 @@ public class DefaultBatchTransactionService implements TransactionManagementServ
 
     protected TransactionManagerAdapter getTransactionManager() {
         try {
-            DefaultBatchTransactionService.class.getClassLoader().loadClass("javax.transaction.UserTransaction");
+            DefaultBatchTransactionService.class.getClassLoader().loadClass("jakarta.transaction.UserTransaction");
             return new JTAUserTransactionAdapter();
         } catch (final Throwable ncdfe) {
             return new DefaultNonTransactionalManager();

@@ -27,10 +27,10 @@ import org.apache.batchee.jaxrs.common.RestMetric;
 import org.apache.batchee.jaxrs.common.RestProperties;
 import org.apache.batchee.jaxrs.common.RestStepExecution;
 
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.JobInstance;
-import javax.batch.runtime.Metric;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobInstance;
+import jakarta.batch.runtime.Metric;
+import jakarta.batch.runtime.StepExecution;
 import java.io.Closeable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

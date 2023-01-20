@@ -19,9 +19,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Properties;
 
-import javax.batch.operations.NoSuchJobException;
-import javax.batch.operations.NoSuchJobExecutionException;
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.operations.NoSuchJobException;
+import jakarta.batch.operations.NoSuchJobExecutionException;
+import jakarta.batch.runtime.JobInstance;
 
 import org.apache.batchee.container.services.InternalJobExecution;
 import org.apache.batchee.container.services.ServicesManager;

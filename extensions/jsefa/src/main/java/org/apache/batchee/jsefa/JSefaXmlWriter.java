@@ -20,8 +20,8 @@ import net.sf.jsefa.Serializer;
 import net.sf.jsefa.xml.XmlIOFactory;
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 @Documentation("Reads a XML file using JSefa.")
 public class JSefaXmlWriter extends JSefaWriter {

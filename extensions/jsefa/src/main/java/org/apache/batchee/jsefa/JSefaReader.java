@@ -20,8 +20,8 @@ import net.sf.jsefa.Deserializer;
 import org.apache.batchee.doc.api.Documentation;
 import org.apache.batchee.extras.transaction.CountedReader;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;

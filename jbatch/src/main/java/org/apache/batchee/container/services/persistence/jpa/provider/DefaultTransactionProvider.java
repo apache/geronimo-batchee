@@ -18,8 +18,8 @@ package org.apache.batchee.container.services.persistence.jpa.provider;
 
 import org.apache.batchee.container.services.persistence.jpa.TransactionProvider;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import java.util.Properties;
 
 public class DefaultTransactionProvider implements TransactionProvider {

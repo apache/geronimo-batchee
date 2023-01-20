@@ -20,9 +20,9 @@ import org.apache.batchee.groovy.util.IOs;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.api.chunk.ItemWriter;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class GroovyReaderTest {
     public void read() {
         IOs.write("target/work/reader.groovy", "package org.apache.batchee.groovy\n" +
             "\n" +
-            "import javax.batch.api.chunk.ItemReader\n" +
+            "import jakarta.batch.api.chunk.ItemReader\n" +
             "\n" +
             "class GReader implements ItemReader {\n" +
             "    def count = 0\n" +

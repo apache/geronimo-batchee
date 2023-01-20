@@ -34,8 +34,8 @@ import org.apache.batchee.jaxb.JSLJob;
 import org.apache.batchee.spi.BatchArtifactFactory;
 import org.apache.batchee.spi.PersistenceManagerService;
 
-import javax.batch.api.listener.JobListener;
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.api.listener.JobListener;
+import jakarta.batch.runtime.BatchStatus;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

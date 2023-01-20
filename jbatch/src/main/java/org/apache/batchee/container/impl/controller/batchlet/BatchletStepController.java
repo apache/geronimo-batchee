@@ -29,8 +29,8 @@ import org.apache.batchee.jaxb.Property;
 import org.apache.batchee.jaxb.Step;
 import org.apache.batchee.spi.BatchArtifactFactory;
 
-import javax.batch.api.Batchlet;
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.api.Batchlet;
+import jakarta.batch.runtime.BatchStatus;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 

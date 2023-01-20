@@ -23,8 +23,8 @@ import org.apache.batchee.tools.maven.locator.MavenPluginLocator;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.util.Map;
 
 public abstract class BatchEEMojoBase extends AbstractMojo {

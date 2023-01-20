@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.cli.component;
 
-import javax.batch.api.AbstractBatchlet;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.AbstractBatchlet;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 public class Sample extends AbstractBatchlet {
     @Inject

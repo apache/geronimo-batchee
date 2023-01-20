@@ -20,9 +20,9 @@ import org.apache.batchee.doc.api.Documentation;
 import org.apache.batchee.extras.chain.Chain;
 import org.apache.batchee.extras.locator.BeanLocator;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemProcessor;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemProcessor;
+import jakarta.inject.Inject;
 
 @Documentation("A chain of camelItemProcessor")
 public class CamelChainItemProcessor extends Chain<ItemProcessor> implements ItemProcessor {

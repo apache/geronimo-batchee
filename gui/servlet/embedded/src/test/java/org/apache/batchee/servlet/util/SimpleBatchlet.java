@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.servlet.util;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.Batchlet;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.Batchlet;
+import jakarta.inject.Inject;
 
 public class SimpleBatchlet implements Batchlet {
     @Inject

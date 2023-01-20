@@ -29,7 +29,7 @@ import java.util.Iterator;
  * all the items and have this class handle the rest.
  *
  * This simple Reader doesn't provide any checkpointInfo
- * ({@link javax.batch.api.chunk.ItemReader#checkpointInfo()})
+ * ({@link jakarta.batch.api.chunk.ItemReader#checkpointInfo()})
  * as we only read the items in one go.
  *
  * @param <R> the return type of the reader

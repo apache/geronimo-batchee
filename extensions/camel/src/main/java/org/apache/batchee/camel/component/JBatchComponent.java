@@ -19,8 +19,8 @@ package org.apache.batchee.camel.component;
 import org.apache.camel.Endpoint;
 import org.apache.camel.impl.DefaultComponent;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.util.Map;
 
 public class JBatchComponent extends DefaultComponent {

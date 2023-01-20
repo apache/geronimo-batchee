@@ -16,8 +16,8 @@
  */
 package org.apache.batchee.cdi.impl;
 
-import javax.batch.runtime.context.JobContext;
-import javax.batch.runtime.context.StepContext;
+import jakarta.batch.runtime.context.JobContext;
+import jakarta.batch.runtime.context.StepContext;
 
 /**
  * Provides methods to resolve {@link JobContext} and {@link StepContext}

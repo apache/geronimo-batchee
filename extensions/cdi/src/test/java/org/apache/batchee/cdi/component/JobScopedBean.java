@@ -18,7 +18,7 @@ package org.apache.batchee.cdi.component;
 
 import org.apache.batchee.cdi.scope.JobScoped;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 @JobScoped
 public class JobScopedBean {

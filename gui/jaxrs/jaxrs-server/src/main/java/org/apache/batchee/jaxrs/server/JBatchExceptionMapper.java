@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.jaxrs.server;
 
-import javax.batch.operations.BatchRuntimeException;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.ExceptionMapper;
 
 public class JBatchExceptionMapper implements ExceptionMapper<BatchRuntimeException> {
     @Override

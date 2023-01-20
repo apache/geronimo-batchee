@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.its.transaction;
 
-import javax.batch.api.chunk.AbstractItemReader;
+import jakarta.batch.api.chunk.AbstractItemReader;
 
 /**
  * Sample Reader which simply counts from 1..5

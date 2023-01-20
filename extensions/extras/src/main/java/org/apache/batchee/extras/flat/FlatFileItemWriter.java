@@ -19,10 +19,10 @@ package org.apache.batchee.extras.flat;
 import org.apache.batchee.doc.api.Documentation;
 import org.apache.batchee.extras.transaction.TransactionalWriter;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.batch.operations.BatchRuntimeException;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.inject.Inject;
 import java.io.File;
 import java.io.Serializable;
 import java.util.List;

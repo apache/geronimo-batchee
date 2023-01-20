@@ -18,7 +18,7 @@ package org.apache.batchee.container.services;
 
 import org.apache.batchee.container.impl.JobContextImpl;
 
-import javax.batch.runtime.JobExecution;
+import jakarta.batch.runtime.JobExecution;
 import java.sql.Timestamp;
 import java.util.Properties;
 

@@ -20,8 +20,8 @@ import org.apache.batchee.groovy.util.IOs;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.Test;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
@@ -31,9 +31,9 @@ public class GroovyBatchletTest {
     public void read() {
         IOs.write("target/work/batchlet.groovy", "package org.apache.batchee.groovy\n" +
             "\n" +
-            "import javax.batch.api.Batchlet\n" +
-            "import javax.batch.runtime.context.JobContext\n" +
-            "import javax.inject.Inject\n" +
+            "import jakarta.batch.api.Batchlet\n" +
+            "import jakarta.batch.runtime.context.JobContext\n" +
+            "import jakarta.inject.Inject\n" +
             "\n" +
             "class GBatchlet implements Batchlet {\n" +
             "    @Inject\n" +

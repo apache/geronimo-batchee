@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.tools.maven.batchlet;
 
-import javax.batch.api.AbstractBatchlet;
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
+import jakarta.batch.api.AbstractBatchlet;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
 
 public class SimpleBatchlet extends AbstractBatchlet {
     @Inject

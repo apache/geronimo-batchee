@@ -18,12 +18,12 @@ package org.apache.batchee.jaxrs.server.util;
 
 import org.apache.batchee.util.Batches;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.operations.NoSuchJobException;
-import javax.batch.runtime.BatchRuntime;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.annotation.WebListener;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.operations.NoSuchJobException;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 import java.util.Properties;
 
 @WebListener

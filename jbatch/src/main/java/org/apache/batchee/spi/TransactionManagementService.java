@@ -16,7 +16,7 @@
 */
 package org.apache.batchee.spi;
 
-import javax.batch.runtime.context.StepContext;
+import jakarta.batch.runtime.context.StepContext;
 
 public interface TransactionManagementService extends BatchService {
     TransactionManagerAdapter getTransactionManager(StepContext stepContext);

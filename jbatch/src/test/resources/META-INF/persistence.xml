@@ -29,10 +29,10 @@
     <class>org.apache.batchee.container.services.persistence.jpa.domain.StepExecutionEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:jpabatchee;create=true" />
-      <property name="javax.persistence.jdbc.user" value="app" />
-      <property name="javax.persistence.jdbc.password" value="app" />
+      <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+      <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:memory:jpabatchee;create=true" />
+      <property name="jakarta.persistence.jdbc.user" value="app" />
+      <property name="jakarta.persistence.jdbc.password" value="app" />
 
       <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
       <property name="openjpa.Log" value="org.apache.openejb.openjpa.JULOpenJPALogFactory"/>

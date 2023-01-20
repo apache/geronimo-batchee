@@ -21,7 +21,7 @@ import org.apache.batchee.container.status.JobStatus;
 import org.apache.batchee.container.status.StepStatus;
 import org.apache.batchee.spi.BatchService;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 
 public interface JobStatusManagerService extends BatchService {
 

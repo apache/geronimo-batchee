@@ -16,8 +16,8 @@
  */
 package org.apache.batchee.cli.lifecycle.impl;
 
-import javax.enterprise.inject.se.SeContainer;
-import javax.enterprise.inject.se.SeContainerInitializer;
+import jakarta.enterprise.inject.se.SeContainer;
+import jakarta.enterprise.inject.se.SeContainerInitializer;
 
 public class CdiSeLifecycle extends LifecycleBase<SeContainer> {
     @Override

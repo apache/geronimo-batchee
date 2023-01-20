@@ -26,8 +26,8 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 
 import org.apache.batchee.extras.typed.NoStateTypedItemReader;
 import org.apache.batchee.extras.typed.NoStateTypedItemWriter;

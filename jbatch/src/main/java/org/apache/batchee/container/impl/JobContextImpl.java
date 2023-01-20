@@ -21,8 +21,8 @@ import org.apache.batchee.jaxb.JSLJob;
 import org.apache.batchee.jaxb.JSLProperties;
 import org.apache.batchee.jaxb.Property;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.context.JobContext;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.context.JobContext;
 import java.util.Properties;
 
 

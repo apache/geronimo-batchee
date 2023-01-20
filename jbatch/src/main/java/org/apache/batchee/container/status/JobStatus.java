@@ -18,8 +18,8 @@ package org.apache.batchee.container.status;
 
 import org.apache.batchee.container.impl.JobInstanceImpl;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobInstance;
 import java.io.Serializable;
 
 public class JobStatus implements Serializable, Cloneable {

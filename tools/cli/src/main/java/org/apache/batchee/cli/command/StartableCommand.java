@@ -21,10 +21,10 @@ import org.apache.batchee.cli.command.api.Option;
 import org.apache.batchee.util.Batches;
 import org.apache.commons.io.IOUtils;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.StepExecution;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobExecution;
+import jakarta.batch.runtime.StepExecution;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;

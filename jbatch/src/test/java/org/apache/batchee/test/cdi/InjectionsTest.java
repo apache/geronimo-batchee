@@ -20,8 +20,8 @@ import org.apache.batchee.test.tck.lifecycle.ContainerLifecycle;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
 
 import static org.apache.batchee.util.Batches.waitForEnd;
 import static org.testng.Assert.assertEquals;

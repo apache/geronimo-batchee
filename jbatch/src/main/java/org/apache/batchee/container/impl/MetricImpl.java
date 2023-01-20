@@ -16,7 +16,7 @@
 */
 package org.apache.batchee.container.impl;
 
-import javax.batch.runtime.Metric;
+import jakarta.batch.runtime.Metric;
 
 public class MetricImpl implements Metric {
     private MetricType name;

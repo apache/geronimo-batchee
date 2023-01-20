@@ -19,9 +19,9 @@ package org.apache.batchee.extras.jdbc;
 import org.apache.batchee.doc.api.Documentation;
 import org.apache.batchee.extras.transaction.integration.Synchronizations;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.Batchlet;
-import javax.inject.Inject;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.Batchlet;
+import jakarta.inject.Inject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 

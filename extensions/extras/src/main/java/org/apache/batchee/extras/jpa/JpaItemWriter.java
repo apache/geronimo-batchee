@@ -18,10 +18,10 @@ package org.apache.batchee.extras.jpa;
 
 import org.apache.batchee.doc.api.Documentation;
 
-import javax.batch.api.BatchProperty;
-import javax.batch.api.chunk.ItemWriter;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import jakarta.batch.api.BatchProperty;
+import jakarta.batch.api.chunk.ItemWriter;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import java.io.Serializable;
 import java.util.List;
 

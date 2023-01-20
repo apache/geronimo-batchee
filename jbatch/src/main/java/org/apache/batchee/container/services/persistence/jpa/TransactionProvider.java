@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.container.services.persistence.jpa;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import java.util.Properties;
 
 /**

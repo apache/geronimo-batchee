@@ -77,7 +77,7 @@ public class ServicesManager implements BatchContainerConstants {
         SERVICE_IMPL_CLASS_NAMES.put(JobExecutionCallbackService.class.getName(), SimpleJobExecutionCallbackService.class.getName());
         SERVICE_IMPL_CLASS_NAMES.put(DataRepresentationService.class.getName(), DefaultDataRepresentationService.class.getName());
         try {
-            Thread.currentThread().getContextClassLoader().loadClass("javax.enterprise.inject.spi.BeanManager");
+            Thread.currentThread().getContextClassLoader().loadClass("jakarta.enterprise.inject.spi.BeanManager");
             SERVICE_IMPL_CLASS_NAMES.put(BatchArtifactFactory.class.getName(), CDIBatchArtifactFactory.class.getName());
         } catch (final Throwable th) {
             SERVICE_IMPL_CLASS_NAMES.put(BatchArtifactFactory.class.getName(), DefaultBatchArtifactFactory.class.getName());

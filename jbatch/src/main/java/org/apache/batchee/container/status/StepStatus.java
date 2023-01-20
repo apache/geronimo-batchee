@@ -20,7 +20,7 @@ import org.apache.batchee.container.exception.BatchContainerRuntimeException;
 import org.apache.batchee.container.impl.controller.chunk.PersistentDataWrapper;
 import org.apache.batchee.container.util.TCCLObjectInputStream;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 

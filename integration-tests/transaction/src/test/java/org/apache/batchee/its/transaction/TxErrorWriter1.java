@@ -16,8 +16,8 @@
  */
 package org.apache.batchee.its.transaction;
 
-import javax.batch.api.chunk.AbstractItemWriter;
-import javax.transaction.Status;
+import jakarta.batch.api.chunk.AbstractItemWriter;
+import jakarta.transaction.Status;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 

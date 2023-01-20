@@ -16,9 +16,9 @@
  */
 package org.apache.batchee.extras.stax.util;
 
-import javax.batch.operations.BatchRuntimeException;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
 
 public class JAXBContextFactory {
     public static JAXBContext getJaxbContext(final String marshallingPackage, final String marshallingClasses) throws JAXBException {

@@ -19,10 +19,10 @@ package org.apache.batchee.cdi.partitioned;
 import org.apache.batchee.cdi.component.StepScopedBean;
 import org.apache.batchee.cdi.scope.StepScoped;
 
-import javax.batch.api.chunk.AbstractItemReader;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.batch.api.chunk.AbstractItemReader;
+import jakarta.enterprise.context.Dependent;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 @Named
 @Dependent

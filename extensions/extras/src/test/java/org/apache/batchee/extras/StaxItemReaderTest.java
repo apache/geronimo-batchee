@@ -20,10 +20,10 @@ import org.apache.batchee.util.Batches;
 import org.apache.batchee.extras.util.IOs;
 import org.testng.annotations.Test;
 
-import javax.batch.api.chunk.ItemProcessor;
-import javax.batch.operations.JobOperator;
-import javax.batch.runtime.BatchRuntime;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.batch.api.chunk.ItemProcessor;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.runtime.BatchRuntime;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;

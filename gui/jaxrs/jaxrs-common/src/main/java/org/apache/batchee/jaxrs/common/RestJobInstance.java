@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.jaxrs.common;
 
-import javax.batch.runtime.JobInstance;
+import jakarta.batch.runtime.JobInstance;
 import java.util.ArrayList;
 import java.util.List;
 

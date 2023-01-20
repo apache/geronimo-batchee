@@ -16,8 +16,8 @@
  */
 package org.apache.batchee.jaxrs.client.impl;
 
-import javax.batch.runtime.BatchStatus;
-import javax.batch.runtime.JobExecution;
+import jakarta.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.JobExecution;
 import java.util.Date;
 import java.util.Properties;
 

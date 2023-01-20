@@ -19,10 +19,10 @@ package org.apache.batchee.jsonp;
 import org.apache.batchee.doc.api.Documentation;
 import org.apache.batchee.extras.transaction.CountedReader;
 
-import javax.batch.api.BatchProperty;
-import javax.inject.Inject;
-import javax.json.spi.JsonProvider;
-import javax.json.stream.JsonParser;
+import jakarta.batch.api.BatchProperty;
+import jakarta.inject.Inject;
+import jakarta.json.spi.JsonProvider;
+import jakarta.json.stream.JsonParser;
 import java.io.FileInputStream;
 import java.io.Serializable;
 

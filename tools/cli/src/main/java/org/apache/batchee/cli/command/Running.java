@@ -18,8 +18,8 @@ package org.apache.batchee.cli.command;
 
 import org.apache.batchee.cli.command.api.Command;
 
-import javax.batch.operations.JobOperator;
-import javax.batch.operations.NoSuchJobException;
+import jakarta.batch.operations.JobOperator;
+import jakarta.batch.operations.NoSuchJobException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;

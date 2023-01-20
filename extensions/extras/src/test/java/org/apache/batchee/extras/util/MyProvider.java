@@ -18,9 +18,9 @@ package org.apache.batchee.extras.util;
 
 import org.apache.batchee.extras.jpa.EntityManagerProvider;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class MyProvider implements EntityManagerProvider {
     private static EntityManagerFactory emf = null;

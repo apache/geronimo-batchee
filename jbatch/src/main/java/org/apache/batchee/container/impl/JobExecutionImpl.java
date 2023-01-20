@@ -20,7 +20,7 @@ import org.apache.batchee.container.services.InternalJobExecution;
 import org.apache.batchee.spi.PersistenceManagerService;
 import org.apache.batchee.spi.PersistenceManagerService.TimestampType;
 
-import javax.batch.runtime.BatchStatus;
+import jakarta.batch.runtime.BatchStatus;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Properties;
