@@ -210,7 +210,7 @@
             <dependency> <!-- TCK and default tests -->
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
-                <version>7.7.0</version>
+                <version>6.9.9</version>
                 <scope>test</scope>
             </dependency>
             <dependency> <!-- camel/arquillian -->
