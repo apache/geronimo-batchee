@@ -48,7 +48,7 @@
         <jackson.version>2.2.2</jackson.version>
         <jodatime.version>2.10.9</jodatime.version>
         <johnzon.version>1.2.15</johnzon.version>
-        <tomee.version>8.0.8</tomee.version>
+        <tomee.version>8.0.9</tomee.version>
         <xbean.version>4.19</xbean.version>
         <deltaspike.version>1.9.5</deltaspike.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
