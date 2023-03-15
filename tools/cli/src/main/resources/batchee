@@ -91,12 +91,12 @@ home="$BATCHEE_HOME"
 if $cygwin; then
     home=$(cygpath -wp "$home")
 fi
-BATCHEE_OPTS="$BATCHEE_OPTS -Dbatchee.home=$home"
+BATCHEE_OPTS="$BATCHEE_OPTS -Dbatchee.home=$home -XX:+AllowParallelDefineClass"
 
 args="$@"
 if [ "$1" = "debug" ]; then
     BATCHEE_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005 $BATCHEE_OPTS"
-	shift
+  shift
 fi
 
 logging="$BATCHEE_HOME/conf/logging.properties"
