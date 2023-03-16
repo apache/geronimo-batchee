@@ -91,7 +91,7 @@ home="$BATCHEE_HOME"
 if $cygwin; then
     home=$(cygpath -wp "$home")
 fi
-BATCHEE_OPTS="$BATCHEE_OPTS -Dbatchee.home=$home -XX:+AllowParallelDefineClass"
+BATCHEE_OPTS="$BATCHEE_OPTS -Dbatchee.home=$home "
 
 args="$@"
 if [ "$1" = "debug" ]; then

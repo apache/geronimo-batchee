@@ -99,78 +99,80 @@ public class ChildFirstURLClassLoader  extends URLClassLoader {
 
     @Override
     public Class<?> loadClass(final String name, final boolean resolve) throws ClassNotFoundException {
-        // already loaded?
-        Class<?> clazz = findLoadedClass(name);
-        if (clazz != null) {
-            if (resolve) {
-                resolveClass(clazz);
-            }
-            return clazz;
-        }
-
-        /* needed if classloader hierarchy is batchee* <- cdi container <- app
-        // lifecycle classes and cdi extensions need to be loaded from "container/lifecyle" loader
-        if ((name.endsWith("Lifecycle") && name.startsWith("org.apache.batchee.cli.lifecycle.impl."))
-                || name.startsWith("org.apache.batchee.container.cdi.")
-                || name.startsWith("org.apache.batchee.container.services.factory.CDIBatchArtifactFactory")) {
-            if (getParent() == system ) {
-                final String path = name.replace('.', '/').concat(".class");
-                try {
-                    InputStream res = getResourceAsStream(path);
-                    if (res != null && !BufferedInputStream.class.isInstance(res)) {
-                        res = new BufferedInputStream(res);
-                    }
-
-                    if (res != null) {
-                        final ByteArrayOutputStream bout = new ByteArrayOutputStream(6 * 1024);
-                        try {
-                            IOUtils.copy(res, bout);
-                            final byte[] bytes = bout.toByteArray();
-                            clazz = defineClass(name, bytes, 0, bytes.length);
-                            if (resolve) {
-                                resolveClass(clazz);
-                            }
-                            return clazz;
-                        } catch (final IOException e) {
-                            throw new ClassNotFoundException(name, e);
-                        } finally {
-                            IOUtils.closeQuietly(res);
-                        }
-                    }
-                } catch (final ClassNotFoundException cnfe) {
-                    // no-op
-                }
-            } else {
-                return super.loadClass(name, resolve);
-            }
-        }
-        */
-
-        // JSE classes
-        try {
-            clazz = system.loadClass(name);
+        synchronized (getClassLoadingLock(name)) {
+            // already loaded?
+            Class<?> clazz = findLoadedClass(name);
             if (clazz != null) {
                 if (resolve) {
                     resolveClass(clazz);
                 }
                 return clazz;
             }
-        } catch (final ClassNotFoundException ignored) {
-            // no-op
-        }
 
-        clazz = loadInternal(name, resolve);
-        if (clazz != null) {
-            return clazz;
-        }
+            /* needed if classloader hierarchy is batchee* <- cdi container <- app
+            // lifecycle classes and cdi extensions need to be loaded from "container/lifecyle" loader
+            if ((name.endsWith("Lifecycle") && name.startsWith("org.apache.batchee.cli.lifecycle.impl."))
+                    || name.startsWith("org.apache.batchee.container.cdi.")
+                    || name.startsWith("org.apache.batchee.container.services.factory.CDIBatchArtifactFactory")) {
+                if (getParent() == system ) {
+                    final String path = name.replace('.', '/').concat(".class");
+                    try {
+                        InputStream res = getResourceAsStream(path);
+                        if (res != null && !BufferedInputStream.class.isInstance(res)) {
+                            res = new BufferedInputStream(res);
+                        }
 
-        // finally delegate
-        clazz = loadFromParent(name, resolve);
-        if (clazz != null) {
-            return clazz;
-        }
+                        if (res != null) {
+                            final ByteArrayOutputStream bout = new ByteArrayOutputStream(6 * 1024);
+                            try {
+                                IOUtils.copy(res, bout);
+                                final byte[] bytes = bout.toByteArray();
+                                clazz = defineClass(name, bytes, 0, bytes.length);
+                                if (resolve) {
+                                    resolveClass(clazz);
+                                }
+                                return clazz;
+                            } catch (final IOException e) {
+                                throw new ClassNotFoundException(name, e);
+                            } finally {
+                                IOUtils.closeQuietly(res);
+                            }
+                        }
+                    } catch (final ClassNotFoundException cnfe) {
+                        // no-op
+                    }
+                } else {
+                    return super.loadClass(name, resolve);
+                }
+            }
+            */
 
-        throw new ClassNotFoundException(name);
+            // JSE classes
+            try {
+                clazz = system.loadClass(name);
+                if (clazz != null) {
+                    if (resolve) {
+                        resolveClass(clazz);
+                    }
+                    return clazz;
+                }
+            } catch (final ClassNotFoundException ignored) {
+                // no-op
+            }
+
+            clazz = loadInternal(name, resolve);
+            if (clazz != null) {
+                return clazz;
+            }
+
+            // finally delegate
+            clazz = loadFromParent(name, resolve);
+            if (clazz != null) {
+                return clazz;
+            }
+
+            throw new ClassNotFoundException(name);
+        }
     }
 
     private Class<?> loadFromParent(final String name, final boolean resolve) {
