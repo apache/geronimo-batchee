@@ -19,7 +19,6 @@ package org.apache.batchee.camel;
 import org.apache.batchee.util.Batches;
 import org.apache.camel.ConsumerTemplate;
 import org.apache.camel.component.direct.DirectEndpoint;
-import org.apache.camel.component.directvm.DirectVmEndpoint;
 import org.testng.annotations.Test;
 
 import jakarta.batch.api.chunk.ItemReader;
@@ -54,7 +53,7 @@ public class CamelWriterTest {
 
         do { // starting the listener in another thread w can get timing issues so ensuring we are in the right state
             Thread.sleep(20);
-        } while (DirectVmEndpoint.class.cast(CamelBridge.CONTEXT.getEndpoint("direct:writer")).getConsumer() == null);
+        } while (DirectEndpoint.class.cast(CamelBridge.CONTEXT.getEndpoint("direct:writer")).getConsumer() == null);
 
         final JobOperator jobOperator = BatchRuntime.getJobOperator();
         Batches.waitForEnd(jobOperator, jobOperator.start("camel-writer", new Properties()));

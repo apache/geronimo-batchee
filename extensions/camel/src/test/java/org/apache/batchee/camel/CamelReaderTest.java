@@ -19,7 +19,6 @@ package org.apache.batchee.camel;
 import org.apache.batchee.util.Batches;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.direct.DirectEndpoint;
-import org.apache.camel.component.directvm.DirectVmEndpoint;
 import org.testng.annotations.Test;
 
 import jakarta.batch.api.chunk.ItemProcessor;
@@ -40,7 +39,7 @@ public class CamelReaderTest {
 
         final long id = jobOperator.start("camel-reader", new Properties());
 
-        while (DirectVmEndpoint.class.cast(CamelBridge.CONTEXT.getEndpoint("direct:reader")).getConsumer() == null) {
+        while (DirectEndpoint.class.cast(CamelBridge.CONTEXT.getEndpoint("direct:reader")).getConsumer() == null) {
             Thread.sleep(100);
         }
 
