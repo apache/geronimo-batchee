@@ -20,6 +20,7 @@ import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
+import jakarta.servlet.FilterRegistration;
 import jakarta.servlet.ServletContainerInitializer;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -71,8 +72,12 @@ public class JBatchServletInitializer implements ServletContainerInitializer {
 
         final String activePrivateFilter = ctx.getInitParameter(ACTIVE_PRIVATE_FILTER);
         if (activePrivateFilter == null || Boolean.parseBoolean(activePrivateFilter)) {
-            ctx.addFilter("JBatch Private Filter", PrivateFilter.class)
-                .addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, "/*");
+            final FilterRegistration.Dynamic filter = ctx.addFilter("JBatch Private Filter", PrivateFilter.class);
+
+            // filter is null if it already got added previously
+            if (filter != null) {
+                filter.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST), false, "/*");
+            }
         }
     }
 
