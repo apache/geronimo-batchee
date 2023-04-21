@@ -28,6 +28,7 @@
     <class>org.apache.batchee.container.services.persistence.jpa.domain.JobInstanceEntity</class>
     <class>org.apache.batchee.container.services.persistence.jpa.domain.StepExecutionEntity</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <validation-mode>NONE</validation-mode>
     <properties>
       <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
       <property name="jakarta.persistence.jdbc.url" value="jdbc:derby:memory:jpabatchee;create=true" />

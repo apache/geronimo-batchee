@@ -42,7 +42,7 @@
         <!-- for reproducible builds -->
         <project.build.outputTimestamp>10</project.build.outputTimestamp>
 
-        <jaxb.version>2.3.4</jaxb.version>
+        <jaxb.version>3.0.2</jaxb.version>
         <dependency.version.jakarta.batch-api>2.1.1</dependency.version.jakarta.batch-api>
         <dependency.version.jakarta.servlet-api>5.0.0</dependency.version.jakarta.servlet-api>
         <dependency.version.jakarta.persistence-api>3.1.0</dependency.version.jakarta.persistence-api>
@@ -61,11 +61,14 @@
         <johnzon.version>2.0.0-SNAPSHOT</johnzon.version>
         <openjpa.version>3.2.2</openjpa.version>
         <tomee.version>9.0.0</tomee.version>
+        <bval.version>3.0.0-SNAPSHOT</bval.version>
         <xbean.version>4.22</xbean.version>
         <deltaspike.version>2.0.0-SNAPSHOT</deltaspike.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <batchee.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/geronimo/content/batchee</batchee.scmPubUrl>
         <batchee.scmPubCheckoutDirectory>${basedir}/.site-content</batchee.scmPubCheckoutDirectory>
+
+        <derby.version>10.15.2.0</derby.version>
     </properties>
 
     <ciManagement>
@@ -234,6 +237,12 @@
                 <version>${jodatime.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+
 
             <!-- Testing libraries -->
             <dependency> <!-- TCK and default tests -->
@@ -251,7 +260,13 @@
             <dependency>
                 <groupId>org.apache.derby</groupId>
                 <artifactId>derby</artifactId>
-                <version>10.14.2.0</version>
+                <version>${derby.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.derby</groupId>
+                <artifactId>derbytools</artifactId>
+                <version>${derby.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>

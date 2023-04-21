@@ -844,7 +844,7 @@ public class JPAPersistenceManagerService implements PersistenceManagerService {
         final String providerClass = batchConfig.getProperty(
             "persistence.jpa.entity-manager-provider", ee ? EEEntityManagerProvider.class.getName() : DefaultEntityManagerProvider.class.getName());
         try {
-            emProvider = EntityManagerProvider.class.cast(Thread.currentThread().getContextClassLoader().loadClass(providerClass).newInstance());
+            emProvider = EntityManagerProvider.class.cast(Thread.currentThread().getContextClassLoader().loadClass(providerClass).getDeclaredConstructor().newInstance());
         } catch (final Exception e) {
             throw new BatchContainerRuntimeException(e);
         }

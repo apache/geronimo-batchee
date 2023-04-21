@@ -77,7 +77,7 @@
     </dependency>
     <dependency>
       <groupId>org.jboss.arquillian.container</groupId>
-      <artifactId>arquillian-tomcat-embedded-7</artifactId>
+      <artifactId>arquillian-tomcat-embedded-10</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>

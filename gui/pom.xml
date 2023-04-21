@@ -181,8 +181,8 @@
             </dependency>
             <dependency>
                 <groupId>org.jboss.arquillian.container</groupId>
-                <artifactId>arquillian-tomcat-embedded-7</artifactId>
-                <version>1.0.0.CR5</version>
+                <artifactId>arquillian-tomcat-embedded-10</artifactId>
+                <version>1.2.0.Final</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
