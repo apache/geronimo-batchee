@@ -20,6 +20,7 @@ import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
+import org.objectweb.asm.Opcodes;
 
 import java.beans.Introspector;
 import java.io.File;
@@ -38,7 +39,6 @@ import java.util.TreeMap;
 import static org.objectweb.asm.ClassReader.SKIP_CODE;
 import static org.objectweb.asm.ClassReader.SKIP_DEBUG;
 import static org.objectweb.asm.ClassReader.SKIP_FRAMES;
-import static org.objectweb.asm.Opcodes.ASM5;
 
 // NO MAVEN IMPORTS THERE
 public abstract class ComponentDocumentationGenerator {
@@ -254,7 +254,7 @@ public abstract class ComponentDocumentationGenerator {
         try {
             stream = new FileInputStream(classFile);
             final ClassReader reader = new ClassReader(stream);
-            reader.accept(new ClassVisitor(ASM5) {
+            reader.accept(new ClassVisitor(Opcodes.ASM7) {
                 public boolean isLeaf;
                 private String parentName;
                 private String configName;
@@ -285,7 +285,7 @@ public abstract class ComponentDocumentationGenerator {
                         }
 
                         configName = Introspector.decapitalize(configName);
-                        return new AnnotationVisitor(ASM5, annotationVisitor) {
+                        return new AnnotationVisitor(Opcodes.ASM7, annotationVisitor) {
                             @Override
                             public void visit(final String name, final Object value) {
                                 super.visit(name, value);
@@ -296,7 +296,7 @@ public abstract class ComponentDocumentationGenerator {
                         };
                     }
                     if (CONFIGURATION_MARKER.equals(desc)) {
-                        return new AnnotationVisitor(ASM5, annotationVisitor) {
+                        return new AnnotationVisitor(Opcodes.ASM7, annotationVisitor) {
                             @Override
                             public void visit(final String name, final Object value) {
                                 super.visit(name, value);
@@ -311,7 +311,7 @@ public abstract class ComponentDocumentationGenerator {
 
                 @Override
                 public FieldVisitor visitField(final int access, final String name, final String desc, final String signature, final Object value) {
-                    return new FieldVisitor(ASM5, super.visitField(access, name, desc, signature, value)) {
+                    return new FieldVisitor(Opcodes.ASM7, super.visitField(access, name, desc, signature, value)) {
                         private boolean marked = false;
                         private boolean hasInject = false;
                         private String configName = name;
@@ -322,7 +322,7 @@ public abstract class ComponentDocumentationGenerator {
                             final AnnotationVisitor annotationVisitor = super.visitAnnotation(desc, visible);
                             if (PROPERTY_MARKER.equals(desc)) {
                                 marked = true;
-                                return new AnnotationVisitor(ASM5, annotationVisitor) {
+                                return new AnnotationVisitor(Opcodes.ASM7, annotationVisitor) {
                                     @Override
                                     public void visit(final String name, final Object value) {
                                         super.visit(name, value);
@@ -337,7 +337,7 @@ public abstract class ComponentDocumentationGenerator {
                                 return annotationVisitor;
                             }
                             if (CONFIGURATION_MARKER.equals(desc)) {
-                                return new AnnotationVisitor(ASM5, annotationVisitor) {
+                                return new AnnotationVisitor(Opcodes.ASM7, annotationVisitor) {
                                     @Override
                                     public void visit(final String name, final Object value) {
                                         super.visit(name, value);
