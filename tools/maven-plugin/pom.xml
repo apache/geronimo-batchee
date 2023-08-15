@@ -139,7 +139,7 @@
   </build>
 
   <properties>
-    <maven.version>3.0.5</maven.version>
+    <maven.version>3.8.1</maven.version>
     <jung.version>2.0.1</jung.version>
   </properties>
 </project>
