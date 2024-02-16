@@ -35,7 +35,7 @@ import java.util.List;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="flow" type="{http://xmlns.jcp.org/xml/ns/javaee}Flow" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="flow" type="{https://jakarta.ee/xml/ns/jakartaee}Flow" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" use="required" type="{http://www.w3.org/2001/XMLSchema}ID" /&gt;
  *       &lt;attribute name="next" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;

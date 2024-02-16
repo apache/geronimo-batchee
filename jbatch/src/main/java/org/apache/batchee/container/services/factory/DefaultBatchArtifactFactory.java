@@ -46,6 +46,7 @@ public class DefaultBatchArtifactFactory implements BatchArtifactFactory, XMLStr
     private final static String BATCHEE_XML = "META-INF/batchee.xml";
 
     private final static QName BATCH_ROOT_ELEM = new QName("http://xmlns.jcp.org/xml/ns/javaee", "batch-artifacts");
+    private final static QName BATCH_ROOT_ELEM_JAKARTA = new QName("https://jakarta.ee/xml/ns/jakartaee", "batch-artifacts");
 
     // Uses TCCL
     @Override
@@ -156,12 +157,12 @@ public class DefaultBatchArtifactFactory implements BatchArtifactFactory, XMLStr
                 //
                 if (event == START_ELEMENT) {
                     if (!processedRoot) {
-                        QName rootQName = xmlStreamReader.getName();
-                        if (!rootQName.equals(BATCH_ROOT_ELEM)) {
-                            throw new IllegalStateException("Expecting document with root element QName: " + BATCH_ROOT_ELEM
-                                + ", but found root element with QName: " + rootQName);
+                        final QName rootQName = xmlStreamReader.getName();
+                        if (rootQName.equals(BATCH_ROOT_ELEM) || rootQName.equals(BATCH_ROOT_ELEM_JAKARTA)) {
+                           processedRoot = true;
                         } else {
-                            processedRoot = true;
+                            throw new IllegalStateException("Expecting document with root element QName: " + BATCH_ROOT_ELEM
+                                    + ", but found root element with QName: " + rootQName);
                         }
                     } else {
 

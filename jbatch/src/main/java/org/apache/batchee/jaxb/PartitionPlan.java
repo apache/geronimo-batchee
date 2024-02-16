@@ -26,7 +26,7 @@ import java.util.List;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="properties" type="{http://xmlns.jcp.org/xml/ns/javaee}Properties" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="properties" type="{https://jakarta.ee/xml/ns/jakartaee}Properties" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="partitions" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *       &lt;attribute name="threads" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;

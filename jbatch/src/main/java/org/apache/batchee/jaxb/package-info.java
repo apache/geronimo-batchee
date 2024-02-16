@@ -5,4 +5,4 @@
 // Generated on: 2013.08.27 at 09:45:12 AM CEST 
 //
 
-@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://xmlns.jcp.org/xml/ns/javaee", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED) package org.apache.batchee.jaxb;
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "https://jakarta.ee/xml/ns/jakartaee", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED) package org.apache.batchee.jaxb;

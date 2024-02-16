@@ -25,7 +25,7 @@ import jakarta.xml.bind.annotation.XmlType;
  * &lt;complexType name="Fail"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;attGroup ref="{http://xmlns.jcp.org/xml/ns/javaee}TerminatingAttributes"/&gt;
+ *       &lt;attGroup ref="{https://jakarta.ee/xml/ns/jakartaee}TerminatingAttributes"/&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;

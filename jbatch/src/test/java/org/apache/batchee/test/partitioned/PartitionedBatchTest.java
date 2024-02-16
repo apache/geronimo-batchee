@@ -16,7 +16,7 @@
  */
 package org.apache.batchee.test.partitioned;
 
-import org.apache.batchee.test.tck.lifecycle.ContainerLifecycle;
+import org.apache.batchee.test.lifecyle.ContainerLifecycle;
 import org.apache.batchee.util.Batches;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

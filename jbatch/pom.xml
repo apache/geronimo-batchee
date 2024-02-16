@@ -27,10 +27,6 @@
   <artifactId>batchee-jbatch</artifactId>
   <name>BatchEE :: JBatch</name>
 
-  <properties>
-    <tck.suite>${project.build.directory}/test-classes/testng/jsr352-tck-impl-EE-suite.xml</tck.suite>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>jakarta.batch</groupId>
@@ -125,40 +121,6 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- To replace with the jakarta version of TCK
-    <dependency>
-      <groupId>com.ibm.jbatch.tck</groupId>
-      <artifactId>com.ibm.jbatch.tck</artifactId>
-      <version>1.1-b03</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>jakarta.batch</groupId>
-          <artifactId>jakarta.batch-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>jakarta.inject</groupId>
-          <artifactId>jakarta.inject</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>com.ibm.jbatch</groupId>
-          <artifactId>com.ibm.jbatch.spi</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>com.ibm.jbatch.tck</groupId>
-      <artifactId>com.ibm.jbatch.tck.spi</artifactId>
-      <version>1.1-b03</version>
-      <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>jakarta.batch</groupId>
-          <artifactId>jakarta.batch-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    -->
   </dependencies>
 
   <build>
@@ -172,31 +134,6 @@
       </resource>
     </resources>
     <plugins>
-      <!-- to replace with Jakarta version of the TCK
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>get-tck</id>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <phase>generate-test-sources</phase>
-          </execution>
-        </executions>
-        <configuration>
-          <artifactItems>
-            <artifactItem>
-              <groupId>com.ibm.jbatch.tck</groupId>
-              <artifactId>com.ibm.jbatch.tck</artifactId>
-              <outputDirectory>${project.build.directory}/test-classes</outputDirectory>
-              <includes>testng/*</includes>
-            </artifactItem>
-          </artifactItems>
-        </configuration>
-      </plugin>
-      -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
@@ -210,77 +147,6 @@
               <skip>${maven.test.skip}</skip>
             </configuration>
           </execution>
-          <!-- to replace with the jakarta version of the TCK
-          <execution>
-            <id>tck-in-memory</id>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <configuration>
-              <skip>${maven.test.skip}</skip>
-              <systemProperties>
-                <PersistenceManagerService>
-                  org.apache.batchee.container.services.persistence.MemoryPersistenceManagerService
-                </PersistenceManagerService>
-              </systemProperties>
-              <suiteXmlFiles>
-                <suiteXmlFile>${tck.suite}</suiteXmlFile>
-              </suiteXmlFiles>
-              <properties>
-                <property>
-                  <name>listener</name>
-                  <value>org.apache.batchee.test.tck.lifecycle.ContainerLifecycle</value>
-                </property>
-              </properties>
-            </configuration>
-          </execution>
-          <execution>
-            <id>tck-jdbc</id>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <configuration>
-              <skip>${maven.test.skip}</skip>
-              <systemProperties>
-                <PersistenceManagerService>
-                  org.apache.batchee.container.services.persistence.JDBCPersistenceManagerService
-                </PersistenceManagerService>
-              </systemProperties>
-              <suiteXmlFiles>
-                <suiteXmlFile>${tck.suite}</suiteXmlFile>
-              </suiteXmlFiles>
-              <properties>
-                <property>
-                  <name>listener</name>
-                  <value>org.apache.batchee.test.tck.lifecycle.ContainerLifecycle</value>
-                </property>
-              </properties>
-            </configuration>
-          </execution>
-          <execution>
-            <id>tck-jpa</id>
-            <goals>
-              <goal>test</goal>
-            </goals>
-            <configuration>
-              <skip>${maven.test.skip}</skip>
-              <systemProperties>
-                <PersistenceManagerService>
-                  org.apache.batchee.container.services.persistence.JPAPersistenceManagerService
-                </PersistenceManagerService>
-              </systemProperties>
-              <suiteXmlFiles>
-                <suiteXmlFile>${tck.suite}</suiteXmlFile>
-              </suiteXmlFiles>
-              <properties>
-                <property>
-                  <name>listener</name>
-                  <value>org.apache.batchee.test.tck.lifecycle.ContainerLifecycle</value>
-                </property>
-              </properties>
-            </configuration>
-          </execution>
-          -->
         </executions>
         <configuration>
           <skip>true</skip>

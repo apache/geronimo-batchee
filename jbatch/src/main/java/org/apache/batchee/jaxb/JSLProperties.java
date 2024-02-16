@@ -27,7 +27,7 @@ import java.util.List;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="property" type="{http://xmlns.jcp.org/xml/ns/javaee}Property" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="property" type="{https://jakarta.ee/xml/ns/jakartaee}Property" maxOccurs="unbounded" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="partition" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;

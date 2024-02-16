@@ -16,7 +16,7 @@
 */
 package org.apache.batchee.test.cdi;
 
-import org.apache.batchee.test.tck.lifecycle.ContainerLifecycle;
+import org.apache.batchee.test.lifecyle.ContainerLifecycle;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
