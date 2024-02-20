@@ -109,6 +109,11 @@ public class SpringLifecycle extends LifecycleBase<AbstractApplicationContext> {
                 }
                 return parent.getArtifactById(id);
             }
+
+            @Override
+            public Class<?> getArtifactClassById(String id) {
+                return context.getType(id);
+            }
         }
     }
 }

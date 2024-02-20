@@ -194,6 +194,8 @@ public class DefaultBatchArtifactFactory implements BatchArtifactFactory, XMLStr
 
     protected static interface ArtifactLocator {
         Object getArtifactById(String id);
+
+        Class<?> getArtifactClassById(String id);
     }
 
     private class ArtifactMap implements ArtifactLocator {
@@ -237,18 +239,19 @@ public class DefaultBatchArtifactFactory implements BatchArtifactFactory, XMLStr
             Object artifactInstance = null;
 
             try {
-                final Class<?> clazz = idToArtifactClassMap.get(id);
+                final Class<?> clazz = getArtifactClassById(id);
                 if (clazz != null) {
-                    artifactInstance = (idToArtifactClassMap.get(id)).newInstance();
+                    artifactInstance = clazz.getConstructor().newInstance();
                 }
-            } catch (final IllegalAccessException e) {
-                throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + id, e);
-            } catch (final InstantiationException e) {
+            } catch (final Exception e) {
                 throw new BatchContainerRuntimeException("Tried but failed to load artifact with id: " + id, e);
             }
-
-
             return artifactInstance;
+        }
+
+        @Override
+        public Class<?> getArtifactClassById(String id) {
+            return idToArtifactClassMap.get(id);
         }
     }
 
