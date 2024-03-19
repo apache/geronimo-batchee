@@ -30,6 +30,7 @@
 
     <modules>
         <module>transaction</module>
+        <module>tck</module>
     </modules>
 
 

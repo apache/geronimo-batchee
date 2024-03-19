@@ -19,7 +19,7 @@ package org.apache.batchee.test.jmx;
 import org.apache.batchee.container.services.ServicesManager;
 import org.apache.batchee.jmx.BatchEEMBean;
 import org.apache.batchee.spi.PersistenceManagerService;
-import org.apache.batchee.test.tck.lifecycle.ContainerLifecycle;
+import org.apache.batchee.test.lifecyle.ContainerLifecycle;
 import org.apache.batchee.util.Batches;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;

@@ -58,11 +58,11 @@
         <dependency.version.jakarta.xml.bind-api>4.0.0</dependency.version.jakarta.xml.bind-api>
         <jackson.version>2.14.0</jackson.version>
         <jodatime.version>2.10.9</jodatime.version>
-        <johnzon.version>2.0.0-SNAPSHOT</johnzon.version>
-        <openjpa.version>3.2.2</openjpa.version>
-        <tomee.version>9.0.0</tomee.version>
-        <bval.version>3.0.0-SNAPSHOT</bval.version>
-        <xbean.version>4.22</xbean.version>
+        <johnzon.version>2.0.0</johnzon.version>
+        <openjpa.version>4.0.0</openjpa.version>
+        <tomee.version>10.0.0-M1-SNAPSHOT</tomee.version>
+        <bval.version>3.0.0</bval.version>
+        <xbean.version>4.24</xbean.version>
         <deltaspike.version>2.0.0-SNAPSHOT</deltaspike.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <batchee.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/geronimo/content/batchee</batchee.scmPubUrl>

@@ -34,7 +34,7 @@ public class Xsds {
         if (schema == null) {
             synchronized (Xsds.class) {
                 try {
-                    schema = sf.newSchema(Xsds.class.getResource("/xsd/jobXML_1_0.xsd"));
+                    schema = sf.newSchema(Xsds.class.getResource("/xsd/jobXML_2_0.xsd"));
                 } catch (final SAXException e) {
                     throw new RuntimeException(e);
                 }

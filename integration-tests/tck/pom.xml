@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.apache.batchee</groupId>
+        <artifactId>integration-tests</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>integration-tck</artifactId>
+    <packaging>jar</packaging>
+    <name>BatchEE :: Integration Tests :: TCK</name>
+
+    <properties>
+        <tck.version>2.1.1</tck.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.batchee</groupId>
+            <artifactId>batchee-jbatch</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derbytools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>openejb-core</artifactId>
+            <version>${tomee.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.bval</groupId>
+                    <artifactId>bval-jsr</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>1.17.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.bval</groupId>
+            <artifactId>bval-jsr</artifactId>
+            <version>${bval.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.batch</groupId>
+            <artifactId>com.ibm.jbatch.tck</artifactId>
+            <version>${tck.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.batch</groupId>
+                    <artifactId>jakarta.batch-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.inject</groupId>
+                    <artifactId>jakarta.inject</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>jakarta.batch</groupId>
+                    <artifactId>com.ibm.jbatch.tck.spi</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.batch</groupId>
+            <artifactId>com.ibm.jbatch.tck.spi</artifactId>
+            <version>${tck.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>jakarta.batch</groupId>
+                    <artifactId>jakarta.batch-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>tck-in-memory</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${maven.test.skip}</skip>
+                            <systemProperties>
+                                <PersistenceManagerService>
+                                    org.apache.batchee.container.services.persistence.MemoryPersistenceManagerService
+                                </PersistenceManagerService>
+                            </systemProperties>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.apache.batchee.test.tck.lifecycle.ContainerLifecycle</value>
+                                </property>
+                            </properties>
+                            <dependenciesToScan>jakarta.batch:com.ibm.jbatch.tck</dependenciesToScan>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>tck-jdbc</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${maven.test.skip}</skip>
+                            <systemProperties>
+                                <PersistenceManagerService>
+                                    org.apache.batchee.container.services.persistence.JDBCPersistenceManagerService
+                                </PersistenceManagerService>
+                            </systemProperties>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.apache.batchee.test.tck.lifecycle.ContainerLifecycle</value>
+                                </property>
+                            </properties>
+                            <dependenciesToScan>jakarta.batch:com.ibm.jbatch.tck</dependenciesToScan>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>tck-jpa</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>${maven.test.skip}</skip>
+                            <systemProperties>
+                                <PersistenceManagerService>
+                                    org.apache.batchee.container.services.persistence.JPAPersistenceManagerService
+                                </PersistenceManagerService>
+                            </systemProperties>
+                            <dependenciesToScan>
+                                <groupId>jakarta.batch</groupId>
+                                <artifactId>com.ibm.jbatch.tck</artifactId>
+                                <version>${tck.version}</version>
+                            </dependenciesToScan>
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>org.apache.batchee.test.tck.lifecycle.ContainerLifecycle</value>
+                                </property>
+                            </properties>
+                            <dependenciesToScan>jakarta.batch:com.ibm.jbatch.tck</dependenciesToScan>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <skip>true</skip>
+                    <forkCount>1</forkCount>
+                    <reuseForks>false</reuseForks>
+                    <systemProperties>
+                        <batchee.service-manager.log>true</batchee.service-manager.log>
+
+                        <!-- Required to load an extension to ignore TCK tests -->
+                        <junit.jupiter.extensions.autodetection.enabled>true</junit.jupiter.extensions.autodetection.enabled>
+                        <!-- replace properties file -->
+                        <tck.execution.waiter.timeout>900000</tck.execution.waiter.timeout>
+                        <ExecutionTests.testInvokeJobWithUserStop.sleep>1000</ExecutionTests.testInvokeJobWithUserStop.sleep>
+                        <JobOperatorTests.testInvokeJobWithUserStop.sleep>1000</JobOperatorTests.testInvokeJobWithUserStop.sleep>
+                        <JobOperatorTests.testJobOperatorGetRunningJobExecutions.sleep>1000
+                        </JobOperatorTests.testJobOperatorGetRunningJobExecutions.sleep>
+                        <JobOperatorTests.testJobOperatorGetRunningJobExecutions.app.timeinterval>10000
+                        </JobOperatorTests.testJobOperatorGetRunningJobExecutions.app.timeinterval>
+                        <JobOperatorTests.testJobOperatorGetRunningJobInstancesException.app.timeinterval>10000
+                        </JobOperatorTests.testJobOperatorGetRunningJobInstancesException.app.timeinterval>
+                        <ParallelExecutionTests.testStopRunningPartitionedStep.sleep>1900
+                        </ParallelExecutionTests.testStopRunningPartitionedStep.sleep>
+                        <ParallelExecutionTests.testStopRestartRunningPartitionedStep.sleep>1900
+                        </ParallelExecutionTests.testStopRestartRunningPartitionedStep.sleep>
+                        <ParallelExecutionTests.testInvokeJobWithOnePartitionedStepExitStatus.sleep>2000
+                        </ParallelExecutionTests.testInvokeJobWithOnePartitionedStepExitStatus.sleep>
+                        <StopOrFailOnExitStatusWithRestartTests.testInvokeJobWithUserStop.sleep>500
+                        </StopOrFailOnExitStatusWithRestartTests.testInvokeJobWithUserStop.sleep>
+                        <TransactionTests.testGlobalTranNoExceptions.sleep>0</TransactionTests.testGlobalTranNoExceptions.sleep>
+                        <TransactionTests.testGlobalTranForcedExceptionWithRollback.sleep>0
+                        </TransactionTests.testGlobalTranForcedExceptionWithRollback.sleep>
+                        <TransactionTests.testGlobalTranForcedExceptionCheckpointRestart.sleep>0
+                        </TransactionTests.testGlobalTranForcedExceptionCheckpointRestart.sleep>
+                        <TransactionTests.testGlobalTranNoDelayLongTimeout.sleep>0
+                        </TransactionTests.testGlobalTranNoDelayLongTimeout.sleep>
+                        <TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.1>10000
+                        </TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.1>
+                        <TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.2>0
+                        </TransactionTests.testGlobalTranLongDelayShortTimeoutThenNoDelayShortTimeout.sleep.2>
+                        <TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutSteps.sleep>10000
+                        </TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutSteps.sleep>
+                        <TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutStepsCustomCheckpointAlgorithm.sleep>
+                            10000
+                        </TransactionTests.testGlobalTranLongDelayMixOfLongTimeoutStepsAndShortTimeoutStepsCustomCheckpointAlgorithm.sleep>
+                        <TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.1>10000
+                        </TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.1>
+                        <TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.2>0
+                        </TransactionTests.testGlobalTranForcedTimeoutCheckpointRestart.sleep.2>
+                        <ChunkTests.testChunkTimeBased10Seconds.sleep>500</ChunkTests.testChunkTimeBased10Seconds.sleep>
+                        <ChunkTests.testChunkRestartTimeBasedCheckpoint.sleep>500
+                        </ChunkTests.testChunkRestartTimeBasedCheckpoint.sleep>
+                        <ChunkTests.testChunkTimeBasedTimeLimit0.sleep>500</ChunkTests.testChunkTimeBasedTimeLimit0.sleep>
+                        <ChunkTests.testChunkRestartTimeBasedDefaultCheckpoint.sleep>500
+                        </ChunkTests.testChunkRestartTimeBasedDefaultCheckpoint.sleep>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

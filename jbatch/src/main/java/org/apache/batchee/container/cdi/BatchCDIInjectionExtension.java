@@ -18,6 +18,7 @@
 package org.apache.batchee.container.cdi;
 
 import jakarta.batch.operations.BatchRuntimeException;
+import jakarta.batch.operations.JobOperator;
 import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.inject.spi.AfterBeanDiscovery;
 import jakarta.enterprise.inject.spi.AfterDeploymentValidation;
@@ -25,15 +26,20 @@ import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.enterprise.inject.spi.BeforeBeanDiscovery;
 import jakarta.enterprise.inject.spi.BeforeShutdown;
 import jakarta.enterprise.inject.spi.Extension;
+import jakarta.enterprise.inject.spi.ProcessBean;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 // excepted beforeBeanDiscovery() all is forked from DeltaSpike - we don't want to depend from it here
 public class BatchCDIInjectionExtension implements Extension {
+    private final static Logger logger = Logger.getLogger(BatchCDIInjectionExtension.class.getName());
 
     private static final boolean CDI_1_1_AVAILABLE;
     private static final Method CDI_CURRENT_METHOD;
@@ -44,6 +50,7 @@ public class BatchCDIInjectionExtension implements Extension {
 
     private volatile Map<ClassLoader, BeanManagerInfo> bmInfos = new ConcurrentHashMap<ClassLoader, BeanManagerInfo>();
 
+    private Boolean foundJobOp = false;
 
     static {
         boolean cdi11Available;
@@ -170,6 +177,28 @@ public class BatchCDIInjectionExtension implements Extension {
             }
         }
         return bmi;
+    }
+
+    public <A> void processBean(final @Observes ProcessBean<A> processBeanEvent) {
+        if (!foundJobOp) {
+            if (processBeanEvent.getBean().getTypes().contains(JobOperator.class)) {
+                if (processBeanEvent.getBean().getBeanClass().equals(JobOpProducerBean.class)) {
+                    logger.log(Level.FINE, "BatchCDIInjectionExtension.processBean() detecting our own JobOpProducerBean");
+                } else {
+                    logger.log(Level.FINE, "BatchCDIInjectionExtension.processBean() Found JobOperator of class: " + processBeanEvent.getBean().getBeanClass());
+                    foundJobOp = true;
+                }
+            }
+        }
+    }
+
+    public void afterBeanDiscovery(final @Observes AfterBeanDiscovery abd, BeanManager bm) {
+        if (foundJobOp) {
+            logger.log(Level.FINE, "Deferring to other detected JobOperator Bean");
+            return;
+        }
+        logger.log(Level.FINE, "Didn't find JobOperator Bean, registering one");
+        abd.addBean(new JobOpProducerBean(bm));
     }
 
     private static class BeanManagerInfo {
