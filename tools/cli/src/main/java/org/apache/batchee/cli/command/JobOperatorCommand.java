@@ -219,7 +219,7 @@ public abstract class JobOperatorCommand implements Runnable {    // Remote conf
             lifecycle = "org.apache.batchee.cli.lifecycle.impl.OpenEJBLifecycle";
         } else if ("spring".equalsIgnoreCase(lifecycle)) {
             lifecycle = "org.apache.batchee.cli.lifecycle.impl.SpringLifecycle";
-        } else if ("cdise".equalsIgnoreCase(lifecycle)) {
+        } else if ("cdise".equalsIgnoreCase(lifecycle) || "cdi".equalsIgnoreCase(lifecycle)) {
             lifecycle = "org.apache.batchee.cli.lifecycle.impl.CdiSeLifecycle";
         }
 

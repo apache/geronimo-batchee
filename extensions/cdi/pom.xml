@@ -53,6 +53,12 @@
             <version>${owb.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.openwebbeans</groupId>
+            <artifactId>openwebbeans-se</artifactId>
+            <version>${owb.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>jakarta.interceptor</groupId>
