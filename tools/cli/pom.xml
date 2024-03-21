@@ -101,13 +101,6 @@
       <optional>true</optional>
     </dependency>
     <dependency>
-      <groupId>org.apache.deltaspike.cdictrl</groupId>
-      <artifactId>deltaspike-cdictrl-api</artifactId>
-      <version>${deltaspike.version}</version>
-      <scope>provided</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>5.3.22</version>
@@ -203,7 +196,6 @@
                 <excludes>
                   <exclude>org.springframework:*</exclude>
                   <exclude>org.apache.geronimo.specs:geronimo-ejb_3.1_spec</exclude>
-                  <exclude>org.apache.deltaspike.cdictrl:deltaspike-cdictrl-api</exclude>
                   <exclude>org.testng:*</exclude>
                   <exclude>org.junit:*</exclude>
                   <exclude>org.hamcrest:*</exclude>

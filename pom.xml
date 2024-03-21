@@ -63,7 +63,6 @@
         <tomee.version>10.0.0-M1-SNAPSHOT</tomee.version>
         <bval.version>3.0.0</bval.version>
         <xbean.version>4.24</xbean.version>
-        <deltaspike.version>2.0.0-SNAPSHOT</deltaspike.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <batchee.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/geronimo/content/batchee</batchee.scmPubUrl>
         <batchee.scmPubCheckoutDirectory>${basedir}/.site-content</batchee.scmPubCheckoutDirectory>
