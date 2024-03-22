@@ -510,6 +510,7 @@
                     <pushChanges>false</pushChanges>
                     <localCheckout>true</localCheckout>
                     <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <arguments>-Papache-release ${arguments}</arguments>
                 </configuration>
             </plugin>
 
