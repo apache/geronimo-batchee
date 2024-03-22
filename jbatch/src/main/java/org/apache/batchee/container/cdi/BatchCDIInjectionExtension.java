@@ -67,7 +67,11 @@ public class BatchCDIInjectionExtension implements Extension {
     }
 
     void beforeBeanDiscovery(final @Observes BeforeBeanDiscovery bbd, BeanManager bm) {
-        bbd.addAnnotatedType(bm.createAnnotatedType(BatchProducerBean.class));
+        try {
+            bbd.addAnnotatedType(bm.createAnnotatedType(BatchProducerBean.class), "batchee#BatchProducerBean");
+        } catch (final Throwable ignored) {
+            bbd.addAnnotatedType(bm.createAnnotatedType(BatchProducerBean.class));
+        }
     }
 
     public void setBeanManager(final @Observes AfterBeanDiscovery afterBeanDiscovery, final BeanManager beanManager) {
