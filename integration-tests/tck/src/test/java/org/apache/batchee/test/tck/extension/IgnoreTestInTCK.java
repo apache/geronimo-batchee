@@ -36,7 +36,7 @@ public class IgnoreTestInTCK implements ExecutionCondition {
              * producer method of BatchProducerBean#produceProperty(InjectionPoint). The reference impl with Weld 5
              * passes this test because Weld 5 passes a 'fake' injection point the producer.
              *
-             * We might want to open a TCK challenge for it with some technical explanation.
+             * Accepted Challenge: https://github.com/jakartaee/batch-tck/issues/71
              */
             "com.ibm.jbatch.tck.tests.jslxml.CDITests#testCDILookup"
     );
