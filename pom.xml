@@ -56,8 +56,8 @@
         <dependency.version.jakarta.ws.rs-api>3.1.0</dependency.version.jakarta.ws.rs-api>
         <dependency.version.jakarta.json-api>2.1.1</dependency.version.jakarta.json-api>
         <dependency.version.jakarta.xml.bind-api>4.0.0</dependency.version.jakarta.xml.bind-api>
-        <jackson.version>2.14.0</jackson.version>
-        <jodatime.version>2.10.9</jodatime.version>
+        <jackson.version>2.17.0</jackson.version>
+        <jodatime.version>2.12.7</jodatime.version>
         <johnzon.version>2.0.1</johnzon.version>
         <openjpa.version>4.0.0</openjpa.version>
         <tomee.version>10.0.0-M1</tomee.version>
