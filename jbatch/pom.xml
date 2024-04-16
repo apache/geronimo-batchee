@@ -99,14 +99,8 @@
     <dependency>
       <groupId>org.apache.tomee</groupId>
       <artifactId>openejb-core</artifactId>
-      <version>${tomee.version}</version>
+      <version>${tomee-10.version}</version>
       <scope>test</scope>
-      <exclusions>
-        <exclusion>
-          <groupId>org.apache.bval</groupId>
-          <artifactId>bval-jsr</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>org.fusesource.jansi</groupId>
@@ -114,13 +108,6 @@
       <version>1.17.1</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.apache.bval</groupId>
-      <artifactId>bval-jsr</artifactId>
-      <version>${bval.version}</version>
-      <scope>test</scope>
-    </dependency>
-
   </dependencies>
 
   <build>
@@ -139,12 +126,55 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <executions>
           <execution>
-            <id>batchee-tests</id>
+            <id>batchee-tests-ee10</id>
             <goals>
               <goal>test</goal>
             </goals>
             <configuration>
               <skip>${maven.test.skip}</skip>
+            </configuration>
+          </execution>
+          <execution>
+            <id>batchee-tests-ee91</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <skip>${maven.test.skip}</skip>
+              <classpathDependencyExcludes>
+                <!-- Exclude TomEE 10 from the classpath. Sadly, we need to exclude transient libs too... -->
+                <exclude>org.apache.tomee:openejb-core</exclude>
+                <exclude>jakarta.transaction:jakarta.transaction-api</exclude>
+                <exclude>org.apache.tomee:openejb-jee-accessors</exclude>
+                <exclude>org.apache.tomee:openejb-jee</exclude>
+                <exclude>org.apache.xbean:xbean-finder-shaded</exclude>
+                <exclude>com.sun.istack:istack-commons-runtime</exclude>
+                <exclude>org.apache.tomee:openejb-jpa-integration</exclude>
+                <exclude>org.apache.tomee:openejb-api</exclude>
+                <exclude>org.apache.tomee:mbean-annotation-api</exclude>
+                <exclude>org.glassfish.jaxb:jaxb-runtime</exclude>
+                <exclude>org.apache.xbean:xbean-asm9-shaded</exclude>
+                <exclude>org.slf4j:slf4j-jdk14</exclude>
+                <exclude>org.apache.tomee:openejb-loader</exclude>
+                <exclude>org.apache.xbean:xbean-bundleutils</exclude>
+                <exclude>org.glassfish.jaxb:txw2</exclude>
+                <exclude>org.apache.tomee:jakartaee-api</exclude>
+                <exclude>org.slf4j:slf4j-api</exclude>
+                <exclude>org.apache.tomee:openejb-javaagent</exclude>
+                <exclude>org.apache.xbean:xbean-reflect</exclude>
+                <exclude>org.apache.xbean:xbean-naming</exclude>
+                <exclude>org.glassfish.jaxb:jaxb-core</exclude>
+                <exclude>org.apache.tomee:sxc-shade</exclude>
+                <exclude>org.apache.tomee.bom:jaxb-runtime</exclude>
+                <exclude>jakarta.xml.bind:jakarta.xml.bind-api</exclude>
+              </classpathDependencyExcludes>
+              <additionalClasspathDependencies>
+                <dependency>
+                  <groupId>org.apache.tomee</groupId>
+                  <artifactId>openejb-core</artifactId>
+                  <version>${tomee-9.version}</version>
+                </dependency>
+              </additionalClasspathDependencies>
             </configuration>
           </execution>
         </executions>
