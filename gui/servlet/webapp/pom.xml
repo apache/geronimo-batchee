@@ -236,6 +236,7 @@
               <dependency>
                 <groupId>jakarta.batch</groupId>
                 <artifactId>jakarta.batch-api</artifactId>
+                <version>${dependency.version.jakarta.batch-api}</version>
               </dependency>
 
               <dependency>
