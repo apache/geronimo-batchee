@@ -67,7 +67,7 @@
         <batchee.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/geronimo/content/batchee</batchee.scmPubUrl>
         <batchee.scmPubCheckoutDirectory>${basedir}/.site-content</batchee.scmPubCheckoutDirectory>
 
-        <derby.version>10.15.2.0</derby.version>
+        <derby.version>10.17.1.0</derby.version>
     </properties>
 
     <ciManagement>
