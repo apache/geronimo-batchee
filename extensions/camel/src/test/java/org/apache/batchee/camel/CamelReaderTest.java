@@ -19,6 +19,8 @@ package org.apache.batchee.camel;
 import org.apache.batchee.util.Batches;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.component.direct.DirectEndpoint;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import jakarta.batch.api.chunk.ItemProcessor;
@@ -31,6 +33,17 @@ import java.util.Properties;
 import static org.testng.Assert.assertEquals;
 
 public class CamelReaderTest {
+
+    @BeforeClass
+    public static void before() {
+        CamelBridge.CONTEXT.start();
+    }
+
+    @AfterClass
+    public static void after() {
+        CamelBridge.CONTEXT.stop();
+    }
+
     @Test
     public void read() throws Exception {
         final ProducerTemplate tpl = CamelBridge.CONTEXT.createProducerTemplate();

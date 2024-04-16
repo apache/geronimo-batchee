@@ -38,7 +38,11 @@
             <artifactId>camel-core</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-support</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
@@ -54,6 +58,6 @@
     </dependencies>
 
     <properties>
-        <camel.version>2.11.1</camel.version>
+        <camel.version>3.22.1</camel.version>
     </properties>
 </project>

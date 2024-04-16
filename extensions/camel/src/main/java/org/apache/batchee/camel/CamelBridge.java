@@ -30,6 +30,18 @@ public class CamelBridge {
         // private utility class ct
     }
 
+    public static void start() {
+        if(!CONTEXT.isStarted()) {
+            CONTEXT.start();
+        }
+    }
+
+    public static void stop() {
+        if(CONTEXT.isStarted()) {
+            CONTEXT.stop();
+        }
+    }
+
     protected static Object process(final String locator, final String endpoint, final Object body) throws Exception {
         final BeanLocator.LocatorInstance<CamelTemplateLocator> locatorInstance = locator(locator);
         try {

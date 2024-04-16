@@ -17,10 +17,11 @@
 package org.apache.batchee.camel.component;
 
 import org.apache.camel.Endpoint;
-import org.apache.camel.impl.DefaultComponent;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchRuntime;
+import org.apache.camel.support.DefaultComponent;
+
 import java.util.Map;
 
 public class JBatchComponent extends DefaultComponent {
