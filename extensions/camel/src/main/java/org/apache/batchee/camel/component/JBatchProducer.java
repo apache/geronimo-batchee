@@ -18,10 +18,11 @@ package org.apache.batchee.camel.component;
 
 import org.apache.camel.Endpoint;
 import org.apache.camel.Exchange;
-import org.apache.camel.impl.DefaultProducer;
 
 import jakarta.batch.operations.JobOperator;
 import jakarta.batch.runtime.BatchStatus;
+import org.apache.camel.support.DefaultProducer;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;

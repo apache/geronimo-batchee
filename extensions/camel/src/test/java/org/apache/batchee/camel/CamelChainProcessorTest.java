@@ -17,6 +17,8 @@
 package org.apache.batchee.camel;
 
 import org.apache.batchee.util.Batches;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import jakarta.batch.api.chunk.ItemReader;
@@ -31,6 +33,17 @@ import java.util.Properties;
 import static org.testng.Assert.assertEquals;
 
 public class CamelChainProcessorTest {
+
+    @BeforeClass
+    public static void before() {
+        CamelBridge.CONTEXT.start();
+    }
+
+    @AfterClass
+    public static void after() {
+        CamelBridge.CONTEXT.stop();
+    }
+
     @Test
     public void chain() throws Exception {
         final JobOperator jobOperator = BatchRuntime.getJobOperator();

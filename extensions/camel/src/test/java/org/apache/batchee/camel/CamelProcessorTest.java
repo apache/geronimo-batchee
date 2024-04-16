@@ -20,6 +20,8 @@ import org.apache.batchee.util.Batches;
 import org.apache.camel.Consumer;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import jakarta.batch.api.chunk.ItemReader;
@@ -34,6 +36,17 @@ import java.util.Properties;
 import static org.testng.Assert.assertEquals;
 
 public class CamelProcessorTest {
+
+    @BeforeClass
+    public static void before() {
+        CamelBridge.CONTEXT.start();
+    }
+
+    @AfterClass
+    public static void after() {
+        CamelBridge.CONTEXT.stop();
+    }
+
     @Test
     public void process() throws Exception {
         final List<Exchange> exchanges = new ArrayList<Exchange>(2);
