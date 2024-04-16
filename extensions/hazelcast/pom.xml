@@ -33,16 +33,9 @@
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast-client</artifactId>
-            <version>${hazelcast.version}</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <properties>
-        <hazelcast.version>3.12.13</hazelcast.version>
+        <hazelcast.version>5.4.0</hazelcast.version>
     </properties>
 </project>

@@ -17,7 +17,7 @@
 package org.apache.batchee.hazelcast;
 
 import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.ILock;
+import com.hazelcast.cp.lock.FencedLock;
 import org.apache.batchee.doc.api.Documentation;
 
 import jakarta.batch.api.BatchProperty;
@@ -66,7 +66,7 @@ public class HazelcastSynchroInstanceAware {
         return lockName;
     }
 
-    protected ILock findLock() throws IOException {
-        return instance().getLock(lockName());
+    protected FencedLock findLock() throws IOException {
+        return instance().getCPSubsystem().getLock(lockName());
     }
 }

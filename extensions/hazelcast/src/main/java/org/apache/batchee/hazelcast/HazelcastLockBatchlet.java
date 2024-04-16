@@ -38,7 +38,7 @@ public class HazelcastLockBatchlet extends HazelcastSynchroInstanceAware impleme
     @Override
     public String process() throws Exception {
         if (tryDuration != null) {
-            findLock().lock(Long.parseLong(tryDuration), TimeUnit.valueOf(tryDurationUnit()));
+            findLock().tryLock(Long.parseLong(tryDuration), TimeUnit.valueOf(tryDurationUnit()));
         }
         findLock().lock();
         return "locked";

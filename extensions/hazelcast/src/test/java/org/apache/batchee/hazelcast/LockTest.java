@@ -39,7 +39,7 @@ public class LockTest {
     }
 
     private static boolean isLocked() {
-        return Hazelcast.getHazelcastInstanceByName("batchee-test").getLock("batchee-lock").isLocked();
+        return Hazelcast.getHazelcastInstanceByName("batchee-test").getCPSubsystem().getLock("batchee-lock").isLocked();
     }
 
     public static class EnsureLockIsHold extends AbstractBatchlet {
