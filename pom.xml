@@ -64,7 +64,7 @@
         <tomee-10.version>${tomee.version}</tomee-10.version>
         <tomee-9.version>9.1.3</tomee-9.version>
         <bval.version>3.0.0</bval.version>
-        <xbean.version>4.24</xbean.version>
+        <xbean.version>4.25</xbean.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <batchee.scmPubUrl>https://svn.apache.org/repos/infra/websites/production/geronimo/content/batchee</batchee.scmPubUrl>
         <batchee.scmPubCheckoutDirectory>${basedir}/.site-content</batchee.scmPubCheckoutDirectory>
