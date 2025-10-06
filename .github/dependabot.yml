@@ -25,6 +25,7 @@ updates:
     open-pull-requests-limit: 5
     ignore:
       - dependency-name: "jakarta.*:*"
+      - dependency-name: "net.sf.jung:*"
       - dependency-name: "org.apache.tomcat:*"
         update-types:
           - "version-update:semver-major"
