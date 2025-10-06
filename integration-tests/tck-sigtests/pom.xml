@@ -28,7 +28,7 @@
     <name>BatchEE :: Integration Tests :: TCK :: Signature Tests</name>
 
     <properties>
-        <tck.version>2.1.1</tck.version>
+        <tck.version>2.1.5</tck.version>
         <sigtest-maven-plugin.version>2.3</sigtest-maven-plugin.version>
     </properties>
 

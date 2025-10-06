@@ -29,7 +29,7 @@
     <name>BatchEE :: Integration Tests :: TCK</name>
 
     <properties>
-        <tck.version>2.1.1</tck.version>
+        <tck.version>2.1.5</tck.version>
     </properties>
 
     <dependencies>
