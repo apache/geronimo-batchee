@@ -51,7 +51,7 @@
         <dependency.version.jakarta.enterprise.cdi-api>4.0.1</dependency.version.jakarta.enterprise.cdi-api>
         <dependency.version.jakarta.annotation-api>2.1.1</dependency.version.jakarta.annotation-api>
         <dependency.version.jakarta.ejb-api>4.0.1</dependency.version.jakarta.ejb-api>
-        <dependency.version.jakarta.interceptor-api>2.1.0</dependency.version.jakarta.interceptor-api>
+        <dependency.version.jakarta.interceptor-api>2.2.0</dependency.version.jakarta.interceptor-api>
         <dependency.version.jakarta.transaction-api>2.0.1</dependency.version.jakarta.transaction-api>
         <dependency.version.jakarta.ws.rs-api>3.1.0</dependency.version.jakarta.ws.rs-api>
         <dependency.version.jakarta.json-api>2.1.1</dependency.version.jakarta.json-api>
