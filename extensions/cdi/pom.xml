@@ -29,7 +29,7 @@
     <description>This module implements some CDI scopes batch oriented.</description>
 
     <properties>
-        <owb.version>4.0.2</owb.version>
+        <owb.version>4.0.3</owb.version>
     </properties>
 
     <dependencies>
