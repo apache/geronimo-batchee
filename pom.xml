@@ -42,7 +42,7 @@
         <!-- for reproducible builds -->
         <project.build.outputTimestamp>1713803910</project.build.outputTimestamp>
 
-        <jaxb.version>4.0.5</jaxb.version>
+        <jaxb.version>4.0.6</jaxb.version>
         <dependency.version.jakarta.batch-api>2.1.1</dependency.version.jakarta.batch-api>
         <dependency.version.jakarta.servlet-api>5.0.0</dependency.version.jakarta.servlet-api>
         <dependency.version.jakarta.persistence-api>3.1.0</dependency.version.jakarta.persistence-api>
