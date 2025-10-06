@@ -35,9 +35,9 @@
 
     <properties>
         <arquillian.version>1.8.0.Final</arquillian.version>
-        <cxf.version>4.0.4</cxf.version>
-        <tomcat.version>10.1.20</tomcat.version>
-        <tomee.version>10.0.0-M1</tomee.version>
+        <cxf.version>4.1.3</cxf.version>
+        <tomcat.version>10.1.46</tomcat.version>
+        <tomee.version>10.1.2</tomee.version>
     </properties>
 
     <dependencyManagement>
