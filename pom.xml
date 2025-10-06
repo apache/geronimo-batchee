@@ -48,7 +48,7 @@
         <dependency.version.jakarta.persistence-api>3.1.0</dependency.version.jakarta.persistence-api>
         <dependency.version.jakarta.validation-api>3.0.2</dependency.version.jakarta.validation-api>
         <dependency.version.jakarta.inject-api>2.0.1</dependency.version.jakarta.inject-api>
-        <dependency.version.jakarta.enterprise.cdi-api>4.0.1</dependency.version.jakarta.enterprise.cdi-api>
+        <dependency.version.jakarta.enterprise.cdi-api>4.1.0</dependency.version.jakarta.enterprise.cdi-api>
         <dependency.version.jakarta.annotation-api>2.1.1</dependency.version.jakarta.annotation-api>
         <dependency.version.jakarta.ejb-api>4.0.1</dependency.version.jakarta.ejb-api>
         <dependency.version.jakarta.interceptor-api>2.1.0</dependency.version.jakarta.interceptor-api>
