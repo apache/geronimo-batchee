@@ -101,7 +101,7 @@
             <plugin> <!-- would be cool to reuse our plugin but doesnt work in the same build -->
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>3.6.1</version>
                 <executions>
                     <execution>
                         <phase>pre-site</phase>
