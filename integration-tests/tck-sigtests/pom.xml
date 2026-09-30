@@ -21,6 +21,7 @@
         <groupId>org.apache.batchee</groupId>
         <artifactId>integration-tests</artifactId>
         <version>2.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>integration-tck-sigtest</artifactId>
@@ -29,174 +30,82 @@
 
     <properties>
         <tck.version>2.1.5</tck.version>
-        <sigtest-maven-plugin.version>2.6</sigtest-maven-plugin.version>
+        <sigtest-maven-plugin.version>2.7</sigtest-maven-plugin.version>
     </properties>
 
-    <profiles>
-        <profile>
-            <id>jdk11</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <jdk>11</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>jakarta.tck</groupId>
-                        <artifactId>sigtest-maven-plugin</artifactId>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-sigfiles</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>pre-integration-test</phase>
                         <configuration>
-                            <sigfile>${project.build.directory}/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se11-OpenJDK-J9</sigfile>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>jakarta.batch</groupId>
+                                    <artifactId>com.ibm.jbatch.tck</artifactId>
+                                    <version>${tck.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                            <includes>sigtest/*</includes>
+                            <outputDirectory>${project.build.directory}/sigtest-copy</outputDirectory>
                         </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>jdk17</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <jdk>17</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>jakarta.tck</groupId>
-                        <artifactId>sigtest-maven-plugin</artifactId>
-                        <version>${sigtest-maven-plugin.version}</version>
+                    </execution>
+                    <execution>
+                        <id>unpack-classes</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>pre-integration-test</phase>
                         <configuration>
-                            <sigfile>${project.build.directory}/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se17-TemurinHotSpot</sigfile>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>jakarta.batch</groupId>
+                                    <artifactId>jakarta.batch-api</artifactId>
+                                    <version>${dependency.version.jakarta.batch-api}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>jakarta.enterprise</groupId>
+                                    <artifactId>jakarta.enterprise.cdi-api</artifactId>
+                                    <version>${dependency.version.jakarta.enterprise.cdi-api}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>jakarta.inject</groupId>
+                                    <artifactId>jakarta.inject-api</artifactId>
+                                    <version>${dependency.version.jakarta.inject-api}</version>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.batchee</groupId>
+                                    <artifactId>batchee-jbatch</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                            </artifactItems>
                         </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>jdk21</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <jdk>21</jdk>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>jakarta.tck</groupId>
-                        <artifactId>sigtest-maven-plugin</artifactId>
-                        <version>${sigtest-maven-plugin.version}</version>
-                        <configuration>
-                            <sigfile>${project.build.directory}/sigtest-copy/sigtest/jakarta.sigtest-2.2-batch.standalone.tck.sig-2.1-se21-Temurin</sigfile>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <!-- Profile to run sigtest only when NOT in CI (which is GH and not reliable atm)-->
-        <profile>
-            <id>sigtest-local</id>
-            <activation>
-                <property>
-                    <name>!env.CI</name> <!-- active only if CI environment variable is NOT set -->
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>unpack-sigfiles</id>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <phase>pre-integration-test</phase>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>jakarta.batch</groupId>
-                                            <artifactId>com.ibm.jbatch.tck</artifactId>
-                                            <version>${tck.version}</version>
-                                        </artifactItem>
-                                    </artifactItems>
-                                    <includes>sigtest/*</includes>
-                                    <outputDirectory>${project.build.directory}/sigtest-copy</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>unpack-classes</id>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <phase>pre-integration-test</phase>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>jakarta.batch</groupId>
-                                            <artifactId>jakarta.batch-api</artifactId>
-                                            <version>${dependency.version.jakarta.batch-api}</version>
-                                        </artifactItem>
-                                        <artifactItem>
-                                            <groupId>jakarta.enterprise</groupId>
-                                            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-                                            <version>${dependency.version.jakarta.enterprise.cdi-api}</version>
-                                        </artifactItem>
-                                        <artifactItem>
-                                            <groupId>jakarta.inject</groupId>
-                                            <artifactId>jakarta.inject-api</artifactId>
-                                            <version>${dependency.version.jakarta.inject-api}</version>
-                                        </artifactItem>
-                                        <artifactItem>
-                                            <groupId>org.apache.batchee</groupId>
-                                            <artifactId>batchee-jbatch</artifactId>
-                                            <version>${project.version}</version>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>jakarta.tck</groupId>
-                        <artifactId>sigtest-maven-plugin</artifactId>
-                        <version>${sigtest-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>default-cli</id>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <action>strictcheck</action>
-                            <failOnError>true</failOnError>
-                            <packages>jakarta.batch.**</packages>
-                            <classes>${project.build.directory}/dependency</classes>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>jakarta.tck</groupId>
-                        <artifactId>sigtest-maven-plugin</artifactId>
-                        <version>${sigtest-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>default-cli</id>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <action>strictcheck</action>
-                            <failOnError>true</failOnError>
-                            <packages>jakarta.batch.**</packages>
-                            <classes>${project.build.directory}/dependency</classes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>jakarta.tck</groupId>
+                <artifactId>sigtest-maven-plugin</artifactId>
+                <configuration>
+                    <!--
+                        ATTENTION: this is hardcoded to java11, as the current jakarta.batch-api was compiled with Java11
+                        If we update to a newer version which bumps the Java version, then we need to adopt this!
+                    -->
+                    <sigfile>${project.build.directory}/sigtest-copy/sigtest/sigtest-1.6-batch.standalone.tck.sig-2.1-se11-OpenJDK-J9</sigfile>
+
+                    <!-- ignore all the JDK classes, otherwise it complains about Object.finalize and other stuff which might got deprecated -->
+                    <ignoreAllJDKClasses>true</ignoreAllJDKClasses>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
