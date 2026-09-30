@@ -19,6 +19,7 @@ package org.apache.batchee.test.mock;
 import jakarta.batch.api.AbstractBatchlet;
 import jakarta.batch.api.BatchProperty;
 import jakarta.batch.runtime.context.JobContext;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.spi.Bean;
 import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.inject.Inject;
@@ -28,6 +29,7 @@ import java.net.URL;
 import org.testng.Assert;
 
 @Named("injected")
+@Dependent
 public class InjectionsMock extends AbstractBatchlet {
     @Inject
     @BatchProperty

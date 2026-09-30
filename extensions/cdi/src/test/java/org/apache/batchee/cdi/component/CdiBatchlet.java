@@ -17,10 +17,12 @@
 package org.apache.batchee.cdi.component;
 
 import jakarta.batch.api.AbstractBatchlet;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 @Named
+@Dependent
 public class CdiBatchlet extends AbstractBatchlet {
     @Inject
     private JobScopedBean jobScopedBean;
