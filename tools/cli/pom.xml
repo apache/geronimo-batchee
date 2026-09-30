@@ -22,6 +22,7 @@
     <artifactId>batchee-tools</artifactId>
     <groupId>org.apache.batchee</groupId>
     <version>2.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>batchee-cli</artifactId>

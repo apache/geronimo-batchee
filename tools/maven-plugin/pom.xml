@@ -22,6 +22,7 @@
     <artifactId>batchee-tools</artifactId>
     <groupId>org.apache.batchee</groupId>
     <version>2.0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>batchee-maven-plugin</artifactId>
@@ -111,7 +112,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.16.0</version>
         <executions>
           <execution>
             <id>mojo-descriptor</id>
