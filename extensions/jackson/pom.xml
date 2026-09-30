@@ -22,6 +22,7 @@
         <artifactId>batchee-extensions</artifactId>
         <groupId>org.apache.batchee</groupId>
         <version>2.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>batchee-jackson</artifactId>
@@ -40,7 +41,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <jackson.version>2.17.0</jackson.version>
-    </properties>
 </project>
